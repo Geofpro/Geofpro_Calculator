@@ -1,0 +1,31 @@
+unit pipe_calculator;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
+
+type
+  TFcalculator3i = class(TForm)
+    MainMenu1: TMainMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    Excel1: TMenuItem;
+    PDF1: TMenuItem;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Fcalculator3i: TFcalculator3i;
+
+implementation
+
+{$R *.dfm}
+
+end.
