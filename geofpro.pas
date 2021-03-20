@@ -25,6 +25,8 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Label6Click(Sender: TObject);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
   public
@@ -48,6 +50,14 @@ procedure TGeofpro3i.FormCreate(Sender: TObject);
 begin
    T1:=0;
 end;
+
+procedure TGeofpro3i.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  ReleaseCapture;
+  Perform(WM_SysCommand,$F012,0);
+end;
+
 
 procedure TGeofpro3i.Label1Click(Sender: TObject);
 begin

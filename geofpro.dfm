@@ -1,10 +1,10 @@
 object Geofpro3i: TGeofpro3i
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
-  Caption = 'Geofpro3i'
-  ClientHeight = 418
-  ClientWidth = 649
+  BorderStyle = bsNone
+  Caption = 'Geofpro Calculator 3i'
+  ClientHeight = 447
+  ClientWidth = 655
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,8 +19,8 @@ object Geofpro3i: TGeofpro3i
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 649
-    Height = 372
+    Width = 655
+    Height = 401
     Align = alClient
     Picture.Data = {
       0A544A504547496D616765E9AD0200FFD8FFE000104A46494600010101012C01
@@ -5511,6 +5511,7 @@ object Geofpro3i: TGeofpro3i
       F4A8C9C7269803B6D1EF51336DA5639A89DB6FE3D2A891246EDF9D46E72768FC
       4D2B36D5F735139DBF2FE74008CDB8FF00B2B51B367E6EC3A52B9C9DBD875A8D
       CEE3F4A0423B639A898E3FFD54E66DDF35479C9A047FFFD9}
+    OnMouseDown = Image1MouseDown
     ExplicitLeft = 112
     ExplicitTop = 104
     ExplicitWidth = 1680
@@ -5564,8 +5565,8 @@ object Geofpro3i: TGeofpro3i
   end
   object Panel1: TPanel
     Left = 0
-    Top = 372
-    Width = 649
+    Top = 401
+    Width = 655
     Height = 46
     Align = alBottom
     Caption = 'Panel1'
@@ -5582,7 +5583,7 @@ object Geofpro3i: TGeofpro3i
       OnClick = Label4Click
     end
     object Label5: TLabel
-      Left = 432
+      Left = 464
       Top = 20
       Width = 44
       Height = 13
@@ -5591,10 +5592,11 @@ object Geofpro3i: TGeofpro3i
       OnClick = Label5Click
     end
     object Label6: TLabel
-      Left = 528
-      Top = 24
+      Left = 552
+      Top = 20
       Width = 49
       Height = 13
+      Cursor = crHandPoint
       Caption = #1057#1074#1077#1088#1085#1091#1090#1100
       OnClick = Label6Click
     end
