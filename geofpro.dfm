@@ -12,7 +12,8 @@ object Geofpro3i: TGeofpro3i
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -5518,8 +5519,8 @@ object Geofpro3i: TGeofpro3i
     ExplicitHeight = 1182
   end
   object Label1: TLabel
-    Left = 72
-    Top = 32
+    Left = 102
+    Top = 56
     Width = 93
     Height = 13
     Cursor = crHandPoint
@@ -5536,8 +5537,8 @@ object Geofpro3i: TGeofpro3i
     OnClick = Label1Click
   end
   object Label2: TLabel
-    Left = 30
-    Top = 64
+    Left = 60
+    Top = 88
     Width = 135
     Height = 13
     Cursor = crHandPoint
@@ -5550,12 +5551,25 @@ object Geofpro3i: TGeofpro3i
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 101
-    Top = 96
+    Left = 131
+    Top = 120
     Width = 64
     Height = 13
     Cursor = crHandPoint
     Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 16
+    Top = 24
+    Width = 179
+    Height = 13
+    Caption = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088' '#1074#1077#1089#1072' '#1073#1091#1088#1080#1083#1100#1085#1099#1093' '#1090#1088#1091#1073
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -11
@@ -5600,13 +5614,14 @@ object Geofpro3i: TGeofpro3i
       Caption = #1057#1074#1077#1088#1085#1091#1090#1100
       OnClick = Label6Click
     end
-    object Edit1: TEdit
+    object Euserlog: TEdit
       Left = 8
       Top = 16
       Width = 345
       Height = 21
       TabOrder = 0
       Text = 'Geofpro_user'
+      OnDblClick = EuserlogDblClick
     end
   end
   object Timer1: TTimer

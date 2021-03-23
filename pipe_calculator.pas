@@ -41,6 +41,7 @@ type
   public
     { Public declarations }
     procedure Сheckingvalue ;
+    procedure SG2clear;
   end;
 
 var
@@ -144,12 +145,35 @@ begin
   Fpcmenu.Show;
 end;
 
+procedure TFcalculator3i.SG2clear;
+  // очищаем таблицы с результатоми расчёта
+  var n: String ;
+       i, col, row : Integer;
+begin
+  StringGrid2.Cells[0,0]:='';
+  StringGrid2.Cells[1,0]:='';
+  StringGrid2.Cells[3,0]:='';
+
+   begin
+       for col := 11 to 13 do
+    begin
+     for row := 1 to StrToInt(EGridRow.Text)-1 do
+     begin
+       StringGrid1.Cells[col, row]:='';
+     end;
+    end;
+   end;
+
+end;
+
 procedure TFcalculator3i.StringGrid1DrawCell(Sender: TObject; ACol,
   ARow: Integer; Rect: TRect; State: TGridDrawState);
     const //здесь определяем Ваш цвет. Так же можно использовать цвета по умолчанию.
   clBlue11 = TColor($00F2BB60);
   clRed2 = TColor($00A6B0F9);
   clYellow = TColor($0080F7F3);
+   var n: String ;
+       i, col, row : Integer;
 begin
    if ((ACol = 11) or (ACol = 12) or (ACol = 13)) and (ARow>0)  then
     begin
@@ -158,28 +182,51 @@ begin
     stringGrid1.Canvas.FillRect(rect);
     stringGrid1.Canvas.TextRect(Rect, Rect.Left, Rect.Top, stringGrid1.Cells[ACol, ARow]);
     end;
+
+    // подкрашиваем ячейку с ошибочными данными
+    // Edit1 и Edit2 номер столбца и строки
+  if Edit1.Text<>'0' then
+  begin
+   if (ACol = StrToInt(Edit1.Text)) and (ARow = StrToInt(Edit2.Text))  then
+     begin
+        StringGrid1.Canvas.Brush.Color := clRed;
+        StringGrid1.Canvas.FillRect(rect);
+        StringGrid1.Canvas.TextRect(Rect, Rect.Left, Rect.Top, stringGrid1.Cells[ACol, ARow]);
+     end;
+  end;
+
 end;
 
 procedure TFcalculator3i.Сheckingvalue;
+  //проверяем актуальность ввода данных
    var n: String ;
        i, col, row : Integer;
-begin
-   for col := 7 to 10 do
+  begin
+   for col := 2 to 10 do
    begin
        for row := 1 to StrToInt(EGridRow.Text)-1 do
          begin
          n:=StringGrid1.Cells[col, row];
-         if (n='хуй') or (n='Хуй') then ShowMessage('Привет патриот!!!');
+         // проверяем наличие пустых ячеек
          if n='' then
          begin
-         ShowMessage('В столбцах таблицы Масса i, кг ... Длина свечи, м не допускается наличие пустых ячеек.');
-         Exit
+          ShowMessage('В столбцах таблицы D н, мм ... Длина свечи, м не допускается наличие пустых ячеек.');
+          SG2clear;
+          Edit1.Text:=IntToStr(col);
+          Edit2.Text:=IntToStr(row);
+          StringGrid1.Refresh;
+          Exit
          end;
           for i := 1 to length(StringGrid1.Cells[col, row]) do
          begin
+         // проверяем отсутствие текста в расчётных ячейках
            if not (n[i] in ['0'..'9',',','.']) then
            begin
-            ShowMessage('В столбцах таблицы Масса i, кг ... Длина свечи, м должны быть только цифры.');
+            ShowMessage('В столбцах таблицы D н, мм ... Длина свечи, м должны быть только цифры.');
+            SG2clear;
+            Edit1.Text:=IntToStr(col);
+            Edit2.Text:=IntToStr(row);
+            StringGrid1.Refresh;
             Exit
            end;
            end;
@@ -187,6 +234,75 @@ begin
        end;
    end;
 
-end;
+
+
+      //проверка вписываемости бурового инструмента в скважину
+   if Fpcmenu.CheckBit.Checked=True then
+   begin
+
+     //проверяем заполнение Edit
+     if Fpcmenu.Ebit.Text='' then
+    begin
+     ShowMessage('Не указан диаметр долота');
+     Fpcmenu.CheckBit.Checked:=False;
+     Exit
+    end;
+
+     if Fpcmenu.Eminpipe.Text='' then
+     begin
+     ShowMessage('Не указан внутренний диаметр обсадной колонны');
+     Fpcmenu.CheckBit.Checked:=False;
+     Exit
+    end;
+
+     if Fpcmenu.Erad.Text='' then
+     begin
+      ShowMessage('Не указан минимальный зазор');
+      Fpcmenu.CheckBit.Checked:=False;
+      Exit
+    end;
+
+     for i := 1 to length(Fpcmenu.Ebit.Text) do
+      begin
+       if not (Fpcmenu.Ebit.Text[i] in ['0'..'9',',','.']) then
+      begin
+       ShowMessage('Не допустимое значение диаметра долота');
+       Fpcmenu.CheckBit.Checked:=False;
+       Exit
+      end;
+     end;
+
+     // условие вписываемости долота в обсадную колонну
+    if (StrToFloat(Fpcmenu.Ebit.Text)+StrToFloat(Fpcmenu.Erad.Text))>StrToFloat(Fpcmenu.Eminpipe.Text) then
+    begin
+     ShowMessage('Долото не вписывается в обсадную колонну');
+     SG2clear;
+     Exit
+    end;
+
+     //проверка вписываемости бурового инструмента в скважину
+       for col := 2 to 6 do
+    begin
+     for row := 1 to StrToInt(EGridRow.Text)-1 do
+     begin
+       n:=StringGrid1.Cells[col, row];
+       if StrToFloat(Fpcmenu.Ebit.Text)<(StrToFloat(n)+StrToFloat(Fpcmenu.Erad.Text)) then
+       begin
+        ShowMessage('Инструмент не вписывается в скважину');
+        SG2clear;
+        Edit1.Text:=IntToStr(col);
+        Edit2.Text:=IntToStr(row);
+        StringGrid1.Refresh;
+        Exit
+       end;
+     end;
+    end;
+   end;
+
+   //если все условия прошли проверку номеру столбца и строки присвоить 0
+   Edit1.Text:='0';
+   Edit2.Text:='0';
+   StringGrid1.Refresh;
+ end;
 
 end.

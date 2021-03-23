@@ -1,0 +1,103 @@
+object Fpcmenu: TFpcmenu
+  Left = 0
+  Top = 0
+  Align = alLeft
+  BorderStyle = bsNone
+  Caption = 'Fpcmenu'
+  ClientHeight = 240
+  ClientWidth = 216
+  Color = clGray
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 214
+    Height = 240
+    Align = alLeft
+    Caption = 'Panel1'
+    Color = 10652205
+    ParentBackground = False
+    ShowCaption = False
+    TabOrder = 0
+    object Lclose: TLabel
+      Left = 32
+      Top = 150
+      Width = 100
+      Height = 13
+      Cursor = crHandPoint
+      Caption = #1047#1072#1082#1088#1099#1090#1100' '#1087#1088#1086#1075#1088#1072#1084#1084#1091
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = LcloseClick
+    end
+    object Lopen: TLabel
+      Left = 32
+      Top = 30
+      Width = 46
+      Height = 13
+      Cursor = crHandPoint
+      Caption = #1054#1090#1082#1088#1099#1090#1100
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Lsave: TLabel
+      Left = 32
+      Top = 60
+      Width = 55
+      Height = 13
+      Cursor = crHandPoint
+      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Lperson: TLabel
+      Left = 32
+      Top = 90
+      Width = 128
+      Height = 13
+      Cursor = crHandPoint
+      Caption = #1055#1077#1088#1089#1086#1085#1072#1083#1080#1079#1072#1094#1080#1103' '#1086#1090#1095#1105#1090#1086#1074
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = LpersonClick
+    end
+    object Lminimaized: TLabel
+      Left = 32
+      Top = 120
+      Width = 79
+      Height = 13
+      Cursor = crHandPoint
+      Caption = #1057#1074#1077#1088#1085#1091#1090#1100' '#1084#1077#1085#1102
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = LminimaizedClick
+    end
+  end
+end

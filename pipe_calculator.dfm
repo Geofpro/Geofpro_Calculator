@@ -7,7 +7,7 @@ object Fcalculator3i: TFcalculator3i
   ClientWidth = 1004
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
+  Font.Color = clBlack
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
@@ -1805,10 +1805,10 @@ object Fcalculator3i: TFcalculator3i
       Width = 121
       Height = 21
       TabOrder = 2
-      Text = 'Edit1'
+      Text = '0'
     end
     object Button1: TButton
-      Left = 448
+      Left = 552
       Top = 6
       Width = 75
       Height = 25
@@ -1817,12 +1817,12 @@ object Fcalculator3i: TFcalculator3i
       OnClick = Button1Click
     end
     object Edit2: TEdit
-      Left = 576
+      Left = 368
       Top = 6
       Width = 121
       Height = 21
       TabOrder = 4
-      Text = 'Edit2'
+      Text = '0'
     end
   end
   object MainMenu1: TMainMenu

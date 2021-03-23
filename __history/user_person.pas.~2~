@@ -1,0 +1,43 @@
+unit user_person;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids;
+
+type
+  TFUser_person = class(TForm)
+    StringGrid1: TStringGrid;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FUser_person: TFUser_person;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFUser_person.FormCreate(Sender: TObject);
+  // сохраняем данные в ini файле для формирования отчётов
+begin
+  StringGrid1.ColWidths[0] := 300;
+  StringGrid1.ColWidths[1] := 100;
+
+  StringGrid1.Cells[0,0]:='Параметры';
+  StringGrid1.Cells[1,0]:='Значение';
+
+  StringGrid1.Cells[0,1]:='ФИО';
+  StringGrid1.Cells[0,2]:='Должность';
+  StringGrid1.Cells[0,3]:='Организация';
+  StringGrid1.Cells[0,4]:='Заказчик';
+  StringGrid1.Cells[0,5]:='Месторождение';
+  StringGrid1.Cells[0,6]:='Скважина';
+end;
+
+end.
