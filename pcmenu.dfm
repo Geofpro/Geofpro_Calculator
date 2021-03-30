@@ -14,6 +14,7 @@ object Fpcmenu: TFpcmenu
   Font.Style = []
   OldCreateOrder = False
   OnActivate = FormActivate
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -185,14 +186,11 @@ object Fpcmenu: TFpcmenu
       Top = 1
       Width = 481
       Height = 519
-      ActivePage = TabSave
+      ActivePage = TabBit
       Align = alClient
       TabOrder = 0
       object TabBit: TTabSheet
         Caption = 'TabBit'
-        TabVisible = False
-        ExplicitTop = 6
-        ExplicitHeight = 509
         object Label1: TLabel
           Left = 32
           Top = 40
@@ -259,8 +257,6 @@ object Fpcmenu: TFpcmenu
       object TabMud: TTabSheet
         Caption = 'TabMud'
         ImageIndex = 1
-        ExplicitTop = 6
-        ExplicitHeight = 509
         object Label3: TLabel
           Left = 32
           Top = 40
@@ -303,26 +299,26 @@ object Fpcmenu: TFpcmenu
       object TabSave: TTabSheet
         Caption = 'TabSave'
         ImageIndex = 2
+        object MemoSave: TMemo
+          Left = 15
+          Top = 37
+          Width = 442
+          Height = 428
+          Lines.Strings = (
+            ''
+            ''
+            ''
+            ''
+            ''
+            ''
+            ''
+            ''
+            ''
+            '')
+          TabOrder = 0
+        end
       end
     end
-  end
-  object MemoSave: TMemo
-    Left = 231
-    Top = 53
-    Width = 442
-    Height = 428
-    Lines.Strings = (
-      ''
-      ''
-      ''
-      ''
-      ''
-      ''
-      ''
-      ''
-      ''
-      '')
-    TabOrder = 2
   end
   object OpenDialog1: TOpenDialog
     Filter = 'geofpro2|*.gfc'

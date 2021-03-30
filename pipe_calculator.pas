@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, Vcl.Grids, Vcl.StdCtrls;
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.StdCtrls, Vcl.PlatformDefaultStyleActnCtrls,
+  Vcl.ActnPopup;
 
 type
   TFcalculator3i = class(TForm)
@@ -16,16 +17,28 @@ type
     Image1: TImage;
     Image2: TImage;
     Panel3: TPanel;
-    StringGrid2: TStringGrid;
     Image3: TImage;
     Image4: TImage;
     Image5: TImage;
     Image6: TImage;
     EGridRow: TEdit;
     Edit1: TEdit;
-    Button1: TButton;
     Edit2: TEdit;
     N1: TMenuItem;
+    Ekg: TEdit;
+    Etonne: TEdit;
+    EkN: TEdit;
+    Button1: TButton;
+    Image7: TImage;
+    Image8: TImage;
+    Image9: TImage;
+    PopupActionBar1: TPopupActionBar;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    N5: TMenuItem;
+    Label1: TLabel;
+    ELdrill: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -36,6 +49,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure Image7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,11 +65,11 @@ implementation
 
 {$R *.dfm}
 
-uses pcmenu;
+uses pcmenu, referenсe;
 
 procedure TFcalculator3i.Button1Click(Sender: TObject);
 begin
-  Сheckingvalue;
+    Сheckingvalue;
 end;
 
 procedure TFcalculator3i.FormActivate(Sender: TObject);
@@ -67,22 +81,19 @@ procedure TFcalculator3i.FormCreate(Sender: TObject);
 begin
   StringGrid1.ColWidths[0] := 40;
   StringGrid1.ColWidths[1] := 170;
-  StringGrid1.ColWidths[2] := 90;
-  StringGrid1.ColWidths[3] := 90;
-  StringGrid1.ColWidths[4] := 90;
-  StringGrid1.ColWidths[5] := 90;
-  StringGrid1.ColWidths[6] := 90;
-  StringGrid1.ColWidths[7] := 90;
-  StringGrid1.ColWidths[8] := 90;
-  StringGrid1.ColWidths[9] := 90;
-  StringGrid1.ColWidths[10] := 90;
-  StringGrid1.ColWidths[11] := 100;
+  StringGrid1.ColWidths[2] := 75;
+  StringGrid1.ColWidths[3] := 75;
+  StringGrid1.ColWidths[4] := 75;
+  StringGrid1.ColWidths[5] := 75;
+  StringGrid1.ColWidths[6] := 75;
+  StringGrid1.ColWidths[7] := 75;
+  StringGrid1.ColWidths[8] := 75;
+  StringGrid1.ColWidths[9] := 75;
+  StringGrid1.ColWidths[10] := 95;
+  StringGrid1.ColWidths[11] := 95;
   StringGrid1.ColWidths[12] := 100;
   StringGrid1.ColWidths[13] := 100;
-
-  StringGrid2.ColWidths[0] := 100;
-  StringGrid2.ColWidths[1] := 100;
-  StringGrid2.ColWidths[2] := 100;
+  StringGrid1.ColWidths[14] := 100;
 
   StringGrid1.Cells[0,0]:='№';
   StringGrid1.Cells[1,0]:='Наименование';
@@ -91,13 +102,14 @@ begin
   StringGrid1.Cells[4,0]:='D max, мм';
   StringGrid1.Cells[5,0]:='D мн, мм';
   StringGrid1.Cells[6,0]:='D мв, мм';
-  StringGrid1.Cells[7,0]:='Масса i,кг';
-  StringGrid1.Cells[8,0]:='Масса м,кг';
-  StringGrid1.Cells[9,0]:='Длина, м';
-  StringGrid1.Cells[10,0]:='Длина свечи, м';
-  StringGrid1.Cells[11,0]:='Масса, кг';
-  StringGrid1.Cells[12,0]:='Масса, т';
-  StringGrid1.Cells[13,0]:='Вес, кН';
+  StringGrid1.Cells[7,0]:='Длина м, мм';
+  StringGrid1.Cells[8,0]:='Масса i,кг';
+  StringGrid1.Cells[9,0]:='Масса м,кг';
+  StringGrid1.Cells[10,0]:='Длина секции, м';
+  StringGrid1.Cells[11,0]:='Длина свечи, м';
+  StringGrid1.Cells[12,0]:='Масса, кг';
+  StringGrid1.Cells[13,0]:='Масса, т';
+  StringGrid1.Cells[14,0]:='Вес, кН';
 
   StringGrid1.Cells[0,1]:='1';
   StringGrid1.Cells[0,2]:='2';
@@ -119,7 +131,7 @@ end;
 
 procedure TFcalculator3i.Image2Click(Sender: TObject);
 begin
- Panel1.Height:=131;
+ Panel1.Height:=150;
  Image2.Visible:=False;
  Image1.Visible:=True;
 end;
@@ -140,6 +152,11 @@ begin
    end;
 end;
 
+procedure TFcalculator3i.Image7Click(Sender: TObject);
+begin
+ Freference.Show;
+end;
+
 procedure TFcalculator3i.N1Click(Sender: TObject);
 begin
   Fpcmenu.Show;
@@ -150,9 +167,9 @@ procedure TFcalculator3i.SG2clear;
   var n: String ;
        i, col, row : Integer;
 begin
-  StringGrid2.Cells[0,0]:='';
-  StringGrid2.Cells[1,0]:='';
-  StringGrid2.Cells[3,0]:='';
+   Ekg.Text:='';
+   Etonne.Text:='';
+   EkN.Text:='';
 
    begin
        for col := 11 to 13 do
@@ -175,7 +192,7 @@ procedure TFcalculator3i.StringGrid1DrawCell(Sender: TObject; ACol,
    var n: String ;
        i, col, row : Integer;
 begin
-   if ((ACol = 11) or (ACol = 12) or (ACol = 13)) and (ARow>0)  then
+   if ((ACol = 12) or (ACol = 13) or (ACol = 14)) and (ARow>0)  then
     begin
     StringGrid1.Canvas.Brush.Color := clBlue11;
     //StringGrid3.Canvas.Font.Color := clWhite;
@@ -202,7 +219,7 @@ procedure TFcalculator3i.Сheckingvalue;
    var n: String ;
        i, col, row : Integer;
   begin
-   for col := 2 to 10 do
+   for col := 2 to 11 do
    begin
        for row := 1 to StrToInt(EGridRow.Text)-1 do
          begin
@@ -267,6 +284,16 @@ procedure TFcalculator3i.Сheckingvalue;
        if not (Fpcmenu.Ebit.Text[i] in ['0'..'9',',','.']) then
       begin
        ShowMessage('Не допустимое значение диаметра долота');
+       Fpcmenu.CheckBit.Checked:=False;
+       Exit
+      end;
+     end;
+
+     for i := 1 to length(Fpcmenu.Erad.Text) do
+      begin
+       if not (Fpcmenu.Erad.Text[i] in ['0'..'9',',','.']) then
+      begin
+       ShowMessage('Не допустимое значение радиального зазора');
        Fpcmenu.CheckBit.Checked:=False;
        Exit
       end;

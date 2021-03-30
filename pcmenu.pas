@@ -33,9 +33,9 @@ type
     Label6: TLabel;
     Erad: TEdit;
     TabSave: TTabSheet;
-    MemoSave: TMemo;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
+    MemoSave: TMemo;
     procedure LcloseClick(Sender: TObject);
     procedure PpersonClick(Sender: TObject);
     procedure PpersonMouseLeave(Sender: TObject);
@@ -60,6 +60,7 @@ type
     procedure PmudClick(Sender: TObject);
     procedure PopenClick(Sender: TObject);
     procedure PsaveClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
 
@@ -80,6 +81,13 @@ procedure TFpcmenu.FormActivate(Sender: TObject);
 begin
   TabBit.Visible:=False;
   TabMud.Visible:=False;
+end;
+
+procedure TFpcmenu.FormCreate(Sender: TObject);
+begin
+  TabBit.Tabvisible:=False;
+  TabMud.Tabvisible:=False;
+  TabSave.Tabvisible:=False;
 end;
 
 procedure TFpcmenu.LcloseClick(Sender: TObject);

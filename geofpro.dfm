@@ -5520,7 +5520,7 @@ object Geofpro3i: TGeofpro3i
   end
   object Label1: TLabel
     Left = 102
-    Top = 56
+    Top = 40
     Width = 93
     Height = 13
     Cursor = crHandPoint
@@ -5538,7 +5538,7 @@ object Geofpro3i: TGeofpro3i
   end
   object Label2: TLabel
     Left = 60
-    Top = 88
+    Top = 72
     Width = 135
     Height = 13
     Cursor = crHandPoint
@@ -5552,7 +5552,7 @@ object Geofpro3i: TGeofpro3i
   end
   object Label3: TLabel
     Left = 131
-    Top = 120
+    Top = 104
     Width = 64
     Height = 13
     Cursor = crHandPoint
@@ -5565,8 +5565,8 @@ object Geofpro3i: TGeofpro3i
     ParentFont = False
   end
   object Label7: TLabel
-    Left = 16
-    Top = 24
+    Left = 422
+    Top = 40
     Width = 179
     Height = 13
     Caption = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088' '#1074#1077#1089#1072' '#1073#1091#1088#1080#1083#1100#1085#1099#1093' '#1090#1088#1091#1073
@@ -5628,6 +5628,6 @@ object Geofpro3i: TGeofpro3i
     Interval = 5000
     OnTimer = Timer1Timer
     Left = 512
-    Top = 56
+    Top = 160
   end
 end

@@ -1,26 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.164,C:\Geofpro\GitCalculator\Geofpro_Calculator\Unit1.dfm=C:\Geofpro\GitCalculator\Geofpro_Calculator\pipe_calculator.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.607,=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.725,C:\Geofpro\Geofpro_Calculator\formdate.dfm=C:\Geofpro\Geofpro_Calculator\Unit1.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.330,=C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.724,=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.460,=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.668,C:\Geofpro\Geofpro_Calculator\Unit1.pas=C:\Geofpro\Geofpro_Calculator\referenсe.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.928,=C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.725,C:\Geofpro\Geofpro_Calculator\formdate.dfm=C:\Geofpro\Geofpro_Calculator\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.164,C:\Geofpro\GitCalculator\Geofpro_Calculator\Unit1.dfm=C:\Geofpro\GitCalculator\Geofpro_Calculator\pipe_calculator.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.097,=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.759,C:\Geofpro\Geofpro_Calculator\Unit1.pas=C:\Geofpro\Geofpro_Calculator\DataModule.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.233,C:\Geofpro\Geofpro_Calculator\user_person.dfm=C:\Geofpro\Geofpro_Calculator\Unit1.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.699,C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Geofpro\GitCalculator\Geofpro_Calculator\geofpro.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.214,C:\Geofpro\Geofpro_Calculator\Unit1.pas=C:\Geofpro\Geofpro_Calculator\pcmenu.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.607,=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.659,=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.724,=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.699,C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Geofpro\GitCalculator\Geofpro_Calculator\geofpro.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.923,=C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.214,C:\Geofpro\Geofpro_Calculator\Unit1.dfm=C:\Geofpro\Geofpro_Calculator\pcmenu.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.475,C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Geofpro\GitCalculator\Geofpro_Calculator\GFPcalculator3i.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.233,C:\Geofpro\Geofpro_Calculator\user_person.pas=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.725,C:\Geofpro\Geofpro_Calculator\formdate.pas=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.883,=C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.214,C:\Geofpro\Geofpro_Calculator\Unit1.pas=C:\Geofpro\Geofpro_Calculator\pcmenu.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.927,=C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.670,=C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.923,=C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.307,=C:\Geofpro\GitCalculator\Geofpro_Calculator\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.164,C:\Geofpro\GitCalculator\Geofpro_Calculator\Unit1.pas=C:\Geofpro\GitCalculator\Geofpro_Calculator\pipe_calculator.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.233,C:\Geofpro\Geofpro_Calculator\user_person.pas=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.475,C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Geofpro\GitCalculator\Geofpro_Calculator\GFPcalculator3i.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.725,C:\Geofpro\Geofpro_Calculator\formdate.pas=C:\Geofpro\Geofpro_Calculator\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.668,C:\Geofpro\Geofpro_Calculator\Unit1.dfm=C:\Geofpro\Geofpro_Calculator\referenсe.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.883,=C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.330,=C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.670,=C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.759,C:\Geofpro\Geofpro_Calculator\Unit1.dfm=C:\Geofpro\Geofpro_Calculator\DataModule.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.214,C:\Geofpro\Geofpro_Calculator\Unit1.dfm=C:\Geofpro\Geofpro_Calculator\pcmenu.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.699,C:\Users\Geofpro\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Geofpro\GitCalculator\Geofpro_Calculator\geofpro.pas</Transaction>
   </Transactions>
 </BorlandProject>
