@@ -126,4 +126,17 @@ object DataModule1: TDataModule1
     Left = 544
     Top = 248
   end
+  object FDQuery9: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM tbt')
+    Left = 608
+    Top = 168
+  end
+  object DataSource9: TDataSource
+    DataSet = FDQuery9
+    Left = 608
+    Top = 248
+  end
 end

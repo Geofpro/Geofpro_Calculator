@@ -4,12 +4,12 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
+  Vcl.Imaging.pngimage;
 
 type
   TFpcmenu = class(TForm)
     Panel1: TPanel;
-    Lclose: TLabel;
     Popen: TPanel;
     Psave: TPanel;
     Pperson: TPanel;
@@ -36,6 +36,18 @@ type
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     MemoSave: TMemo;
+    Pexit: TPanel;
+    Memo1: TMemo;
+    TabMenu: TTabSheet;
+    Pmenu: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
     procedure LcloseClick(Sender: TObject);
     procedure PpersonClick(Sender: TObject);
     procedure PpersonMouseLeave(Sender: TObject);
@@ -61,6 +73,17 @@ type
     procedure PopenClick(Sender: TObject);
     procedure PsaveClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure PexitClick(Sender: TObject);
+    procedure PmenuClick(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure PmenuMouseLeave(Sender: TObject);
+    procedure PmenuMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure PexitMouseLeave(Sender: TObject);
+    procedure PexitMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
   private
     { Private declarations }
 
@@ -75,12 +98,12 @@ implementation
 
 {$R *.dfm}
 
-uses geofpro, user_person, pipe_calculator;
+uses geofpro, user_person, pipe_calculator, referenñe;
 
 procedure TFpcmenu.FormActivate(Sender: TObject);
 begin
-  TabBit.Visible:=False;
-  TabMud.Visible:=False;
+  //TabBit.Visible:=False;
+  //TabMud.Visible:=False;
 end;
 
 procedure TFpcmenu.FormCreate(Sender: TObject);
@@ -88,6 +111,23 @@ begin
   TabBit.Tabvisible:=False;
   TabMud.Tabvisible:=False;
   TabSave.Tabvisible:=False;
+  TabMenu.TabVisible:=False;
+  TabMenu.Visible:=True;
+end;
+
+procedure TFpcmenu.Image1Click(Sender: TObject);
+begin
+  Fcalculator3i.SG1addRow;
+end;
+
+procedure TFpcmenu.Image2Click(Sender: TObject);
+begin
+  Fcalculator3i.SG1delRow;
+end;
+
+procedure TFpcmenu.Image5Click(Sender: TObject);
+begin
+ Freference.Show;
 end;
 
 procedure TFpcmenu.LcloseClick(Sender: TObject);
@@ -95,10 +135,45 @@ begin
   Geofpro3i.Close;
 end;
 
+procedure TFpcmenu.PexitClick(Sender: TObject);
+begin
+    Geofpro3i.Close;
+end;
+
+procedure TFpcmenu.PexitMouseLeave(Sender: TObject);
+begin
+  Pexit.Color:=$00A28A2D;
+end;
+
+procedure TFpcmenu.PexitMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  Pexit.Color:=$00736220;
+end;
+
+procedure TFpcmenu.PmenuClick(Sender: TObject);
+begin
+  TabMud.Visible:=False;
+  TabBit.Visible:=False;
+  TabMenu.Visible:=True;
+end;
+
+procedure TFpcmenu.PmenuMouseLeave(Sender: TObject);
+begin
+ Pmenu.Color:=$00A28A2D;
+end;
+
+procedure TFpcmenu.PmenuMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  Pmenu.Color:=$00736220;
+end;
+
 procedure TFpcmenu.PbitClick(Sender: TObject);
 begin
  TabBit.Visible:=True;
  TabMud.Visible:=False;
+ TabMenu.Visible:=False;
 end;
 
 procedure TFpcmenu.PbitMouseLeave(Sender: TObject);
@@ -132,6 +207,7 @@ procedure TFpcmenu.PmudClick(Sender: TObject);
 begin
   TabMud.Visible:=True;
   TabBit.Visible:=False;
+  TabMenu.Visible:=False;
 end;
 
 procedure TFpcmenu.PmudMouseLeave(Sender: TObject);

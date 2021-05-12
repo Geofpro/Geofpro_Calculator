@@ -56,6 +56,8 @@ type
     { Public declarations }
     procedure Сheckingvalue ;
     procedure SG2clear;
+    procedure SG1addRow;
+    procedure SG1delRow;
   end;
 
 var
@@ -81,19 +83,20 @@ procedure TFcalculator3i.FormCreate(Sender: TObject);
 begin
   StringGrid1.ColWidths[0] := 40;
   StringGrid1.ColWidths[1] := 170;
-  StringGrid1.ColWidths[2] := 75;
-  StringGrid1.ColWidths[3] := 75;
-  StringGrid1.ColWidths[4] := 75;
-  StringGrid1.ColWidths[5] := 75;
-  StringGrid1.ColWidths[6] := 75;
-  StringGrid1.ColWidths[7] := 75;
-  StringGrid1.ColWidths[8] := 75;
-  StringGrid1.ColWidths[9] := 75;
+  StringGrid1.ColWidths[2] := 65;
+  StringGrid1.ColWidths[3] := 65;
+  StringGrid1.ColWidths[4] := 65;
+  StringGrid1.ColWidths[5] := 65;
+  StringGrid1.ColWidths[6] := 65;
+  StringGrid1.ColWidths[7] := 70;
+  StringGrid1.ColWidths[8] := 65;
+  StringGrid1.ColWidths[9] := 65;
   StringGrid1.ColWidths[10] := 95;
   StringGrid1.ColWidths[11] := 95;
-  StringGrid1.ColWidths[12] := 100;
+  StringGrid1.ColWidths[12] := 95;
   StringGrid1.ColWidths[13] := 100;
   StringGrid1.ColWidths[14] := 100;
+  StringGrid1.ColWidths[15] := 100;
 
   StringGrid1.Cells[0,0]:='№';
   StringGrid1.Cells[1,0]:='Наименование';
@@ -105,11 +108,12 @@ begin
   StringGrid1.Cells[7,0]:='Длина м, мм';
   StringGrid1.Cells[8,0]:='Масса i,кг';
   StringGrid1.Cells[9,0]:='Масса м,кг';
-  StringGrid1.Cells[10,0]:='Длина секции, м';
-  StringGrid1.Cells[11,0]:='Длина свечи, м';
-  StringGrid1.Cells[12,0]:='Масса, кг';
-  StringGrid1.Cells[13,0]:='Масса, т';
-  StringGrid1.Cells[14,0]:='Вес, кН';
+  StringGrid1.Cells[10,0]:='Масса 2в,кг';
+  StringGrid1.Cells[11,0]:='Длина секции, м';
+  StringGrid1.Cells[12,0]:='Длина свечи, м';
+  StringGrid1.Cells[13,0]:='Масса, кг';
+  StringGrid1.Cells[14,0]:='Масса, т';
+  StringGrid1.Cells[15,0]:='Вес, кН';
 
   StringGrid1.Cells[0,1]:='1';
   StringGrid1.Cells[0,2]:='2';
@@ -138,18 +142,12 @@ end;
 
 procedure TFcalculator3i.Image3Click(Sender: TObject);
 begin
-   EGridRow.Text:=IntToStr(StrToInt(EGridRow.Text)+1);
-   StringGrid1.RowCount:=StrToInt(EGridRow.Text);
-   StringGrid1.Cells[0,StrToInt(EGridRow.Text)-1]:=IntToStr(StrToInt(EGridRow.Text)-1);
+  SG1addRow;
 end;
 
 procedure TFcalculator3i.Image4Click(Sender: TObject);
 begin
-  if StrToInt(EGridRow.Text)>2 then
-   begin
-    EGridRow.Text:=IntToStr(StrToInt(EGridRow.Text)-1);
-    StringGrid1.RowCount:=StrToInt(EGridRow.Text);
-   end;
+  SG1delRow;
 end;
 
 procedure TFcalculator3i.Image7Click(Sender: TObject);
@@ -162,6 +160,22 @@ begin
   Fpcmenu.Show;
 end;
 
+procedure TFcalculator3i.SG1addRow;
+begin
+   EGridRow.Text:=IntToStr(StrToInt(EGridRow.Text)+1);
+   StringGrid1.RowCount:=StrToInt(EGridRow.Text);
+   StringGrid1.Cells[0,StrToInt(EGridRow.Text)-1]:=IntToStr(StrToInt(EGridRow.Text)-1);
+end;
+
+procedure TFcalculator3i.SG1delRow;
+begin
+   if StrToInt(EGridRow.Text)>2 then
+   begin
+    EGridRow.Text:=IntToStr(StrToInt(EGridRow.Text)-1);
+    StringGrid1.RowCount:=StrToInt(EGridRow.Text);
+   end;
+end;
+
 procedure TFcalculator3i.SG2clear;
   // очищаем таблицы с результатоми расчёта
   var n: String ;
@@ -172,7 +186,7 @@ begin
    EkN.Text:='';
 
    begin
-       for col := 11 to 13 do
+       for col := 13 to 15 do
     begin
      for row := 1 to StrToInt(EGridRow.Text)-1 do
      begin
@@ -192,7 +206,7 @@ procedure TFcalculator3i.StringGrid1DrawCell(Sender: TObject; ACol,
    var n: String ;
        i, col, row : Integer;
 begin
-   if ((ACol = 12) or (ACol = 13) or (ACol = 14)) and (ARow>0)  then
+   if ((ACol = 13) or (ACol = 14) or (ACol = 15)) and (ARow>0)  then
     begin
     StringGrid1.Canvas.Brush.Color := clBlue11;
     //StringGrid3.Canvas.Font.Color := clWhite;
@@ -219,7 +233,7 @@ procedure TFcalculator3i.Сheckingvalue;
    var n: String ;
        i, col, row : Integer;
   begin
-   for col := 2 to 11 do
+   for col := 2 to 12 do
    begin
        for row := 1 to StrToInt(EGridRow.Text)-1 do
          begin

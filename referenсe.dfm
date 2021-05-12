@@ -37,12 +37,13 @@ object Freference: TFreference
       Items.Strings = (
         #1041#1091#1088#1080#1083#1100#1085#1099#1077' '#1090#1088#1091#1073#1099
         #1047#1072#1084#1082#1080' '#1073#1091#1088#1080#1083#1100#1085#1099#1093' '#1090#1088#1091#1073
-        #1059#1041#1058', '#1058#1041#1058
+        #1059#1041#1058
         #1041#1091#1088#1086#1074#1086#1081' '#1080#1085#1089#1090#1088#1091#1084#1077#1085#1090', '#1075#1077#1086#1092#1080#1079#1080#1095#1077#1089#1082#1080#1077' '#1087#1088#1080#1073#1086#1088#1099
         #1042#1047#1044' '
         #1058#1088#1091#1073#1099' '#1082#1086#1083#1090#1102#1073#1080#1085#1075
         #1053#1050#1058
-        #1054#1073#1089#1072#1076#1085#1099#1077' '#1090#1088#1091#1073#1099)
+        #1054#1073#1089#1072#1076#1085#1099#1077' '#1090#1088#1091#1073#1099
+        #1058#1041#1058)
     end
     object Button1: TButton
       Left = 744
@@ -60,12 +61,13 @@ object Freference: TFreference
     Top = 49
     Width = 1046
     Height = 434
-    ActivePage = TabSheet7
     Align = alClient
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = #1041#1091#1088#1080#1083#1100#1085#1099#1077' '#1090#1088#1091#1073#1099
       TabVisible = False
+      ExplicitTop = 24
+      ExplicitHeight = 406
       object DBGrid1: TDBGrid
         Left = 0
         Top = 0
@@ -187,6 +189,8 @@ object Freference: TFreference
       Caption = #1047#1072#1084#1082#1080
       ImageIndex = 1
       TabVisible = False
+      ExplicitTop = 24
+      ExplicitHeight = 406
       object DBGrid2: TDBGrid
         Left = 0
         Top = 0
@@ -248,6 +252,8 @@ object Freference: TFreference
       Caption = #1059#1041#1058
       ImageIndex = 2
       TabVisible = False
+      ExplicitTop = 24
+      ExplicitHeight = 406
       object DBGrid3: TDBGrid
         Left = 0
         Top = 0
@@ -309,6 +315,8 @@ object Freference: TFreference
       Caption = #1057#1082#1074#1072#1078#1080#1085#1085#1099#1081' '#1080#1085#1089#1090#1088#1091#1084#1077#1085#1090
       ImageIndex = 3
       TabVisible = False
+      ExplicitTop = 24
+      ExplicitHeight = 406
       object DBGrid4: TDBGrid
         Left = 0
         Top = 0
@@ -388,6 +396,8 @@ object Freference: TFreference
       Caption = #1042#1047#1044
       ImageIndex = 4
       TabVisible = False
+      ExplicitTop = 24
+      ExplicitHeight = 406
       object DBGrid5: TDBGrid
         Left = 0
         Top = 0
@@ -587,6 +597,8 @@ object Freference: TFreference
       Caption = #1043#1053#1050#1058
       ImageIndex = 6
       TabVisible = False
+      ExplicitTop = 24
+      ExplicitHeight = 406
       object DBGrid6: TDBGrid
         Left = 0
         Top = 0
@@ -660,6 +672,8 @@ object Freference: TFreference
       Caption = #1053#1050#1058
       ImageIndex = 7
       TabVisible = False
+      ExplicitTop = 24
+      ExplicitHeight = 406
       object DBGrid7: TDBGrid
         Left = 0
         Top = 0
@@ -751,6 +765,8 @@ object Freference: TFreference
       Caption = #1054#1073#1089#1072#1076#1085#1099#1077' '#1090#1088#1091#1073#1099
       ImageIndex = 8
       TabVisible = False
+      ExplicitTop = 24
+      ExplicitHeight = 406
       object DBGrid8: TDBGrid
         Left = 0
         Top = 0
@@ -814,6 +830,75 @@ object Freference: TFreference
           end>
       end
     end
+    object TabSheet9: TTabSheet
+      Caption = #1058#1041#1058
+      ImageIndex = 8
+      TabVisible = False
+      ExplicitTop = 24
+      ExplicitHeight = 406
+      object DBGrid9: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 424
+        Align = alClient
+        DataSource = DataModule1.DataSource9
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1064#1080#1092#1088
+            Width = 150
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1085
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1074#1085
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1084
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1077#1079#1100#1073#1072
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072'_'#1084
+            Width = 90
+            Visible = True
+          end>
+      end
+    end
   end
   object ESG1col: TEdit
     Left = 128
@@ -825,8 +910,8 @@ object Freference: TFreference
     Visible = False
   end
   object ESG1row: TEdit
-    Left = 288
-    Top = 80
+    Left = 128
+    Top = 107
     Width = 121
     Height = 21
     TabOrder = 3

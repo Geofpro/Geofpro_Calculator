@@ -2476,7 +2476,7 @@ object Fcalculator3i: TFcalculator3i
     Width = 1255
     Height = 297
     Align = alClient
-    ColCount = 15
+    ColCount = 16
     RowCount = 6
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
     PopupMenu = PopupActionBar1

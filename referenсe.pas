@@ -33,6 +33,8 @@ type
     ESG1row: TEdit;
     Panel2: TPanel;
     DBNavigator1: TDBNavigator;
+    TabSheet9: TTabSheet;
+    DBGrid9: TDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -60,7 +62,7 @@ procedure TFreference.Button1Click(Sender: TObject);
 begin
  Sc:=StrToInt(ESG1col.Text);
  Sr:=StrToInt(ESG1row.Text);
-  if (ComboBox1.ItemIndex=0) and ((Sc=1) or (Sc=2) or (Sc=3))  then
+  if ComboBox1.ItemIndex=0  then
   // если бурильные трубы
   begin
     // тело трубы
@@ -68,9 +70,10 @@ begin
      Fcalculator3i.StringGrid1.Cells[2,Sr]:= DbGrid1.DataSource.DataSet.Fields[2].AsString;
      Fcalculator3i.StringGrid1.Cells[3,Sr]:= DbGrid1.DataSource.DataSet.Fields[3].AsString;
      Fcalculator3i.StringGrid1.Cells[8,Sr]:= DbGrid1.DataSource.DataSet.Fields[10].AsString;
+     Fcalculator3i.StringGrid1.Cells[10,Sr]:= DbGrid1.DataSource.DataSet.Fields[11].AsString;
   end;
 
-  if (ComboBox1.ItemIndex=1) and ((Sc=4) or (Sc=5) or (Sc=6))  then
+  if ComboBox1.ItemIndex=1  then
   begin
     // замок
      Fcalculator3i.StringGrid1.Cells[4,Sr]:= DbGrid2.DataSource.DataSet.Fields[3].AsString;
@@ -94,6 +97,7 @@ begin
      Fcalculator3i.StringGrid1.Cells[6,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[7,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[9,Sr]:= '0';
+     Fcalculator3i.StringGrid1.Cells[10,Sr]:= '0';
   end;
 
    if ComboBox1.ItemIndex=3  then
@@ -110,6 +114,7 @@ begin
      Fcalculator3i.StringGrid1.Cells[6,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[7,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[9,Sr]:= '0';
+     Fcalculator3i.StringGrid1.Cells[10,Sr]:= '0';
   end;
 
   if ComboBox1.ItemIndex=4  then
@@ -126,6 +131,7 @@ begin
      Fcalculator3i.StringGrid1.Cells[6,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[7,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[9,Sr]:= '0';
+     Fcalculator3i.StringGrid1.Cells[10,Sr]:= '0';
   end;
 
    if ComboBox1.ItemIndex=5  then
@@ -141,6 +147,7 @@ begin
      Fcalculator3i.StringGrid1.Cells[6,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[7,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[9,Sr]:= '0';
+     Fcalculator3i.StringGrid1.Cells[10,Sr]:= '0';
   end;
 
    if ComboBox1.ItemIndex=6  then
@@ -155,6 +162,7 @@ begin
      Fcalculator3i.StringGrid1.Cells[7,Sr]:= DbGrid7.DataSource.DataSet.Fields[10].AsString;
      Fcalculator3i.StringGrid1.Cells[8,Sr]:= DbGrid7.DataSource.DataSet.Fields[7].AsString;
      Fcalculator3i.StringGrid1.Cells[9,Sr]:= DbGrid7.DataSource.DataSet.Fields[11].AsString;
+     Fcalculator3i.StringGrid1.Cells[10,Sr]:= '0';
   end;
 
   if ComboBox1.ItemIndex=7  then
@@ -169,6 +177,22 @@ begin
      Fcalculator3i.StringGrid1.Cells[7,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[8,Sr]:= FloatToStrF(StrToFloat(DbGrid8.DataSource.DataSet.Fields[6].AsString)/9.81*1000,ffFixed,10,2);
      Fcalculator3i.StringGrid1.Cells[9,Sr]:= '0';
+     Fcalculator3i.StringGrid1.Cells[10,Sr]:= '0';
+  end;
+
+   if ComboBox1.ItemIndex=8  then
+  begin
+    // ТБТ
+     Fcalculator3i.StringGrid1.Cells[1,Sr]:= DbGrid9.DataSource.DataSet.Fields[1].AsString;
+     Fcalculator3i.StringGrid1.Cells[2,Sr]:= DbGrid9.DataSource.DataSet.Fields[2].AsString;
+     Fcalculator3i.StringGrid1.Cells[3,Sr]:= DbGrid9.DataSource.DataSet.Fields[3].AsString;
+     Fcalculator3i.StringGrid1.Cells[4,Sr]:= DbGrid9.DataSource.DataSet.Fields[4].AsString;
+     Fcalculator3i.StringGrid1.Cells[5,Sr]:= DbGrid9.DataSource.DataSet.Fields[4].AsString;
+     Fcalculator3i.StringGrid1.Cells[6,Sr]:= DbGrid9.DataSource.DataSet.Fields[3].AsString;
+     Fcalculator3i.StringGrid1.Cells[7,Sr]:= '0';
+     Fcalculator3i.StringGrid1.Cells[8,Sr]:= DbGrid9.DataSource.DataSet.Fields[6].AsString;
+     Fcalculator3i.StringGrid1.Cells[9,Sr]:= '0';
+     Fcalculator3i.StringGrid1.Cells[10,Sr]:= DbGrid9.DataSource.DataSet.Fields[7].AsString;
   end;
 
 
@@ -188,6 +212,8 @@ begin
   TabSheet6.Visible:=False;
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
+  TabSheet9.Visible:=False;
+  DbNavigator1.DataSource:=DataModule1.DataSource1;
   end;
 
    if ComboBox1.ItemIndex=1 then
@@ -201,6 +227,8 @@ begin
   TabSheet6.Visible:=False;
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
+  TabSheet9.Visible:=False;
+  DbNavigator1.DataSource:=DataModule1.DataSource2;
   end;
 
      if ComboBox1.ItemIndex=2 then
@@ -214,6 +242,8 @@ begin
   TabSheet6.Visible:=False;
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
+  TabSheet9.Visible:=False;
+   DbNavigator1.DataSource:=DataModule1.DataSource3;
   end;
 
      if ComboBox1.ItemIndex=3 then
@@ -227,6 +257,8 @@ begin
   TabSheet6.Visible:=False;
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
+  TabSheet9.Visible:=False;
+  DbNavigator1.DataSource:=DataModule1.DataSource4;
   end;
 
      if ComboBox1.ItemIndex=4 then
@@ -240,6 +272,8 @@ begin
   TabSheet6.Visible:=False;
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
+  TabSheet9.Visible:=False;
+  DbNavigator1.DataSource:=DataModule1.DataSource5;
   end;
 
 
@@ -254,6 +288,8 @@ begin
   TabSheet6.Visible:=True;
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
+  TabSheet9.Visible:=False;
+  DbNavigator1.DataSource:=DataModule1.DataSource6;
   end;
 
      if ComboBox1.ItemIndex=6 then
@@ -267,6 +303,8 @@ begin
   TabSheet6.Visible:=False;
   TabSheet7.Visible:=True;
   TabSheet8.Visible:=False;
+  TabSheet9.Visible:=False;
+  DbNavigator1.DataSource:=DataModule1.DataSource7;
   end;
 
      if ComboBox1.ItemIndex=7 then
@@ -280,6 +318,23 @@ begin
   TabSheet6.Visible:=False;
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=True;
+  TabSheet9.Visible:=False;
+  DbNavigator1.DataSource:=DataModule1.DataSource8;
+  end;
+
+   if ComboBox1.ItemIndex=8 then
+     // ТБТ
+  begin
+  TabSheet1.Visible:=False;
+  TabSheet2.Visible:=False;
+  TabSheet3.Visible:=False;
+  TabSheet4.Visible:=False;
+  TabSheet5.Visible:=False;
+  TabSheet6.Visible:=False;
+  TabSheet7.Visible:=False;
+  TabSheet8.Visible:=False;
+  TabSheet9.Visible:=True;
+  DbNavigator1.DataSource:=DataModule1.DataSource9;
   end;
 
 end;
