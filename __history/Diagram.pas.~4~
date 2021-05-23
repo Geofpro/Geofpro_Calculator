@@ -1,0 +1,56 @@
+unit Diagram;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, VclTee.TeeGDIPlus, VCLTee.TeEngine,
+  VCLTee.Series, Vcl.ExtCtrls, VCLTee.TeeProcs, VCLTee.Chart;
+
+type
+  TFrmDiagram = class(TForm)
+    Chart1: TChart;
+    Series1: TPieSeries;
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+   procedure MassDiagramm;
+  end;
+
+var
+  FrmDiagram: TFrmDiagram;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmDiagram }
+
+procedure TFrmDiagram.FormActivate(Sender: TObject);
+begin
+  MassDiagramm;
+end;
+
+procedure TFrmDiagram.MassDiagramm;
+// строим диаграмму с переменным количесвом секторов
+  var
+   M:  array of Real;   //масса секции
+   i, RSGData: Integer;     // переменная цикла,  количество строк в таблице(количество элементов)
+
+begin
+   with Series1   do
+
+  begin
+
+    for i := 1 to 5 do
+     begin
+       Add (100,'значение 1');
+     end;
+  end;
+
+end;
+
+end.
+

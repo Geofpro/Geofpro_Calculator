@@ -85,7 +85,7 @@ object DataModule1: TDataModule1
     Active = True
     Connection = FDConnection1
     SQL.Strings = (
-      'SELECT * FROM drillingtools')
+      'SELECT * FROM drillingtools ORDER BY '#1064#1080#1092#1088)
     Left = 256
     Top = 168
   end

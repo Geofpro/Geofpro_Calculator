@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.Imaging.pngimage,
   Vcl.ExtCtrls, Vcl.Grids, Vcl.StdCtrls, Vcl.PlatformDefaultStyleActnCtrls,
-  Vcl.ActnPopup;
+  Vcl.ActnPopup, ClassPipeWeight;
 
 type
   TFcalculator3i = class(TForm)
@@ -39,6 +39,7 @@ type
     N5: TMenuItem;
     Label1: TLabel;
     ELdrill: TEdit;
+    Image10: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -50,6 +51,8 @@ type
     procedure N1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure Image7Click(Sender: TObject);
+    procedure Image8Click(Sender: TObject);
+    procedure Image10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,20 +61,52 @@ type
     procedure SG2clear;
     procedure SG1addRow;
     procedure SG1delRow;
+    procedure ClassPipeWeigtt; // ðàñ÷¸ò ìàññû è âåñà
   end;
 
 var
   Fcalculator3i: TFcalculator3i;
+  PipeWeight1: TPipeWeight ;
 
 implementation
 
 {$R *.dfm}
 
-uses pcmenu, referenñe;
+uses pcmenu, referenñe, Diagram, ProjectionEXL;
 
 procedure TFcalculator3i.Button1Click(Sender: TObject);
 begin
     Ñheckingvalue;
+end;
+
+procedure TFcalculator3i.ClassPipeWeigtt;
+// ðàñ÷¸ò ìàññû êîëîííû
+ var i: Integer;
+ var E7: String;
+ var E1, E2, E3, E4, E5, E6 : Real;
+begin
+
+
+   PipeWeight1:=TPipeWeight.Create;
+
+   for i := 1 to StringGrid1.RowCount-1 do
+     begin
+      E1:=StrToFloat(StringGrid1.Cells[8,i]);
+      E2:=StrToFloat(StringGrid1.Cells[9,i]);
+      E3:=StrToFloat(StringGrid1.Cells[10,i]);
+      E4:=StrToFloat(StringGrid1.Cells[11,i]);
+      E5:=StrToFloat(StringGrid1.Cells[12,i]);
+      E6:=StrToFloat(StringGrid1.Cells[7,i]);
+      E7:=StringGrid1.Cells[1,i];
+      PipeWeight1.InputData (E1, E2, E3, E4, E5, E6, E7);
+      PipeWeight1.PipeMass:=0;
+      // ìàññà â êã
+      StringGrid1.Cells[13,i]:= FloatToStrF(PipeWeight1.PipeMass,ffFixed,10,2);
+      // ìàññà â ò
+      StringGrid1.Cells[14,i]:= FloatToStrF(PipeWeight1.PipeMass/1000,ffFixed,10,2);
+     end;
+   PipeWeight1.GFPShowMessage;
+   PipeWeight1.Free;
 end;
 
 procedure TFcalculator3i.FormActivate(Sender: TObject);
@@ -126,6 +161,11 @@ begin
   Image2.Visible:=True;
 end;
 
+procedure TFcalculator3i.Image10Click(Sender: TObject);
+begin
+  FrmProjectionEXL.Show;
+end;
+
 procedure TFcalculator3i.Image1Click(Sender: TObject);
 begin
  Panel1.Height:=22;
@@ -153,6 +193,11 @@ end;
 procedure TFcalculator3i.Image7Click(Sender: TObject);
 begin
  Freference.Show;
+end;
+
+procedure TFcalculator3i.Image8Click(Sender: TObject);
+begin
+  FrmDiagram.Show;
 end;
 
 procedure TFcalculator3i.N1Click(Sender: TObject);
@@ -344,6 +389,8 @@ procedure TFcalculator3i.Ñheckingvalue;
    Edit1.Text:='0';
    Edit2.Text:='0';
    StringGrid1.Refresh;
+   // Âûçûâàåì ðàñ÷¸ò ìàññû è âåñà
+   ClassPipeWeigtt;
  end;
 
 end.

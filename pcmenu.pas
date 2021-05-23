@@ -48,6 +48,7 @@ type
     Image6: TImage;
     Image7: TImage;
     Image8: TImage;
+    Image9: TImage;
     procedure LcloseClick(Sender: TObject);
     procedure PpersonClick(Sender: TObject);
     procedure PpersonMouseLeave(Sender: TObject);
@@ -231,7 +232,7 @@ begin
     Fcalculator3i.EGridRow.Text := MemoSave.Lines[29];//кол-во строк StringGrid1
     Fcalculator3i.StringGrid1.RowCount:=StrToInt(Fcalculator3i.EGridRow.Text);
      i:=0;
-         for cols := 0 to 10 do
+         for cols := 0 to 12 do
           begin
              for rows := 1 to StrToInt(Fcalculator3i.EGridRow.Text) do
              begin
@@ -284,7 +285,7 @@ begin
 
      MemoSave.Lines[29] := Fcalculator3i.EGridRow.Text;
      i:=0;
-       for cols := 0 to 10 do
+       for cols := 0 to 12 do
           begin
              for rows := 1 to StrToInt(Fcalculator3i.EGridRow.Text) do
              begin

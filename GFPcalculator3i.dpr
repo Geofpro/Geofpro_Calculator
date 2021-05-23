@@ -8,7 +8,11 @@ uses
   user_person in 'user_person.pas' {FUser_person},
   formdate in 'formdate.pas' {Fformdate},
   referenñe in 'referenñe.pas' {Freference},
-  DataModule in 'DataModule.pas' {DataModule1: TDataModule};
+  DataModule in 'DataModule.pas' {DataModule1: TDataModule},
+  ClassPipeWeight in 'ClassPipeWeight.pas',
+  Diagram in 'Diagram.pas' {FrmDiagram},
+  ProjectionEXL in 'ProjectionEXL.pas' {FrmProjectionEXL},
+  Wait in 'Wait.pas' {FrmWait};
 
 {$R *.res}
 
@@ -22,5 +26,8 @@ begin
   Application.CreateForm(TFformdate, Fformdate);
   Application.CreateForm(TFreference, Freference);
   Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TFrmDiagram, FrmDiagram);
+  Application.CreateForm(TFrmProjectionEXL, FrmProjectionEXL);
+  Application.CreateForm(TFrmWait, FrmWait);
   Application.Run;
 end.

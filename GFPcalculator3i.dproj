@@ -152,6 +152,19 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="ClassPipeWeight.pas"/>
+        <DCCReference Include="Diagram.pas">
+            <Form>FrmDiagram</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ProjectionEXL.pas">
+            <Form>FrmProjectionEXL</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Wait.pas">
+            <Form>FrmWait</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

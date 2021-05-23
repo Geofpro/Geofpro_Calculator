@@ -109,7 +109,7 @@ begin
      Fcalculator3i.StringGrid1.Cells[4,Sr]:= DbGrid4.DataSource.DataSet.Fields[2].AsString;
      Fcalculator3i.StringGrid1.Cells[10,Sr]:= DbGrid4.DataSource.DataSet.Fields[4].AsString;
      Fcalculator3i.StringGrid1.Cells[8,Sr]:= DbGrid4.DataSource.DataSet.Fields[5].AsString;
-
+     Fcalculator3i.StringGrid1.Cells[11,Sr]:= DbGrid4.DataSource.DataSet.Fields[4].AsString;
      Fcalculator3i.StringGrid1.Cells[5,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[6,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[7,Sr]:= '0';
@@ -124,14 +124,17 @@ begin
      Fcalculator3i.StringGrid1.Cells[2,Sr]:= DbGrid5.DataSource.DataSet.Fields[2].AsString;
      Fcalculator3i.StringGrid1.Cells[3,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[4,Sr]:= DbGrid5.DataSource.DataSet.Fields[2].AsString;
-     Fcalculator3i.StringGrid1.Cells[10,Sr]:= FloatToStr(StrToFloat(DbGrid5.DataSource.DataSet.Fields[4].AsString)/1000);
-     Fcalculator3i.StringGrid1.Cells[8,Sr]:= DbGrid5.DataSource.DataSet.Fields[5].AsString;
+     Fcalculator3i.StringGrid1.Cells[11,Sr]:= FloatToStr(StrToFloat(DbGrid5.DataSource.DataSet.Fields[4].AsString)/1000);
+     Fcalculator3i.StringGrid1.Cells[8,Sr]:= FloatToStrF(StrToFloat(DbGrid5.DataSource.DataSet.Fields[5].AsString)/
+     (StrToFloat(DbGrid5.DataSource.DataSet.Fields[4].AsString)/1000),ffFixed,10,2);
 
      Fcalculator3i.StringGrid1.Cells[5,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[6,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[7,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[9,Sr]:= '0';
      Fcalculator3i.StringGrid1.Cells[10,Sr]:= '0';
+
+
   end;
 
    if ComboBox1.ItemIndex=5  then

@@ -1,0 +1,37 @@
+unit ProjectionEXL;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids;
+
+type
+  TFrmProjectionEXL = class(TForm)
+    StringGrid1: TStringGrid;
+    OpenDialog1: TOpenDialog;
+    ENameFile: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure OpenEXL;
+    procedure ImportEXL;
+  end;
+
+var
+  FrmProjectionEXL: TFrmProjectionEXL;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmProjectionEXL }
+
+procedure TFrmProjectionEXL.OpenEXL;
+
+begin
+   ENameFile.Text:= OpenDialog1.FileName;
+end;
+
+end.

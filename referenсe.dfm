@@ -66,8 +66,6 @@ object Freference: TFreference
     object TabSheet1: TTabSheet
       Caption = #1041#1091#1088#1080#1083#1100#1085#1099#1077' '#1090#1088#1091#1073#1099
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 406
       object DBGrid1: TDBGrid
         Left = 0
         Top = 0
@@ -189,8 +187,6 @@ object Freference: TFreference
       Caption = #1047#1072#1084#1082#1080
       ImageIndex = 1
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 406
       object DBGrid2: TDBGrid
         Left = 0
         Top = 0
@@ -252,8 +248,6 @@ object Freference: TFreference
       Caption = #1059#1041#1058
       ImageIndex = 2
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 406
       object DBGrid3: TDBGrid
         Left = 0
         Top = 0
@@ -315,8 +309,6 @@ object Freference: TFreference
       Caption = #1057#1082#1074#1072#1078#1080#1085#1085#1099#1081' '#1080#1085#1089#1090#1088#1091#1084#1077#1085#1090
       ImageIndex = 3
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 406
       object DBGrid4: TDBGrid
         Left = 0
         Top = 0
@@ -396,8 +388,6 @@ object Freference: TFreference
       Caption = #1042#1047#1044
       ImageIndex = 4
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 406
       object DBGrid5: TDBGrid
         Left = 0
         Top = 0
@@ -597,8 +587,6 @@ object Freference: TFreference
       Caption = #1043#1053#1050#1058
       ImageIndex = 6
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 406
       object DBGrid6: TDBGrid
         Left = 0
         Top = 0
@@ -672,8 +660,6 @@ object Freference: TFreference
       Caption = #1053#1050#1058
       ImageIndex = 7
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 406
       object DBGrid7: TDBGrid
         Left = 0
         Top = 0
@@ -765,8 +751,6 @@ object Freference: TFreference
       Caption = #1054#1073#1089#1072#1076#1085#1099#1077' '#1090#1088#1091#1073#1099
       ImageIndex = 8
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 406
       object DBGrid8: TDBGrid
         Left = 0
         Top = 0
@@ -834,8 +818,6 @@ object Freference: TFreference
       Caption = #1058#1041#1058
       ImageIndex = 8
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 406
       object DBGrid9: TDBGrid
         Left = 0
         Top = 0
