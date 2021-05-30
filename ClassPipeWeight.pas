@@ -7,7 +7,7 @@ uses SysUtils, Dialogs, Classes;
 type
     TPipeWeight = class
 private
-    FNamePipe: String;  // поле название секции
+    FNamePipe: String;  // название секции
     FPipeWeight : Real; // вес секции в воздухе, кН
     FPipeMass : Real; // масса секции, кг
     FMassi : Real; // масса одного метра трубы
@@ -15,7 +15,7 @@ private
     FMass2Thickening : Real; // масса двух высадок
     FSectionLength : Real; // длина секции
     FPipeLenght : Real; // длина одной трубы
-    FConnectorLenght : Real; // длина
+    FConnectorLenght : Real; // длина муфты
  public
  property NamePipe: string read FNamePipe write FNamePipe;
 
@@ -32,7 +32,7 @@ private
 
 
  procedure InputData ( Mi, Mc, M2t, Ls, Lp, Lc : Real; Np : String);
- procedure SectionMass(Value: Real);
+ procedure SectionMass(ValueA: Real);
  property PipeMass: Real read FPipeMass write SectionMass;
  procedure GFPShowMessage;
 
@@ -44,6 +44,12 @@ private
 
 implementation
 
+// класс выполняет расчёт массы и веса элементов бурильной колонны
+// процедура  InputData преднозначена для обращения к свойствам класса, и
+// служит для передачи данных для расчёта объекту класса
+// свойство PipeMass, при записи вызывается процедура SectionMass (расчёт массы секции)
+
+
 { TPipeWeight }
 
 constructor TPipeWeight.Create;
@@ -54,10 +60,11 @@ end;
 
 procedure TPipeWeight.GFPShowMessage;
 begin
- ShowMessage('Выполнено: Расчёт массы колонны'+ NamePipe+ FloatToStr(Massi) );
+ ShowMessage('Выполнено: Расчёт массы колонны'+ NamePipe+ ' '+ FloatToStr(Massi) );
 end;
 
 procedure TPipeWeight.InputData(Mi, Mc, M2t, Ls, Lp, Lc : Real; Np: String);
+  // импорт данных для расчёта
 begin
   NamePipe:=Np;
   Massi:=Mi;
@@ -68,9 +75,10 @@ begin
   LenghtC:=Lc;
 end;
 
-procedure TPipeWeight.SectionMass(Value:Real);
+procedure TPipeWeight.SectionMass(ValueA:Real);
 begin
   FPipeMass := Massi*LenghtS;
+  //ShowMessage(FloatToStr(ValueA));
 end;
 
 end.

@@ -1,0 +1,58 @@
+unit TableOfElements;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TFTableOfElements = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    SGElements: TStringGrid;
+    Panel2: TPanel;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FTableOfElements: TFTableOfElements;
+
+implementation
+
+{$R *.dfm}
+
+// в этом модуле преобразуем секцию в элементы, например в секции 120 метров
+// содержится 10 труб (элементов) по 12 метров.
+
+procedure TFTableOfElements.FormCreate(Sender: TObject);
+begin
+ // свойства таблицы StringGrid1
+  SGElements.ColWidths[0] := 40;
+  SGElements.ColWidths[1] := 200;
+  SGElements.ColWidths[2] := 110;
+  SGElements.ColWidths[3] := 110;
+  SGElements.ColWidths[4] := 110;
+  SGElements.ColWidths[5] := 110;
+  SGElements.ColWidths[6] := 120;
+  SGElements.ColWidths[7] := 120;
+  SGElements.ColWidths[8] := 120;
+
+
+  SGElements.Cells[0,0]:='№';
+  SGElements.Cells[1,0]:='Наименование';
+  SGElements.Cells[2,0]:='Длина м, мм';
+  SGElements.Cells[3,0]:='Масса i,кг';
+  SGElements.Cells[4,0]:='Масса м,кг';
+  SGElements.Cells[5,0]:='Масса 2в,кг';
+  SGElements.Cells[6,0]:='Длина элемента, м';
+  SGElements.Cells[7,0]:='Масса, кг';
+  SGElements.Cells[8,0]:='Вес, кН';
+
+end;
+
+end.

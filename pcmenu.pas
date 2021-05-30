@@ -49,6 +49,7 @@ type
     Image7: TImage;
     Image8: TImage;
     Image9: TImage;
+    Pelements: TPanel;
     procedure LcloseClick(Sender: TObject);
     procedure PpersonClick(Sender: TObject);
     procedure PpersonMouseLeave(Sender: TObject);
@@ -85,6 +86,10 @@ type
     procedure PexitMouseLeave(Sender: TObject);
     procedure PexitMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
+    procedure PelementsClick(Sender: TObject);
+    procedure PelementsMouseLeave(Sender: TObject);
+    procedure PelementsMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
   private
     { Private declarations }
 
@@ -99,7 +104,7 @@ implementation
 
 {$R *.dfm}
 
-uses geofpro, user_person, pipe_calculator, referenсe;
+uses geofpro, user_person, pipe_calculator, referenсe, TableOfElements;
 
 procedure TFpcmenu.FormActivate(Sender: TObject);
 begin
@@ -118,11 +123,13 @@ end;
 
 procedure TFpcmenu.Image1Click(Sender: TObject);
 begin
+  Fcalculator3i.ClearColor;
   Fcalculator3i.SG1addRow;
 end;
 
 procedure TFpcmenu.Image2Click(Sender: TObject);
 begin
+  Fcalculator3i.ClearColor;
   Fcalculator3i.SG1delRow;
 end;
 
@@ -168,6 +175,22 @@ procedure TFpcmenu.PmenuMouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 begin
   Pmenu.Color:=$00736220;
+end;
+
+procedure TFpcmenu.PelementsClick(Sender: TObject);
+begin
+ FTableOfElements.Show;
+end;
+
+procedure TFpcmenu.PelementsMouseLeave(Sender: TObject);
+begin
+  Pelements.Color:=$00A28A2D;
+end;
+
+procedure TFpcmenu.PelementsMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+ Pelements.Color:=$00736220;
 end;
 
 procedure TFpcmenu.PbitClick(Sender: TObject);
@@ -229,12 +252,12 @@ begin
   if OpenDialog1.Execute then
   begin
     Lines.LoadFromFile(FileName);
-    Fcalculator3i.EGridRow.Text := MemoSave.Lines[29];//кол-во строк StringGrid1
-    Fcalculator3i.StringGrid1.RowCount:=StrToInt(Fcalculator3i.EGridRow.Text);
+    Fcalculator3i.EGridRows.Text := MemoSave.Lines[29];//кол-во строк StringGrid1
+    Fcalculator3i.StringGrid1.RowCount:=StrToInt(Fcalculator3i.EGridRows.Text);
      i:=0;
          for cols := 0 to 12 do
           begin
-             for rows := 1 to StrToInt(Fcalculator3i.EGridRow.Text) do
+             for rows := 1 to StrToInt(Fcalculator3i.EGridRows.Text) do
              begin
               Fcalculator3i.StringGrid1.Cells[cols,rows]:= MemoSave.Lines[30+i];
               i:=i+1;
@@ -274,7 +297,7 @@ procedure TFpcmenu.PsaveClick(Sender: TObject);
   var cols, rows, i : Integer;
 begin
    // устанавливаем количество строк в Memo
-   for i := 0 to (StrToInt(Fcalculator3i.EGridRow.Text)*10)+30 do
+   for i := 0 to (StrToInt(Fcalculator3i.EGridRows.Text)*10)+30 do
        begin
          MemoSave.Lines.Add('') ;
        end;
@@ -283,11 +306,11 @@ begin
   if SaveDialog1.Execute then
    begin
 
-     MemoSave.Lines[29] := Fcalculator3i.EGridRow.Text;
+     MemoSave.Lines[29] := Fcalculator3i.EGridRows.Text;
      i:=0;
        for cols := 0 to 12 do
           begin
-             for rows := 1 to StrToInt(Fcalculator3i.EGridRow.Text) do
+             for rows := 1 to StrToInt(Fcalculator3i.EGridRows.Text) do
              begin
              MemoSave.Lines[30+i]:=Fcalculator3i.StringGrid1.Cells[cols,rows];
              i:=i+1;

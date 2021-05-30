@@ -1,0 +1,74 @@
+unit ClassСonversionElements;
+
+interface
+
+ uses SysUtils, Dialogs, Classes;
+
+ type
+ TConversionElements = class
+
+ private
+  FNamePipe: String;  // название секции
+  FNameElement: String;  // название секции
+  FSectionLength : Real; // длина секции
+  FPipeLenght : Real; // длина одного элемента
+  FConnectorLenght : Real; // длина муфты
+  FMassi : Real; // масса одного метра трубы
+  FMassConnector : Real; // масса муфты
+  FMass2Thickening : Real; // масса двух высадок
+  FNumberOfElements : Integer; //количество элементов
+
+
+
+ public
+  property NamePipe: string read FNamePipe write FNamePipe;
+  property NameElement: string read FNameElement write FNameElement;
+  property LenghtS: Real read FSectionLength write FSectionLength;
+  property LenghtP: Real read FPipeLenght write FPipeLenght;
+  property LenghtC: Real read FConnectorLenght write FConnectorLenght;
+  property Massi: Real read FMassi write FMassi;
+  property MassC: Real read FMassConnector write FMassConnector;
+  property Mass2t: Real read FMass2Thickening write FMass2Thickening;
+
+  property NumberOfElements: Integer read FNumberOfElements write FNumberOfElements;
+
+  procedure NameElement9 (NameEl: String);
+  procedure InputData ( Mi, Mc, M2t, Ls, Lp, Lc : Real; Np : String);
+  procedure Elements9;
+ end;
+
+implementation
+
+// класс преобразует секцию бурильной колонны в массив элементов
+
+{ TConversionElements }
+
+procedure TConversionElements.Elements9;
+begin
+// количество элементов
+ // FloatToStrF(    ,ffFixed,10,2);
+
+end;
+
+procedure TConversionElements.InputData(Mi, Mc, M2t, Ls, Lp, Lc: Real;
+  Np: String);
+begin
+  NamePipe:=Np;
+  Massi:=Mi;
+  MassC:=Mc;
+  Mass2T:=M2t;
+  LenghtS:=Ls;
+  LenghtP:=Lp;
+  LenghtC:=Lc;
+end;
+
+
+
+
+
+procedure TConversionElements.NameElement9(NameEl: String);
+begin
+
+end;
+
+end.

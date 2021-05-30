@@ -197,6 +197,27 @@ object Fpcmenu: TFpcmenu
       OnMouseLeave = PmenuMouseLeave
       OnMouseMove = PmenuMouseMove
     end
+    object Pelements: TPanel
+      Left = 1
+      Top = 288
+      Width = 215
+      Height = 41
+      Align = alTop
+      BevelOuter = bvNone
+      Caption = #1069#1083#1077#1084#1077#1085#1090#1099' '#1073#1091#1088#1080#1083#1100#1085#1086#1081' '#1082#1086#1083#1086#1085#1085#1099
+      Color = 10652205
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 8
+      OnClick = PelementsClick
+      OnMouseLeave = PelementsMouseLeave
+      OnMouseMove = PelementsMouseMove
+    end
   end
   object Panel2: TPanel
     Left = 217

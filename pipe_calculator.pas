@@ -21,7 +21,7 @@ type
     Image4: TImage;
     Image5: TImage;
     Image6: TImage;
-    EGridRow: TEdit;
+    EGridRows: TEdit;
     Edit1: TEdit;
     Edit2: TEdit;
     N1: TMenuItem;
@@ -40,6 +40,7 @@ type
     Label1: TLabel;
     ELdrill: TEdit;
     Image10: TImage;
+    SG1Row: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -53,15 +54,27 @@ type
     procedure Image7Click(Sender: TObject);
     procedure Image8Click(Sender: TObject);
     procedure Image10Click(Sender: TObject);
+    procedure StringGrid1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
+    procedure N5Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
+    procedure Image9Click(Sender: TObject);
+    procedure StringGrid1RowMoved(Sender: TObject; FromIndex, ToIndex: Integer);
   private
     { Private declarations }
   public
     { Public declarations }
-    procedure Сheckingvalue ;
-    procedure SG2clear;
-    procedure SG1addRow;
-    procedure SG1delRow;
-    procedure ClassPipeWeigtt; // расчёт массы и веса
+    procedure Сheckingvalue ;  // проверка заполнения ячеек таблицы
+    procedure SG2clear;  // очищаем только расчётные значения
+    procedure SG1addRow; // добавить строку
+    procedure SG1delRow; // удалить строку
+    procedure ClassPipeWeightT; // расчёт массы и веса
+    procedure InsertRow; //вставить строку ниже текущей
+    procedure DelCurrentRow; // удалить текущую строку
+    procedure ClearRow; // очистить текущую строку
+    procedure ClearTable; // очистить всю таблицу
+    procedure ClearColor; // убираем красную подсветку
   end;
 
 var
@@ -72,6 +85,12 @@ implementation
 
 {$R *.dfm}
 
+ // модуль управления расчётом
+ // StringGrid1 - таблица ввода данных для расчёта
+ // Edit1 и Edit2 содержат номер столбца и строки ячейки StringGrid1 с ошибочно введёнными данными
+ // EGridRows - содержит количество строк в таблице StringGrid1
+ // SG1Row - текущая строка таблица StringGrid1
+
 uses pcmenu, referenсe, Diagram, ProjectionEXL;
 
 procedure TFcalculator3i.Button1Click(Sender: TObject);
@@ -79,11 +98,11 @@ begin
     Сheckingvalue;
 end;
 
-procedure TFcalculator3i.ClassPipeWeigtt;
-// расчёт массы колонны
+procedure TFcalculator3i.ClassPipeWeightT;
+// создаём экземпляр класса TPipeWeight, расчёт массы и веса бурильной колонны
  var i: Integer;
  var E7: String;
- var E1, E2, E3, E4, E5, E6 : Real;
+ var E1, E2, E3, E4, E5, E6 : Real;  // значения, которые пережаём в объект  PipeWeight1
 begin
 
 
@@ -99,7 +118,8 @@ begin
       E6:=StrToFloat(StringGrid1.Cells[7,i]);
       E7:=StringGrid1.Cells[1,i];
       PipeWeight1.InputData (E1, E2, E3, E4, E5, E6, E7);
-      PipeWeight1.PipeMass:=0;
+      // обращение к свойству PipeMass, вызывается процедура SectionMass (расчёт массы)
+      PipeWeight1.PipeMass:=5;
       // масса в кг
       StringGrid1.Cells[13,i]:= FloatToStrF(PipeWeight1.PipeMass,ffFixed,10,2);
       // масса в т
@@ -109,6 +129,69 @@ begin
    PipeWeight1.Free;
 end;
 
+procedure TFcalculator3i.ClearColor;
+// убираем красную подсветку в таблице StringGrid1
+begin
+  Edit1.Text:='0';
+  Edit2.Text:='0';
+  StringGrid1.Refresh;
+end;
+
+procedure TFcalculator3i.ClearRow;
+ // очистить текущую строку
+ var ncol: Integer;   // номер столбца
+ nrow : Integer;   // номер текущей строки
+begin
+ nrow:=StrToInt(SG1Row.Text);
+  for ncol := 1 to 15 do
+  begin
+   StringGrid1.Cells[ncol,nrow]:= '';
+  end;
+end;
+
+procedure TFcalculator3i.ClearTable;
+// очищаем все записи таблицы StringGrid1
+ var nrows : Integer;   // номер текущей строки, количество строк в таблице
+ ncol: Integer;   // номер столбца
+ i: Integer;
+begin
+ nrows:=StrToInt(EGridRows.Text);
+ for ncol := 1 to 15 do
+ begin
+   for i := 1 to nrows do
+   begin
+     StringGrid1.Cells[ncol,i]:='';
+   end;
+ end;
+
+end;
+
+procedure TFcalculator3i.DelCurrentRow;
+ //удаляем текущую строку из таблицы StringGrid1
+   var i : Integer;
+ nrow, nrows : Integer;   // номер текущей строки, количество строк в таблице
+ ncol: Integer;   // номер столбца
+begin
+  nrows:=StrToInt(EGridRows.Text);
+  if nrows>1 then
+ begin
+    for ncol := 1 to 15 do
+   begin
+      nrow:=StrToInt(SG1Row.Text);
+      for i := nrow to nrows do
+      begin
+       StringGrid1.Cells[ncol,nrow]:= StringGrid1.Cells[ncol,nrow+1];
+       nrow:=nrow+1;
+     end;
+    StringGrid1.Cells[ncol,nrows]:='';
+   end;
+
+   EGridRows.Text:=IntToStr(StrToInt(EGridRows.Text)-1);
+   StringGrid1.RowCount:=StrToInt(EGridRows.Text);
+  //StringGrid1.Cells[0,StrToInt(EGridRows.Text)-1]:=IntToStr(StrToInt(EGridRows.Text)-1);
+  end;
+ end;
+
 procedure TFcalculator3i.FormActivate(Sender: TObject);
 begin
   Fpcmenu.Close;
@@ -116,6 +199,7 @@ end;
 
 procedure TFcalculator3i.FormCreate(Sender: TObject);
 begin
+ // свойства таблицы StringGrid1
   StringGrid1.ColWidths[0] := 40;
   StringGrid1.ColWidths[1] := 170;
   StringGrid1.ColWidths[2] := 65;
@@ -128,7 +212,7 @@ begin
   StringGrid1.ColWidths[9] := 65;
   StringGrid1.ColWidths[10] := 95;
   StringGrid1.ColWidths[11] := 95;
-  StringGrid1.ColWidths[12] := 95;
+  StringGrid1.ColWidths[12] := 100;
   StringGrid1.ColWidths[13] := 100;
   StringGrid1.ColWidths[14] := 100;
   StringGrid1.ColWidths[15] := 100;
@@ -145,7 +229,7 @@ begin
   StringGrid1.Cells[9,0]:='Масса м,кг';
   StringGrid1.Cells[10,0]:='Масса 2в,кг';
   StringGrid1.Cells[11,0]:='Длина секции, м';
-  StringGrid1.Cells[12,0]:='Длина свечи, м';
+  StringGrid1.Cells[12,0]:='Длина элемента, м';
   StringGrid1.Cells[13,0]:='Масса, кг';
   StringGrid1.Cells[14,0]:='Масса, т';
   StringGrid1.Cells[15,0]:='Вес, кН';
@@ -156,6 +240,7 @@ begin
   StringGrid1.Cells[0,4]:='4';
   StringGrid1.Cells[0,5]:='5';
 
+  // видимость панели с кнопками управления
   Panel1.Height:=22;
   Image1.Visible:=False;
   Image2.Visible:=True;
@@ -182,11 +267,13 @@ end;
 
 procedure TFcalculator3i.Image3Click(Sender: TObject);
 begin
+  ClearColor;
   SG1addRow;
 end;
 
 procedure TFcalculator3i.Image4Click(Sender: TObject);
 begin
+  ClearColor;
   SG1delRow;
 end;
 
@@ -200,46 +287,109 @@ begin
   FrmDiagram.Show;
 end;
 
+procedure TFcalculator3i.Image9Click(Sender: TObject);
+begin
+ ClearColor;
+ ClearTable;
+end;
+
+procedure TFcalculator3i.InsertRow;
+ // вставить строку ниже текущей в таблицу StringGrid1
+ var i : Integer;
+ nrow, nrows : Integer;   // номер текущей строки, количество строк в таблице
+ ncol: Integer;   // номер столбца
+begin
+ EGridRows.Text:=IntToStr(StrToInt(EGridRows.Text)+1);
+ StringGrid1.RowCount:=StrToInt(EGridRows.Text);
+ StringGrid1.Cells[0,StrToInt(EGridRows.Text)-1]:=IntToStr(StrToInt(EGridRows.Text)-1);
+
+ nrow:=StrToInt(SG1Row.Text);
+
+ for ncol := 1 to 15 do
+ begin
+  nrows:=StrToInt(EGridRows.Text);
+  for i := nrow+1 to nrows do
+   begin
+    StringGrid1.Cells[ncol,nrows]:= StringGrid1.Cells[ncol,nrows-1];
+    nrows:=nrows-1;
+   end;
+   StringGrid1.Cells[ncol,nrow+1]:='';
+ end;
+end;
+
 procedure TFcalculator3i.N1Click(Sender: TObject);
 begin
   Fpcmenu.Show;
 end;
 
+procedure TFcalculator3i.N2Click(Sender: TObject);
+begin
+ ClearColor;
+ InsertRow;
+end;
+
+procedure TFcalculator3i.N3Click(Sender: TObject);
+begin
+ ClearColor;
+ DelCurrentRow;
+end;
+
+procedure TFcalculator3i.N4Click(Sender: TObject);
+begin
+ ClearColor;
+ ClearTable;
+end;
+
+procedure TFcalculator3i.N5Click(Sender: TObject);
+begin
+ ClearColor;
+ ClearRow;
+end;
+
 procedure TFcalculator3i.SG1addRow;
 begin
-   EGridRow.Text:=IntToStr(StrToInt(EGridRow.Text)+1);
-   StringGrid1.RowCount:=StrToInt(EGridRow.Text);
-   StringGrid1.Cells[0,StrToInt(EGridRow.Text)-1]:=IntToStr(StrToInt(EGridRow.Text)-1);
+   EGridRows.Text:=IntToStr(StrToInt(EGridRows.Text)+1);
+   StringGrid1.RowCount:=StrToInt(EGridRows.Text);
+   StringGrid1.Cells[0,StrToInt(EGridRows.Text)-1]:=IntToStr(StrToInt(EGridRows.Text)-1);
 end;
 
 procedure TFcalculator3i.SG1delRow;
 begin
-   if StrToInt(EGridRow.Text)>2 then
+   if StrToInt(EGridRows.Text)>2 then
    begin
-    EGridRow.Text:=IntToStr(StrToInt(EGridRow.Text)-1);
-    StringGrid1.RowCount:=StrToInt(EGridRow.Text);
+    EGridRows.Text:=IntToStr(StrToInt(EGridRows.Text)-1);
+    StringGrid1.RowCount:=StrToInt(EGridRows.Text);
    end;
 end;
 
 procedure TFcalculator3i.SG2clear;
-  // очищаем таблицы с результатоми расчёта
+  // очищаем столбцы с результатами расчёта
   var n: String ;
        i, col, row : Integer;
 begin
+ //  масса и вес бурильной колонны
    Ekg.Text:='';
    Etonne.Text:='';
    EkN.Text:='';
 
+
+   // масса и вес элементов бурильной колонны
    begin
        for col := 13 to 15 do
     begin
-     for row := 1 to StrToInt(EGridRow.Text)-1 do
+     for row := 1 to StrToInt(EGridRows.Text)-1 do
      begin
        StringGrid1.Cells[col, row]:='';
      end;
     end;
    end;
 
+end;
+
+procedure TFcalculator3i.StringGrid1Click(Sender: TObject);
+ // присваиваем SG1Row значение номера текущей строки
+begin
+  SG1Row.Text:=IntToStr(StringGrid1.Row);
 end;
 
 procedure TFcalculator3i.StringGrid1DrawCell(Sender: TObject; ACol,
@@ -260,7 +410,7 @@ begin
     end;
 
     // подкрашиваем ячейку с ошибочными данными
-    // Edit1 и Edit2 номер столбца и строки
+    // Edit1 и Edit2 номер столбца и строки ячейки с ошибочно введёнными данными
   if Edit1.Text<>'0' then
   begin
    if (ACol = StrToInt(Edit1.Text)) and (ARow = StrToInt(Edit2.Text))  then
@@ -273,6 +423,18 @@ begin
 
 end;
 
+procedure TFcalculator3i.StringGrid1RowMoved(Sender: TObject; FromIndex,
+  ToIndex: Integer);
+  // устанавливаем нумерацию строк таблицы StringGrid1
+  var i, nrow : integer;
+begin
+ nrow:= StrToInt(EGridRows.Text);
+   for i := 1 to nrow-1 do
+   begin
+     StringGrid1.Cells[0,i]:=IntToStr(i);
+   end;
+end;
+
 procedure TFcalculator3i.Сheckingvalue;
   //проверяем актуальность ввода данных
    var n: String ;
@@ -280,7 +442,7 @@ procedure TFcalculator3i.Сheckingvalue;
   begin
    for col := 2 to 12 do
    begin
-       for row := 1 to StrToInt(EGridRow.Text)-1 do
+       for row := 1 to StrToInt(EGridRows.Text)-1 do
          begin
          n:=StringGrid1.Cells[col, row];
          // проверяем наличие пустых ячеек
@@ -369,7 +531,7 @@ procedure TFcalculator3i.Сheckingvalue;
      //проверка вписываемости бурового инструмента в скважину
        for col := 2 to 6 do
     begin
-     for row := 1 to StrToInt(EGridRow.Text)-1 do
+     for row := 1 to StrToInt(EGridRows.Text)-1 do
      begin
        n:=StringGrid1.Cells[col, row];
        if StrToFloat(Fpcmenu.Ebit.Text)<(StrToFloat(n)+StrToFloat(Fpcmenu.Erad.Text)) then
@@ -390,7 +552,7 @@ procedure TFcalculator3i.Сheckingvalue;
    Edit2.Text:='0';
    StringGrid1.Refresh;
    // Вызываем расчёт массы и веса
-   ClassPipeWeigtt;
+   ClassPipeWeightT;
  end;
 
 end.

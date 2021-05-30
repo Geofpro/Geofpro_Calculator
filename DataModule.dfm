@@ -1,5 +1,6 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 517
   Width = 775
   object FDConnection1: TFDConnection
@@ -8,7 +9,6 @@ object DataModule1: TDataModule1
         'Database=C:\Geofpro\Geofpro_Calculator\DrillingPipeDB\geofpro3i.' +
         'mdb'
       'ConnectionDef=Access_Demo')
-    Connected = True
     LoginPrompt = False
     Left = 104
     Top = 72
@@ -23,7 +23,6 @@ object DataModule1: TDataModule1
     Top = 72
   end
   object FDQuery1: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM drillingpipe')
@@ -66,7 +65,6 @@ object DataModule1: TDataModule1
     Top = 248
   end
   object FDQuery2: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM connector')
@@ -74,7 +72,6 @@ object DataModule1: TDataModule1
     Top = 168
   end
   object FDQuery3: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM ubt')
@@ -82,7 +79,6 @@ object DataModule1: TDataModule1
     Top = 168
   end
   object FDQuery4: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM drillingtools ORDER BY '#1064#1080#1092#1088)
@@ -90,7 +86,6 @@ object DataModule1: TDataModule1
     Top = 168
   end
   object FDQuery5: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM motors')
@@ -98,7 +93,6 @@ object DataModule1: TDataModule1
     Top = 168
   end
   object FDQuery6: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM coiled')
@@ -106,7 +100,6 @@ object DataModule1: TDataModule1
     Top = 168
   end
   object FDQuery7: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM nkt')
@@ -114,7 +107,6 @@ object DataModule1: TDataModule1
     Top = 168
   end
   object FDQuery8: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM casingpipe')
@@ -127,7 +119,6 @@ object DataModule1: TDataModule1
     Top = 248
   end
   object FDQuery9: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM tbt')

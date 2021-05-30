@@ -30,7 +30,6 @@ object Fcalculator3i: TFcalculator3i
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = -6
     object Image3: TImage
       Left = 40
       Top = 35
@@ -2422,6 +2421,7 @@ object Fcalculator3i: TFcalculator3i
         D5F471C999F5647A0D995A5F35A19AB5D6AAA001AA0A05C8D62684E559AC2258
         D2A4F4E858F1E29CB7B5B54560FDF518C9F157B04671FC379424D4C1E7D23F01
         0000000049454E44AE426082}
+      OnClick = Image9Click
     end
     object Image10: TImage
       Left = 1020
@@ -2661,10 +2661,12 @@ object Fcalculator3i: TFcalculator3i
     Align = alClient
     ColCount = 16
     RowCount = 6
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowMoving, goEditing]
     PopupMenu = PopupActionBar1
     TabOrder = 1
+    OnClick = StringGrid1Click
     OnDrawCell = StringGrid1DrawCell
+    OnRowMoved = StringGrid1RowMoved
   end
   object Panel3: TPanel
     Left = 0
@@ -2684,17 +2686,16 @@ object Fcalculator3i: TFcalculator3i
       Height = 13
       Caption = #1044#1083#1080#1085#1072' '#1082#1086#1083#1086#1085#1085#1099':'
     end
-    object EGridRow: TEdit
+    object EGridRows: TEdit
       Left = 16
       Top = 6
       Width = 17
       Height = 21
       TabOrder = 0
       Text = '6'
-      Visible = False
     end
     object Edit1: TEdit
-      Left = 39
+      Left = 87
       Top = 6
       Width = 17
       Height = 21
@@ -2703,7 +2704,7 @@ object Fcalculator3i: TFcalculator3i
       Visible = False
     end
     object Edit2: TEdit
-      Left = 62
+      Left = 110
       Top = 6
       Width = 18
       Height = 21
@@ -2750,6 +2751,14 @@ object Fcalculator3i: TFcalculator3i
       TabOrder = 7
       Text = 'ELdrill'
     end
+    object SG1Row: TEdit
+      Left = 39
+      Top = 6
+      Width = 25
+      Height = 21
+      TabOrder = 8
+      Text = '1'
+    end
   end
   object MainMenu1: TMainMenu
     Left = 928
@@ -2764,15 +2773,19 @@ object Fcalculator3i: TFcalculator3i
     Top = 240
     object N2: TMenuItem
       Caption = #1042#1089#1090#1072#1074#1080#1090#1100' '#1089#1090#1088#1086#1082#1091' '#1085#1080#1078#1077
+      OnClick = N2Click
     end
     object N3: TMenuItem
       Caption = #1059#1076#1072#1083#1080#1090#1100' '#1089#1090#1088#1086#1082#1091
+      OnClick = N3Click
     end
     object N4: TMenuItem
       Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1074#1089#1102' '#1090#1072#1073#1083#1080#1094#1091
+      OnClick = N4Click
     end
     object N5: TMenuItem
       Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1089#1090#1088#1086#1082#1091
+      OnClick = N5Click
     end
   end
 end

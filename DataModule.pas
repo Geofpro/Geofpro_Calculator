@@ -33,6 +33,7 @@ type
     DataSource8: TDataSource;
     FDQuery9: TFDQuery;
     DataSource9: TDataSource;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,5 +48,20 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDataModule1.DataModuleCreate(Sender: TObject);
+begin
+ FDConnection1.Params.Database:= GetCurrentDir + '\DrillingPipeDB\geofpro3i.mdb';
+ FDConnection1.Connected:=True;
+ FDQuery1.Active:=True;
+ FDQuery2.Active:=True;
+ FDQuery3.Active:=True;
+ FDQuery4.Active:=True;
+ FDQuery5.Active:=True;
+ FDQuery6.Active:=True;
+ FDQuery7.Active:=True;
+ FDQuery8.Active:=True;
+ FDQuery9.Active:=True;
+ end;
 
 end.

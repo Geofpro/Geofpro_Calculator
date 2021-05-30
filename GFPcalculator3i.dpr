@@ -12,7 +12,9 @@ uses
   ClassPipeWeight in 'ClassPipeWeight.pas',
   Diagram in 'Diagram.pas' {FrmDiagram},
   ProjectionEXL in 'ProjectionEXL.pas' {FrmProjectionEXL},
-  Wait in 'Wait.pas' {FrmWait};
+  Wait in 'Wait.pas' {FrmWait},
+  TableOfElements in 'TableOfElements.pas' {FTableOfElements},
+  Class—onversionElements in 'Class—onversionElements.pas';
 
 {$R *.res}
 
@@ -29,5 +31,6 @@ begin
   Application.CreateForm(TFrmDiagram, FrmDiagram);
   Application.CreateForm(TFrmProjectionEXL, FrmProjectionEXL);
   Application.CreateForm(TFrmWait, FrmWait);
+  Application.CreateForm(TFTableOfElements, FTableOfElements);
   Application.Run;
 end.
