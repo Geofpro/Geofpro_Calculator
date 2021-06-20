@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, Vcl.Grids;
 
 type
   TFpcmenu = class(TForm)
@@ -25,10 +25,6 @@ type
     Label2: TLabel;
     CheckBit: TCheckBox;
     Eminpipe: TEdit;
-    Label3: TLabel;
-    Label4: TLabel;
-    Emud: TEdit;
-    CheckMud: TCheckBox;
     Label5: TLabel;
     Label6: TLabel;
     Erad: TEdit;
@@ -40,16 +36,10 @@ type
     Memo1: TMemo;
     TabMenu: TTabSheet;
     Pmenu: TPanel;
-    Image1: TImage;
-    Image2: TImage;
-    Image3: TImage;
-    Image4: TImage;
-    Image5: TImage;
-    Image6: TImage;
-    Image7: TImage;
-    Image8: TImage;
-    Image9: TImage;
     Pelements: TPanel;
+    Memo2: TMemo;
+    CheckMud: TCheckBox;
+    SGFactors: TStringGrid;
     procedure LcloseClick(Sender: TObject);
     procedure PpersonClick(Sender: TObject);
     procedure PpersonMouseLeave(Sender: TObject);
@@ -77,9 +67,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure PexitClick(Sender: TObject);
     procedure PmenuClick(Sender: TObject);
-    procedure Image1Click(Sender: TObject);
-    procedure Image2Click(Sender: TObject);
-    procedure Image5Click(Sender: TObject);
     procedure PmenuMouseLeave(Sender: TObject);
     procedure PmenuMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
@@ -119,23 +106,23 @@ begin
   TabSave.Tabvisible:=False;
   TabMenu.TabVisible:=False;
   TabMenu.Visible:=True;
-end;
 
-procedure TFpcmenu.Image1Click(Sender: TObject);
-begin
-  Fcalculator3i.ClearColor;
-  Fcalculator3i.SG1addRow;
-end;
+  SGFactors.ColWidths[0] := 300;
+  SGFactors.ColWidths[1] := 130;
 
-procedure TFpcmenu.Image2Click(Sender: TObject);
-begin
-  Fcalculator3i.ClearColor;
-  Fcalculator3i.SG1delRow;
-end;
+  SGFactors.Cells[0,0]:='Наименование фактора';
+  SGFactors.Cells[1,0]:='Значение';
 
-procedure TFpcmenu.Image5Click(Sender: TObject);
-begin
- Freference.Show;
+  SGFactors.Cells[0,1]:='Плотность бурового раствора, кг/м куб';
+  SGFactors.Cells[0,2]:='Kfr';
+  SGFactors.Cells[0,3]:='Ki';
+  SGFactors.Cells[0,4]:='Kb';
+  // значения коэффициентов
+  SGFactors.Cells[1,1]:='1240';
+  SGFactors.Cells[1,2]:='0,15';
+  SGFactors.Cells[1,3]:='1,1';
+  SGFactors.Cells[1,4]:='1,1';
+
 end;
 
 procedure TFpcmenu.LcloseClick(Sender: TObject);

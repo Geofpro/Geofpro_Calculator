@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.Imaging.pngimage,
   Vcl.ExtCtrls, Vcl.Grids, Vcl.StdCtrls, Vcl.PlatformDefaultStyleActnCtrls,
-  Vcl.ActnPopup, ClassPipeWeight;
+  Vcl.ActnPopup;
 
 type
   TFcalculator3i = class(TForm)
@@ -75,11 +75,11 @@ type
     procedure ClearRow; // очистить текущую строку
     procedure ClearTable; // очистить всю таблицу
     procedure ClearColor; // убираем красную подсветку
+    procedure SumLeght; // глубина скважины по инструменту
   end;
 
 var
   Fcalculator3i: TFcalculator3i;
-  PipeWeight1: TPipeWeight ;
 
 implementation
 
@@ -99,34 +99,10 @@ begin
 end;
 
 procedure TFcalculator3i.ClassPipeWeightT;
-// создаём экземпляр класса TPipeWeight, расчёт массы и веса бурильной колонны
- var i: Integer;
- var E7: String;
- var E1, E2, E3, E4, E5, E6 : Real;  // значения, которые пережаём в объект  PipeWeight1
+
 begin
 
 
-   PipeWeight1:=TPipeWeight.Create;
-
-   for i := 1 to StringGrid1.RowCount-1 do
-     begin
-      E1:=StrToFloat(StringGrid1.Cells[8,i]);
-      E2:=StrToFloat(StringGrid1.Cells[9,i]);
-      E3:=StrToFloat(StringGrid1.Cells[10,i]);
-      E4:=StrToFloat(StringGrid1.Cells[11,i]);
-      E5:=StrToFloat(StringGrid1.Cells[12,i]);
-      E6:=StrToFloat(StringGrid1.Cells[7,i]);
-      E7:=StringGrid1.Cells[1,i];
-      PipeWeight1.InputData (E1, E2, E3, E4, E5, E6, E7);
-      // обращение к свойству PipeMass, вызывается процедура SectionMass (расчёт массы)
-      PipeWeight1.PipeMass:=5;
-      // масса в кг
-      StringGrid1.Cells[13,i]:= FloatToStrF(PipeWeight1.PipeMass,ffFixed,10,2);
-      // масса в т
-      StringGrid1.Cells[14,i]:= FloatToStrF(PipeWeight1.PipeMass/1000,ffFixed,10,2);
-     end;
-   PipeWeight1.GFPShowMessage;
-   PipeWeight1.Free;
 end;
 
 procedure TFcalculator3i.ClearColor;
@@ -212,8 +188,8 @@ begin
   StringGrid1.ColWidths[9] := 65;
   StringGrid1.ColWidths[10] := 95;
   StringGrid1.ColWidths[11] := 95;
-  StringGrid1.ColWidths[12] := 100;
-  StringGrid1.ColWidths[13] := 100;
+  StringGrid1.ColWidths[12] := 110;
+  StringGrid1.ColWidths[13] := 110;
   StringGrid1.ColWidths[14] := 100;
   StringGrid1.ColWidths[15] := 100;
 
@@ -233,6 +209,7 @@ begin
   StringGrid1.Cells[13,0]:='Масса, кг';
   StringGrid1.Cells[14,0]:='Масса, т';
   StringGrid1.Cells[15,0]:='Вес, кН';
+  StringGrid1.Cells[16,0]:='индекс';
 
   StringGrid1.Cells[0,1]:='1';
   StringGrid1.Cells[0,2]:='2';
@@ -435,6 +412,16 @@ begin
    end;
 end;
 
+procedure TFcalculator3i.SumLeght;
+ var i: Integer;
+begin
+  for i := 1 to StringGrid1.RowCount-1 do
+  begin
+    ELdrill.Text:=FloatToStr(StrToFloat(ELdrill.Text)+StrToFloat(StringGrid1.Cells[11,i]));
+  end;
+
+end;
+
 procedure TFcalculator3i.Сheckingvalue;
   //проверяем актуальность ввода данных
    var n: String ;
@@ -552,7 +539,8 @@ procedure TFcalculator3i.Сheckingvalue;
    Edit2.Text:='0';
    StringGrid1.Refresh;
    // Вызываем расчёт массы и веса
-   ClassPipeWeightT;
+   // ClassPipeWeightT;
+   SumLeght;
  end;
 
 end.

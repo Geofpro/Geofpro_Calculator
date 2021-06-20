@@ -152,7 +152,7 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="ClassPipeWeight.pas"/>
+        <DCCReference Include="GFPPipeWeight.pas"/>
         <DCCReference Include="Diagram.pas">
             <Form>FrmDiagram</Form>
             <FormType>dfm</FormType>
@@ -169,7 +169,7 @@
             <Form>FTableOfElements</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ClassСonversionElements.pas"/>
+        <DCCReference Include="GFPСonversionElements.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -1,0 +1,112 @@
+unit GFPСonversionElements;
+
+interface
+
+ uses SysUtils, Dialogs, Classes;
+
+ type
+ TConversionElements = class
+
+ private
+  FNameSection: String;  // название секции
+  FNameElement: String;  // название элемента
+  FSectionLength : Real; // длина секции
+  FPipeLenght : Real; // длина одного элемента
+  FConnectorLenght : String; // длина муфты
+  FMassi : String; // масса одного метра трубы
+  FMassConnector : String; // масса муфты
+  FMass2Thickening : String; // масса двух высадок
+  FNumberOfElements : Integer; //количество элементов
+
+ public
+  property NameSection: string read FNameSection write FNameSection;
+  property NameElement: string read FNameElement write FNameElement;
+  property LenghtS: Real read FSectionLength write FSectionLength;
+  property LenghtP: Real read FPipeLenght write FPipeLenght;
+  property LenghtC: String read FConnectorLenght write FConnectorLenght;
+  property Massi: String read FMassi write FMassi;
+  property MassC: String read FMassConnector write FMassConnector;
+  property Mass2t: String read FMass2Thickening write FMass2Thickening;
+  property NumberOfElements: Integer read FNumberOfElements write FNumberOfElements;
+
+
+  procedure InputData ( Ls, Lp: Real; Np, Mi, Mc, M2t, Lc : String); //импорт данных для расчёта
+  procedure Elements9; // определяем количество элементов в каждой секции бурильной колонны
+  procedure ExportElements; // результаты преобразования отправляем в таблицу класса TStringGrid
+  procedure NameElement9;  // присваиваем значение имени секции имени элемента
+
+  constructor Create;
+ end;
+
+implementation
+
+// ОПИСАНИЕ КЛАССА TConversionElements
+// класс преобразует каждую из секций бурильной колонны в массив элементов
+// например в секции длиной 120 метров
+// содержится 10 труб (элементов) по 12 метров.
+
+{ TConversionElements }
+
+ uses TableOfElements;
+
+ //var ReportNumElement : array of String; // отчёт: количество элементов в каждой секции
+
+constructor TConversionElements.Create;
+  // конструктор
+begin
+
+end;
+
+procedure TConversionElements.Elements9;
+begin
+   // определяем количество элементов в каждой секции бурильной колонны
+   NumberOfElements:=Round(LenghtS/LenghtP);
+   // Отчёт: сколько элементов содержится в каждой секции
+   FTableOfElements.Memo1.Lines.Add(' '+ NameElement +' '+ IntToStr(NumberOfElements)+' шт.');
+end;
+
+procedure TConversionElements.ExportElements;
+// результаты преобразования отправляем в таблицу StringGrid
+// увеличиваем количество строк в таблице экспорта на количество элементов
+ var i, RowBegin, RowEnd: Integer;
+begin
+  // строка с которой начинаем экспорт
+  RowBegin:= FTableOfElements.SGElements.RowCount;
+  // строка на которой заканчиваем экспорт
+  RowEnd:= FTableOfElements.SGElements.RowCount+ NumberOfElements;
+  // новое количество строк в таблицу
+  FTableOfElements.SGElements.RowCount:= FTableOfElements.SGElements.RowCount+ NumberOfElements;
+
+  for i := RowBegin to RowEnd do
+   begin
+     FTableOfElements.SGElements.Cells[0,i]:=IntToStr(i);
+     FTableOfElements.SGElements.Cells[1,i]:= NameElement;
+     FTableOfElements.SGElements.Cells[2,i]:= LenghtC;
+     FTableOfElements.SGElements.Cells[3,i]:= Massi;
+     FTableOfElements.SGElements.Cells[4,i]:= MassC;
+     FTableOfElements.SGElements.Cells[5,i]:= Mass2t;
+     FTableOfElements.SGElements.Cells[6,i]:= FloatToStr(LenghtP);
+   end;
+
+end;
+
+procedure TConversionElements.InputData(Ls, Lp: Real; Np, Mi, Mc, M2t, Lc : String);
+// импорт данных для расчёта (преобразования)
+begin
+  NameSection:=Np;
+  Massi:=Mi;
+  MassC:=Mc;
+  Mass2T:=M2t;
+  LenghtS:=Ls;
+  LenghtP:=Lp;
+  LenghtC:=Lc;
+end;
+
+procedure TConversionElements.NameElement9;
+ // присваиваем значение имени секции имени элемента
+begin
+  NameElement:= NameSection;
+end;
+
+
+end.

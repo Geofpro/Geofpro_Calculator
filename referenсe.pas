@@ -71,7 +71,7 @@ begin
      Fcalculator3i.StringGrid1.Cells[3,Sr]:= DbGrid1.DataSource.DataSet.Fields[3].AsString;
      Fcalculator3i.StringGrid1.Cells[8,Sr]:= DbGrid1.DataSource.DataSet.Fields[10].AsString;
      Fcalculator3i.StringGrid1.Cells[10,Sr]:= DbGrid1.DataSource.DataSet.Fields[11].AsString;
-  end;
+   end;
 
   if ComboBox1.ItemIndex=1  then
   begin
