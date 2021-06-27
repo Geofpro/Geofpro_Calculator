@@ -1,0 +1,53 @@
+object FrReportsAllDate: TFrReportsAllDate
+  Left = 0
+  Top = 0
+  Width = 980
+  Height = 2500
+  TabOrder = 0
+  object Label1: TLabel
+    Left = 384
+    Top = 2456
+    Width = 122
+    Height = 13
+    Caption = 'GEOFPRO Software 2021'
+  end
+  object StringGridDate: TStringGrid
+    Left = 24
+    Top = 40
+    Width = 913
+    Height = 441
+    ColCount = 2
+    RowCount = 20
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
+    TabOrder = 0
+  end
+  object StringGridPipeCalculator: TStringGrid
+    Left = 24
+    Top = 584
+    Width = 913
+    Height = 449
+    ColCount = 13
+    TabOrder = 1
+  end
+  object Chart1: TChart
+    Left = 24
+    Top = 1112
+    Width = 900
+    Height = 750
+    Title.Text.Strings = (
+      'TChart')
+    View3D = False
+    TabOrder = 2
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
+    object Series1: TLineSeries
+      Brush.BackColor = clDefault
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+  end
+end

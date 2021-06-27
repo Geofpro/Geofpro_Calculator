@@ -26,7 +26,6 @@ object FTableOfElements: TFTableOfElements
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitWidth = 1021
     object Label1: TLabel
       Left = 32
       Top = 16
@@ -96,9 +95,6 @@ object FTableOfElements: TFTableOfElements
     RowCount = 1
     FixedRows = 0
     TabOrder = 1
-    ExplicitLeft = 64
-    ExplicitTop = 57
-    ExplicitWidth = 1021
   end
   object Panel2: TPanel
     Left = 0
@@ -108,7 +104,6 @@ object FTableOfElements: TFTableOfElements
     Align = alBottom
     Caption = 'Panel2'
     TabOrder = 2
-    ExplicitWidth = 1021
     object Memo1: TMemo
       Left = 1
       Top = 1

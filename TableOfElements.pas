@@ -35,6 +35,7 @@ type
   procedure ClassPipeWeightT; // расчёт массы и веса
   procedure SGElementsClear; // очистить таблицу расчёта
   procedure PipeWeightSection; // вычисляем вес каждой секции (сумма веса элементов каждой секции)
+  procedure CalculateWeight; // выполнить расчёт массы и веса
   end;
 
 var
@@ -124,6 +125,36 @@ begin
  PipeWeightSection;
 end;
 
+procedure TFTableOfElements.CalculateWeight;
+begin
+ // очищаем данные предыдущего расчёта
+  SGElementsClear;
+ // преобразовываем секцию в элементы
+  СonversionElements;
+ //  нарастающий итог
+  LeghtSum;
+ // определяем зенитный угол для каждой отдельной трубы
+  Zenit;
+ // проверяем, заполненны ли значения зенитного угла
+ if SGElements.Cells[8,1]='' then
+  begin
+    ShowMessage('Заполните значения зенитного угла');
+    Exit
+  end;
+ // расчитываем массу и вес каждой трубы
+ ClassPipeWeightT;
+ // экспорт расчётных данных в таблицу ввода данных
+ PipeWeightSection;
+
+ // расчитываем длину инструмента
+   Fcalculator3i.SumLeght;
+   //  переводим кг в тонны
+   Fcalculator3i.ConvertKG;
+   // рассчитываем суммарную массу и вес
+   Fcalculator3i.SumWeight;
+   ShowMessage('Расчёт выполнен');
+end;
+
 procedure TFTableOfElements.ClassPipeWeightT;
  // создаём экземпляр класса TPipeWeight, расчёт массы и веса бурильной колонны
  var i: Integer;
@@ -181,7 +212,7 @@ begin
       // вес, кН
       SGElements.Cells[20,i]:= FloatToStrF(PipeWeight1.PipeWeigh,ffFixed,10,2);
      end;
-   PipeWeight1.GFPShowMessage;
+   //PipeWeight1.GFPShowMessage;
    PipeWeight1.Free;
 end;
 

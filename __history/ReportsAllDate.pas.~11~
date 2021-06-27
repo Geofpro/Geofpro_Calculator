@@ -1,0 +1,107 @@
+unit ReportsAllDate;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls,
+  VclTee.TeeGDIPlus, VCLTee.TeEngine, VCLTee.Series, Vcl.ExtCtrls,
+  VCLTee.TeeProcs, VCLTee.Chart;
+
+type
+  TFrReportsAllDate = class(TFrame)
+    StringGridDate: TStringGrid;
+    Label1: TLabel;
+    StringGridPipeCalculator: TStringGrid;
+    Chart1: TChart;
+    Series1: TLineSeries;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+
+   procedure ImportDate;    // импорт данных  для отчёта
+   procedure GhartVert; // строим график проекции профиля скважины на вертикальную плоскость
+  end;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrReportsAllDate }
+
+uses User_person, pcmenu, pipe_calculator ;
+
+procedure TFrReportsAllDate.ImportDate;
+ var i : Integer;
+begin
+  StringGridDate.ColWidths[0] := 350;
+  StringGridDate.ColWidths[1] := 350;
+
+  StringGridDate.Cells[0,0]:='Наименование параметра';
+  StringGridDate.Cells[1,0]:='Значение';
+
+  // имя пользователя, скажина и т.д персоонализация пользователя
+  for i :=1 to FUser_person.StringGrid1.RowCount-1 do
+   begin
+    StringGridDate.Cells[0,i]:=FUser_person.StringGrid1.Cells[0, i];
+    StringGridDate.Cells[1,i]:=FUser_person.StringGrid1.Cells[1, i];
+   end;
+
+   //  коэффициенты
+    for i :=1 to Fpcmenu.SGFactors.RowCount-1 do
+   begin
+    StringGridDate.Cells[0,8+i]:=Fpcmenu.SGFactors.Cells[0, i];
+    StringGridDate.Cells[1,8+i]:=Fpcmenu.SGFactors.Cells[1, i];
+   end;
+
+   // диаметр долота
+   StringGridDate.Cells[0,14]:='Диаметр долота';
+   StringGridDate.Cells[1,14]:=Fpcmenu.Ebit.Text;
+
+   // длина колонны, м
+   StringGridDate.Cells[0,15]:='Глубина по инструменту, м';
+   StringGridDate.Cells[1,15]:=Fcalculator3i.ELdrill.Text;
+
+   // масса бурильной колонны, м
+   StringGridDate.Cells[0,16]:='Масса скважинного инструмента, кг';
+   StringGridDate.Cells[1,16]:=Fcalculator3i.Ekg.Text;
+
+   // масса бурильной колонны, тонны
+   StringGridDate.Cells[0,17]:='Масса скважинного инструмента, тонны';
+   StringGridDate.Cells[1,17]:=Fcalculator3i.Etonne.Text;
+
+   // вес бурильной колонны, кН
+   StringGridDate.Cells[0,18]:='Вес скважинного инструмента, кН';
+   StringGridDate.Cells[1,18]:=Fcalculator3i.EkN.Text;
+
+
+
+
+
+   //StringGrid1 PipeCalculator
+
+   StringGridPipeCalculator.RowCount:= Fcalculator3i.StringGrid1.RowCount;
+
+   for i := 0 to Fcalculator3i.StringGrid1.RowCount-1 do
+
+   begin
+    StringGridPipeCalculator.Cells[0,i]:=Fcalculator3i.StringGrid1.Cells[0, i];
+    StringGridPipeCalculator.Cells[1,i]:=Fcalculator3i.StringGrid1.Cells[1, i];
+    StringGridPipeCalculator.Cells[2,i]:=Fcalculator3i.StringGrid1.Cells[2, i];
+    StringGridPipeCalculator.Cells[3,i]:=Fcalculator3i.StringGrid1.Cells[3, i];
+    StringGridPipeCalculator.Cells[4,i]:=Fcalculator3i.StringGrid1.Cells[4, i];
+    StringGridPipeCalculator.Cells[5,i]:=Fcalculator3i.StringGrid1.Cells[5, i];
+    StringGridPipeCalculator.Cells[6,i]:=Fcalculator3i.StringGrid1.Cells[6, i];
+    StringGridPipeCalculator.Cells[7,i]:=Fcalculator3i.StringGrid1.Cells[7, i];
+    StringGridPipeCalculator.Cells[8,i]:=Fcalculator3i.StringGrid1.Cells[11, i];
+    StringGridPipeCalculator.Cells[9,i]:=Fcalculator3i.StringGrid1.Cells[12, i];
+    StringGridPipeCalculator.Cells[10,i]:=Fcalculator3i.StringGrid1.Cells[13, i];
+    StringGridPipeCalculator.Cells[11,i]:=Fcalculator3i.StringGrid1.Cells[14, i];
+    StringGridPipeCalculator.Cells[12,i]:=Fcalculator3i.StringGrid1.Cells[15, i];
+   end;
+
+
+end;
+
+end.

@@ -93,7 +93,7 @@ end;
 
 procedure TPipeWeight.GFPShowMessage;
 begin
- ShowMessage('Выполнено: Расчёт массы колонны'+ NamePipe+ ' '+ FloatToStr(Massi) );
+ ShowMessage('Расчёт выполнен');
 end;
 
 procedure TPipeWeight.InputData(Mi, Mc, M2t, Lp, Lc, Zen, Dne, Dve, CMudE, Cfr,

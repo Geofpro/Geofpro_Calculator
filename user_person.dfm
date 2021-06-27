@@ -3,8 +3,8 @@ object FUser_person: TFUser_person
   Top = 0
   BorderStyle = bsDialog
   Caption = 'GEOFPRO Calculator 3i   '#1055#1077#1088#1089#1086#1085#1072#1083#1080#1079#1072#1094#1080#1103' '#1086#1090#1095#1105#1090#1086#1074
-  ClientHeight = 463
-  ClientWidth = 746
+  ClientHeight = 491
+  ClientWidth = 854
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object FUser_person: TFUser_person
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = 600
+    Left = 696
     Top = 40
     Width = 100
     Height = 100
@@ -279,8 +279,8 @@ object FUser_person: TFUser_person
       536A0000000049454E44AE426082}
   end
   object Bapply: TButton
-    Left = 595
-    Top = 408
+    Left = 651
+    Top = 384
     Width = 105
     Height = 25
     Cursor = crHandPoint
@@ -291,8 +291,8 @@ object FUser_person: TFUser_person
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 545
-    Height = 463
+    Width = 593
+    Height = 491
     Align = alLeft
     Caption = 'Panel1'
     Color = 10381108
@@ -303,13 +303,14 @@ object FUser_person: TFUser_person
       Left = 1
       Top = 1
       Width = 488
-      Height = 461
+      Height = 489
       Align = alLeft
       ColCount = 2
       RowCount = 10
       Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
       TabOrder = 0
       OnDblClick = StringGrid1DblClick
+      ExplicitHeight = 461
     end
   end
 end

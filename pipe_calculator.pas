@@ -41,6 +41,9 @@ type
     ELdrill: TEdit;
     Image10: TImage;
     SG1Row: TEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -61,6 +64,7 @@ type
     procedure N4Click(Sender: TObject);
     procedure Image9Click(Sender: TObject);
     procedure StringGrid1RowMoved(Sender: TObject; FromIndex, ToIndex: Integer);
+    procedure Image6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -76,6 +80,8 @@ type
     procedure ClearTable; // очистить всю таблицу
     procedure ClearColor; // убираем красную подсветку
     procedure SumLeght; // глубина скважины по инструменту
+    procedure ConvertKG; //переводим кг в тонны
+    procedure SumWeight; //сумма массы и веса
   end;
 
 var
@@ -91,7 +97,7 @@ implementation
  // EGridRows - содержит количество строк в таблице StringGrid1
  // SG1Row - текущая строка таблица StringGrid1
 
-uses pcmenu, referenсe, Diagram, ProjectionEXL;
+uses pcmenu, referenсe, Diagram, ProjectionEXL, TableOfElements, Reports;
 
 procedure TFcalculator3i.Button1Click(Sender: TObject);
 begin
@@ -139,7 +145,16 @@ begin
      StringGrid1.Cells[ncol,i]:='';
    end;
  end;
+end;
 
+procedure TFcalculator3i.ConvertKG;
+// переводим результаты расчёта массы из кг в тонны
+ var i : Integer;
+begin
+  for i := 1 to StringGrid1.RowCount-1 do
+  begin
+   StringGrid1.Cells[14, i]:= FloatToStr(StrToFloat(StringGrid1.Cells[13, i])/1000);
+  end;
 end;
 
 procedure TFcalculator3i.DelCurrentRow;
@@ -192,6 +207,7 @@ begin
   StringGrid1.ColWidths[13] := 110;
   StringGrid1.ColWidths[14] := 100;
   StringGrid1.ColWidths[15] := 100;
+  StringGrid1.ColWidths[16] := -1;
 
   StringGrid1.Cells[0,0]:='№';
   StringGrid1.Cells[1,0]:='Наименование';
@@ -252,6 +268,11 @@ procedure TFcalculator3i.Image4Click(Sender: TObject);
 begin
   ClearColor;
   SG1delRow;
+end;
+
+procedure TFcalculator3i.Image6Click(Sender: TObject);
+begin
+  FrReports.Show;
 end;
 
 procedure TFcalculator3i.Image7Click(Sender: TObject);
@@ -345,10 +366,11 @@ procedure TFcalculator3i.SG2clear;
        i, col, row : Integer;
 begin
  //  масса и вес бурильной колонны
-   Ekg.Text:='';
-   Etonne.Text:='';
-   EkN.Text:='';
+   Ekg.Text:='0';
+   Etonne.Text:='0';
+   EkN.Text:='0';
 
+   ELdrill.Text:='0';
 
    // масса и вес элементов бурильной колонны
    begin
@@ -420,6 +442,21 @@ begin
     ELdrill.Text:=FloatToStr(StrToFloat(ELdrill.Text)+StrToFloat(StringGrid1.Cells[11,i]));
   end;
 
+end;
+
+procedure TFcalculator3i.SumWeight;
+ // вычисляем суммарную массу (кг, тонны) и вес (кН)
+ var i : Integer;
+begin
+  for i := 1 to StringGrid1.RowCount-1 do
+  begin
+    // масса, кг
+    Ekg.Text:=FloatToStr(StrToFloat(StringGrid1.Cells[13, i])+StrToFloat(Ekg.Text));
+    // масса, тонны
+    Etonne.Text:=FloatToStr(StrToFloat(StringGrid1.Cells[14, i])+StrToFloat(Etonne.Text));
+    // вес, кН
+    EkN.Text:=FloatToStr(StrToFloat(StringGrid1.Cells[15, i])+StrToFloat(EkN.Text));
+  end;
 end;
 
 procedure TFcalculator3i.Сheckingvalue;
@@ -534,13 +571,15 @@ procedure TFcalculator3i.Сheckingvalue;
     end;
    end;
 
-   //если все условия прошли проверку номеру столбца и строки присвоить 0
-   Edit1.Text:='0';
-   Edit2.Text:='0';
+   // все условия прошли проверку
+   Edit1.Text:='0';  // индекс строки с ошибкой
+   Edit2.Text:='0';  // индекс столбца с ошибкой
    StringGrid1.Refresh;
+   // оочищаем расчётные значения
+   SG2clear;
    // Вызываем расчёт массы и веса
-   // ClassPipeWeightT;
-   SumLeght;
+   FTableOfElements.CalculateWeight;
+
  end;
 
 end.

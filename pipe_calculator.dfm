@@ -269,6 +269,7 @@ object Fcalculator3i: TFcalculator3i
         1F6B299AAEBF0BA07809E902463F495780069074096D2049D7200792815CC41D
         B4C6B5255D05EF29E99F11784A2F00DBB2CDFF0EE31FED45B23492C853240000
         000049454E44AE426082}
+      OnClick = Image6Click
     end
     object Image7: TImage
       Left = 260
@@ -622,11 +623,56 @@ object Fcalculator3i: TFcalculator3i
     ShowCaption = False
     TabOrder = 2
     object Label1: TLabel
-      Left = 160
-      Top = 8
-      Width = 83
+      Left = 16
+      Top = 9
+      Width = 110
       Height = 13
-      Caption = #1044#1083#1080#1085#1072' '#1082#1086#1083#1086#1085#1085#1099':'
+      Caption = #1044#1083#1080#1085#1072' '#1082#1086#1083#1086#1085#1085#1099', [ '#1084' ]:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 304
+      Top = 9
+      Width = 51
+      Height = 13
+      Caption = #1052#1072#1089#1089#1072', '#1082#1075' '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 512
+      Top = 8
+      Width = 69
+      Height = 13
+      Caption = #1052#1072#1089#1089#1072', '#1090#1086#1085#1085#1099
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 728
+      Top = 8
+      Width = 37
+      Height = 13
+      Caption = #1042#1077#1089', '#1082#1053
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object EGridRows: TEdit
       Left = 16
@@ -635,6 +681,7 @@ object Fcalculator3i: TFcalculator3i
       Height = 21
       TabOrder = 0
       Text = '6'
+      Visible = False
     end
     object Edit1: TEdit
       Left = 87
@@ -655,30 +702,33 @@ object Fcalculator3i: TFcalculator3i
       Visible = False
     end
     object Ekg: TEdit
-      Left = 1023
+      Left = 361
       Top = 6
-      Width = 100
+      Width = 112
       Height = 21
       TabOrder = 3
+      Text = '0'
     end
     object Etonne: TEdit
-      Left = 1129
+      Left = 590
       Top = 6
       Width = 100
       Height = 21
       TabOrder = 4
+      Text = '0'
     end
     object EkN: TEdit
-      Left = 1235
+      Left = 771
       Top = 6
       Width = 100
       Height = 21
       TabOrder = 5
+      Text = '0'
     end
     object Button1: TButton
-      Left = 832
+      Left = 1024
       Top = 6
-      Width = 161
+      Width = 129
       Height = 21
       Cursor = crHandPoint
       Caption = #1056#1072#1089#1089#1095#1105#1090
@@ -686,9 +736,9 @@ object Fcalculator3i: TFcalculator3i
       OnClick = Button1Click
     end
     object ELdrill: TEdit
-      Left = 272
+      Left = 134
       Top = 6
-      Width = 121
+      Width = 133
       Height = 21
       TabOrder = 7
       Text = '0'
@@ -700,6 +750,7 @@ object Fcalculator3i: TFcalculator3i
       Height = 21
       TabOrder = 8
       Text = '1'
+      Visible = False
     end
   end
   object MainMenu1: TMainMenu

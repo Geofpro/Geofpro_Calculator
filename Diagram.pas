@@ -51,7 +51,7 @@ begin
    //задаём массивы
   for i := 1 to RSGData-1 do
     begin
-      M[i]:= StrToFloat(Fcalculator3i.StringGrid1.Cells[14,i]);
+      M[i]:= StrToFloat(Fcalculator3i.StringGrid1.Cells[15,i]);
       S[i]:= Fcalculator3i.StringGrid1.Cells[1,i];
     end;
 

@@ -235,7 +235,7 @@ object Fpcmenu: TFpcmenu
       Top = 1
       Width = 481
       Height = 519
-      ActivePage = TabMud
+      ActivePage = TabBit
       Align = alClient
       TabOrder = 0
       object TabBit: TTabSheet

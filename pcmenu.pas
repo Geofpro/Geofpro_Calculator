@@ -239,6 +239,7 @@ begin
   if OpenDialog1.Execute then
   begin
     Lines.LoadFromFile(FileName);
+    Fcalculator3i.Caption:= 'GEOFPRO - Расчёт веса бурильных труб - '+ FileName;
     Fcalculator3i.EGridRows.Text := MemoSave.Lines[29];//кол-во строк StringGrid1
     Fcalculator3i.StringGrid1.RowCount:=StrToInt(Fcalculator3i.EGridRows.Text);
      i:=0;
@@ -251,6 +252,9 @@ begin
             end;
          end;
   end;
+
+  // обновляем таблицу ввода данных
+  Fcalculator3i.ClearColor;
 end;
 
 procedure TFpcmenu.PopenMouseLeave(Sender: TObject);

@@ -130,4 +130,18 @@ object DataModule1: TDataModule1
     Left = 608
     Top = 248
   end
+  object FDConnectionReport: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\Geofpro\Geofpro_Calculator\Win32\Debug\DrillingPipeD' +
+        'B\GFPcalculatorReport.mdb'
+      'ConnectionDef=Access_Demo')
+    Left = 64
+    Top = 376
+  end
+  object FDQueryReport: TFDQuery
+    Connection = FDConnectionReport
+    Left = 192
+    Top = 376
+  end
 end

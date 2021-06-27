@@ -33,6 +33,8 @@ type
     DataSource8: TDataSource;
     FDQuery9: TFDQuery;
     DataSource9: TDataSource;
+    FDConnectionReport: TFDConnection;
+    FDQueryReport: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -53,6 +55,9 @@ procedure TDataModule1.DataModuleCreate(Sender: TObject);
 begin
  FDConnection1.Params.Database:= GetCurrentDir + '\DrillingPipeDB\geofpro3i.mdb';
  FDConnection1.Connected:=True;
+ FDConnectionReport.Params.Database:= GetCurrentDir + '\DrillingPipeDB\GFPcalculatorReport.mdb';
+ FDConnectionReport.Connected:=True;
+ // справочники массы инструмента
  FDQuery1.Active:=True;
  FDQuery2.Active:=True;
  FDQuery3.Active:=True;
@@ -62,6 +67,9 @@ begin
  FDQuery7.Active:=True;
  FDQuery8.Active:=True;
  FDQuery9.Active:=True;
+
+ // таблицы отчёта
+
  end;
 
 end.

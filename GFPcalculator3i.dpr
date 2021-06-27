@@ -14,7 +14,9 @@ uses
   ProjectionEXL in 'ProjectionEXL.pas' {FrmProjectionEXL},
   Wait in 'Wait.pas' {FrmWait},
   TableOfElements in 'TableOfElements.pas' {FTableOfElements},
-  GFPÑonversionElements in 'GFPÑonversionElements.pas';
+  GFPÑonversionElements in 'GFPÑonversionElements.pas',
+  Reports in 'Reports.pas' {FrReports},
+  ReportsAllDate in 'ReportsAllDate.pas' {FrReportsAllDate: TFrame};
 
 {$R *.res}
 
@@ -32,5 +34,6 @@ begin
   Application.CreateForm(TFrmProjectionEXL, FrmProjectionEXL);
   Application.CreateForm(TFrmWait, FrmWait);
   Application.CreateForm(TFTableOfElements, FTableOfElements);
+  Application.CreateForm(TFrReports, FrReports);
   Application.Run;
 end.

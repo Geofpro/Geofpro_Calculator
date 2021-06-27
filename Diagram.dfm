@@ -2,8 +2,8 @@ object FrmDiagram: TFrmDiagram
   Left = 0
   Top = 0
   Caption = 
-    'GEOFPRO Calculator  '#1044#1080#1072#1075#1088#1072#1084#1084#1072' '#1088#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1103' '#1084#1072#1089#1089#1099' '#1073#1091#1088#1080#1083#1100#1085#1086#1081' '#1082#1086#1083#1086 +
-    #1085#1085#1099', '#1090#1086#1085#1085#1072' '
+    'GEOFPRO Calculator  '#1044#1080#1072#1075#1088#1072#1084#1084#1072' '#1088#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1103' '#1074#1077#1089#1072' '#1073#1091#1088#1080#1083#1100#1085#1086#1081' '#1082#1086#1083#1086#1085 +
+    #1085#1099', '#1082#1053
   ClientHeight = 490
   ClientWidth = 927
   Color = clWhite
@@ -24,8 +24,10 @@ object FrmDiagram: TFrmDiagram
     Height = 490
     Legend.Alignment = laBottom
     Legend.CheckBoxesStyle = cbsRadio
-    Legend.TextStyle = ltsLeftPercent
+    Legend.TextStyle = ltsValue
     Legend.TopPos = 11
+    Title.Text.Strings = (
+      'TChart')
     Title.Visible = False
     View3DOptions.Elevation = 315
     View3DOptions.Orthogonal = False
@@ -37,6 +39,7 @@ object FrmDiagram: TFrmDiagram
     DefaultCanvas = 'TGDIPlusCanvas'
     ColorPaletteIndex = 13
     object Series1: TPieSeries
+      Marks.Style = smsLabelPercent
       XValues.Order = loAscending
       YValues.Name = 'Pie'
       YValues.Order = loNone
