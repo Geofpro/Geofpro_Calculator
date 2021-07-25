@@ -310,7 +310,6 @@ object FUser_person: TFUser_person
       Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
       TabOrder = 0
       OnDblClick = StringGrid1DblClick
-      ExplicitHeight = 461
     end
   end
 end

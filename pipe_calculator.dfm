@@ -36,7 +36,9 @@ object Fcalculator3i: TFcalculator3i
       Width = 80
       Height = 80
       Cursor = crHandPoint
+      Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1089#1090#1088#1086#1082#1091
       AutoSize = True
+      ParentShowHint = False
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000500000
         005008060000008E11F2AD000000097048597300000B1200000B1201D2DD7EFC
@@ -86,6 +88,7 @@ object Fcalculator3i: TFcalculator3i
         8F000DA07C086D20E5639003291FC41D50F928F880CA7F8C20B00C7F0EA35D6B
         DD6DF41B48E8CF61FC03DFBCB6450902A4AA0000000049454E44AE426082}
       Proportional = True
+      ShowHint = True
       OnClick = Image3Click
     end
     object Image4: TImage
@@ -94,7 +97,9 @@ object Fcalculator3i: TFcalculator3i
       Width = 80
       Height = 80
       Cursor = crHandPoint
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1089#1090#1088#1086#1082#1091
       AutoSize = True
+      ParentShowHint = False
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000500000
         005008060000008E11F2AD000000097048597300000B1200000B1201D2DD7EFC
@@ -148,7 +153,7 @@ object Fcalculator3i: TFcalculator3i
         3DD40D18E3A46E019A40EA26B489A46E839C48EA46DC09A56E059F50EA1F2348
         2C8E3F8771C8C7B1D15FC31EFD398CFF0099B01554CDDC9B1F0000000049454E
         44AE426082}
-      Stretch = True
+      ShowHint = True
       OnClick = Image4Click
     end
     object Image5: TImage
@@ -157,7 +162,9 @@ object Fcalculator3i: TFcalculator3i
       Width = 80
       Height = 80
       Cursor = crHandPoint
+      Hint = #1057#1087#1088#1072#1074#1082#1072
       AutoSize = True
+      ParentShowHint = False
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000500000
         005008060000008E11F2AD000000097048597300000B1200000B1201D2DD7EFC
@@ -214,6 +221,7 @@ object Fcalculator3i: TFcalculator3i
         00C671988F0055C07C08AD12E6639095301FC4AD88F9287845CC3F46A00CC7CF
         61F41B06874A7F0B7BF47318FF02804BD74535EE00E40000000049454E44AE42
         6082}
+      ShowHint = True
     end
     object Image6: TImage
       Left = 590
@@ -221,7 +229,9 @@ object Fcalculator3i: TFcalculator3i
       Width = 80
       Height = 80
       Cursor = crHandPoint
+      Hint = #1054#1090#1095#1105#1090#1099
       AutoSize = True
+      ParentShowHint = False
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000500000
         005008060000008E11F2AD000000097048597300000B1200000B1201D2DD7EFC
@@ -269,6 +279,7 @@ object Fcalculator3i: TFcalculator3i
         1F6B299AAEBF0BA07809E902463F495780069074096D2049D7200792815CC41D
         B4C6B5255D05EF29E99F11784A2F00DBB2CDFF0EE31FED45B23492C853240000
         000049454E44AE426082}
+      ShowHint = True
       OnClick = Image6Click
     end
     object Image7: TImage
@@ -277,7 +288,9 @@ object Fcalculator3i: TFcalculator3i
       Width = 80
       Height = 80
       Cursor = crHandPoint
+      Hint = #1054#1090#1082#1088#1099#1090#1100' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082
       AutoSize = True
+      ParentShowHint = False
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000500000
         005008060000008E11F2AD000000097048597300000B1200000B1201D2DD7EFC
@@ -328,6 +341,7 @@ object Fcalculator3i: TFcalculator3i
         C13B1A834A988F7E6A351F3ED629ECE1630343E7E3EFE60318231EC0B85198F9
         08D0A99A0FA175A4F91864479A0FE276A8F92878879AFF1881636DF39FC3F80F
         36AD9225D2F322090000000049454E44AE426082}
+      ShowHint = True
       OnClick = Image7Click
     end
     object Image8: TImage
@@ -336,7 +350,9 @@ object Fcalculator3i: TFcalculator3i
       Width = 80
       Height = 80
       Cursor = crHandPoint
+      Hint = #1044#1080#1072#1075#1088#1072#1084#1084#1099
       AutoSize = True
+      ParentShowHint = False
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000500000
         005008060000008E11F2AD000000097048597300000B1200000B1201D2DD7EFC
@@ -407,6 +423,7 @@ object Fcalculator3i: TFcalculator3i
         FF33824C3A08802E7DCAFF0EE37F24D3D9431ADEEF230000000049454E44AE42
         6082}
       Proportional = True
+      ShowHint = True
       OnClick = Image8Click
     end
     object Image9: TImage
@@ -415,7 +432,9 @@ object Fcalculator3i: TFcalculator3i
       Width = 80
       Height = 80
       Cursor = crHandPoint
+      Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1090#1072#1073#1083#1080#1094#1091
       AutoSize = True
+      ParentShowHint = False
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000500000
         005008060000008E11F2AD000000097048597300000B1200000B1201D2DD7EFC
@@ -474,6 +493,7 @@ object Fcalculator3i: TFcalculator3i
         350C9D8EBF4B607849D3018CED643A0234814C87D02692E918E444724F0EE24E
         DAE29A321D05DF52A67F46D0520601D89431FF3B8CFF0150E74F52A79C506D00
         00000049454E44AE426082}
+      ShowHint = True
       OnClick = Image9Click
     end
     object Image10: TImage
@@ -482,7 +502,9 @@ object Fcalculator3i: TFcalculator3i
       Width = 80
       Height = 80
       Cursor = crHandPoint
+      Hint = #1055#1088#1086#1092#1080#1083#1100' '#1089#1082#1074#1072#1078#1080#1085#1099
       AutoSize = True
+      ParentShowHint = False
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000500000
         005008060000008E11F2AD000000097048597300000B1200000B1201D2DD7EFC
@@ -545,6 +567,7 @@ object Fcalculator3i: TFcalculator3i
         CBC71E65DC978F198A4EAFBFEB41F192A617307693E915A03DC8F412DA9E647A
         0D724F32BD88BB47995E05DFA34CFF8CA067F1FC3B8CFAD04FD3E8AF698FFE1D
         C6FF8809BD54A332F5170000000049454E44AE426082}
+      ShowHint = True
       OnClick = Image10Click
     end
     object Panel2: TPanel

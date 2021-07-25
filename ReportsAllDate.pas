@@ -36,7 +36,7 @@ implementation
 uses User_person, pcmenu, pipe_calculator, ProjectionEXL ;
 
 procedure TFrReportsAllDate.DiagramWeight;
-  // строим диаграмму с переменным количесвом секторов
+  // строим диаграмму с переменным количесвом секторов, данные из основной таблицы расчЄтов главной формы
   var
    M:  array of Real;   //масса секции
    S:  array of String;   //название секции
@@ -97,7 +97,7 @@ begin
   StringGridDate.Cells[0,0]:='Ќаименование параметра';
   StringGridDate.Cells[1,0]:='«начение';
 
-  // им€ пользовател€, скажина и т.д персоонализаци€ пользовател€
+  // им€ пользовател€, скажина и т.д персонализаци€ пользовател€
   for i :=1 to FUser_person.StringGrid1.RowCount-1 do
    begin
     StringGridDate.Cells[0,i]:=FUser_person.StringGrid1.Cells[0, i];
@@ -119,7 +119,7 @@ begin
    StringGridDate.Cells[0,15]:='√лубина по инструменту, м';
    StringGridDate.Cells[1,15]:=Fcalculator3i.ELdrill.Text;
 
-   // масса бурильной колонны, м
+   // масса бурильной колонны, кг
    StringGridDate.Cells[0,16]:='ћасса скважинного инструмента, кг';
    StringGridDate.Cells[1,16]:=Fcalculator3i.Ekg.Text;
 

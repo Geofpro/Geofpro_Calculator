@@ -126,6 +126,7 @@ begin
 end;
 
 procedure TFTableOfElements.CalculateWeight;
+ var i : Integer;
 begin
  // очищаем данные предыдущего расчЄта
   SGElementsClear;
@@ -136,10 +137,13 @@ begin
  // определ€ем зенитный угол дл€ каждой отдельной трубы
   Zenit;
  // провер€ем, заполненны ли значени€ зенитного угла
- if SGElements.Cells[8,1]='' then
+  for i := 1 to SGElements.RowCount-1 do
   begin
-    ShowMessage('«аполните значени€ зенитного угла');
-    Exit
+     if SGElements.Cells[8,i]='' then
+    begin
+     ShowMessage('«аполните значени€ зенитного угла');
+     Exit;
+    end;
   end;
  // расчитываем массу и вес каждой трубы
  ClassPipeWeightT;
@@ -321,8 +325,7 @@ begin
       and (StrToFloat(SGElements.Cells[7,i])>=StrToFloat(FrmProjectionEXL.SGexcel.Cells[0,ip])) then
       begin
        SGElements.Cells[8,i]:= FrmProjectionEXL.SGexcel.Cells[1,ip]
-      end;
-     // else SGElements.Cells[8,i]:= '0';
+      end
     end;
 
   end;

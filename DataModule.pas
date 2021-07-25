@@ -35,6 +35,10 @@ type
     DataSource9: TDataSource;
     FDConnectionReport: TFDConnection;
     FDQueryReport: TFDQuery;
+    FDQueryPersonDate: TFDQuery;
+    FDQueryPipeCalculator: TFDQuery;
+    DataSourcePersonDate: TDataSource;
+    DataSourcePipeCalculator: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -67,9 +71,6 @@ begin
  FDQuery7.Active:=True;
  FDQuery8.Active:=True;
  FDQuery9.Active:=True;
-
- // таблицы отчёта
-
  end;
 
 end.

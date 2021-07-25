@@ -11,6 +11,7 @@ type
     Panel1: TPanel;
     MonthCalendar1: TMonthCalendar;
     Button1: TButton;
+    DateTimePicker1: TDateTimePicker;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -38,6 +39,7 @@ procedure TFformdate.FormCreate(Sender: TObject);
 begin
   Fformdate.MonthCalendar1.Date:=now;
   FUser_person.StringGrid1.Cells[1,7]:=DateToStr(Fformdate.MonthCalendar1.Date);
+  DateTimePicker1.Date:= now;
 end;
 
 end.

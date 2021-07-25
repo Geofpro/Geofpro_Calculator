@@ -40,6 +40,7 @@ type
     Memo2: TMemo;
     CheckMud: TCheckBox;
     SGFactors: TStringGrid;
+    CheckBoxHint: TCheckBox;
     procedure LcloseClick(Sender: TObject);
     procedure PpersonClick(Sender: TObject);
     procedure PpersonMouseLeave(Sender: TObject);
@@ -77,6 +78,7 @@ type
     procedure PelementsMouseLeave(Sender: TObject);
     procedure PelementsMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
+    procedure CheckBoxHintClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -91,7 +93,36 @@ implementation
 
 {$R *.dfm}
 
-uses geofpro, user_person, pipe_calculator, referenсe, TableOfElements;
+uses geofpro, user_person, pipe_calculator, referenсe, TableOfElements,
+  ProjectionEXL, formdate;
+
+procedure TFpcmenu.CheckBoxHintClick(Sender: TObject);
+begin
+  case CheckBoxHint.State of
+   cbUnchecked:
+   begin
+    Fcalculator3i.Image3.ShowHint := False;
+    Fcalculator3i.Image4.ShowHint := False;
+    Fcalculator3i.Image7.ShowHint := False;
+    Fcalculator3i.Image10.ShowHint := False;
+    Fcalculator3i.Image8.ShowHint := False;
+    Fcalculator3i.Image6.ShowHint := False;
+    Fcalculator3i.Image9.ShowHint := False;
+    Fcalculator3i.Image5.ShowHint := False;
+   end;
+   cbChecked:
+   begin
+    Fcalculator3i.Image3.ShowHint := True;
+    Fcalculator3i.Image4.ShowHint := True;
+    Fcalculator3i.Image7.ShowHint := True;
+    Fcalculator3i.Image10.ShowHint := True;
+    Fcalculator3i.Image8.ShowHint := True;
+    Fcalculator3i.Image6.ShowHint := True;
+    Fcalculator3i.Image9.ShowHint := True;
+    Fcalculator3i.Image5.ShowHint := True;
+   end;
+ end;
+end;
 
 procedure TFpcmenu.FormActivate(Sender: TObject);
 begin
@@ -233,14 +264,17 @@ begin
 end;
 
 procedure TFpcmenu.PopenClick(Sender: TObject);
+// открываем файл
  var cols, rows, i : Integer;
 begin
  with OpenDialog1, MemoSave do
   if OpenDialog1.Execute then
   begin
     Lines.LoadFromFile(FileName);
+    // добавляем название файла в заголовок формы
     Fcalculator3i.Caption:= 'GEOFPRO - Расчёт веса бурильных труб - '+ FileName;
-    Fcalculator3i.EGridRows.Text := MemoSave.Lines[29];//кол-во строк StringGrid1
+    //кол-во строк StringGrid1 (таблица главного окна)
+    Fcalculator3i.EGridRows.Text := MemoSave.Lines[29];
     Fcalculator3i.StringGrid1.RowCount:=StrToInt(Fcalculator3i.EGridRows.Text);
      i:=0;
          for cols := 0 to 12 do
@@ -251,6 +285,32 @@ begin
               i:=i+1;
             end;
          end;
+
+         // имя пользователя, скажина и т.д персонализация пользователя, строки 0-7
+         for rows :=0 to 7 do
+         begin
+          FUser_person.StringGrid1.Cells[1, 1+rows]:= MemoSave.Lines[rows];
+         end;
+
+         //имя пользователя
+         Geofpro3i.Euserlog.Text:=FUser_person.StringGrid1.Cells[1,1];
+
+        //  коэффициенты, строки 8-11
+        for rows :=1 to 4 do
+         begin
+           Fpcmenu.SGFactors.Cells[1, rows]:= MemoSave.Lines[7+rows];
+         end;
+
+         // диаметр долота
+        Fpcmenu.Ebit.Text:= MemoSave.Lines[12];
+
+        // минимальный внутренний диаметр установленной обсадной колонны, мм
+        Eminpipe.Text:=MemoSave.Lines[18];
+
+        // минимально допустимый зазор между диаметром скважины и диаметром севажинного инструмента
+        Erad.Text:=MemoSave.Lines[19];
+
+
   end;
 
   // обновляем таблицу ввода данных
@@ -285,10 +345,11 @@ begin
 end;
 
 procedure TFpcmenu.PsaveClick(Sender: TObject);
+ // сохраняем расчёт в текстовый файл
   var cols, rows, i : Integer;
 begin
    // устанавливаем количество строк в Memo
-   for i := 0 to (StrToInt(Fcalculator3i.EGridRows.Text)*10)+30 do
+   for i := 0 to (StrToInt(Fcalculator3i.EGridRows.Text)*12)+30 do
        begin
          MemoSave.Lines.Add('') ;
        end;
@@ -296,9 +357,10 @@ begin
  with SaveDialog1, MemoSave do
   if SaveDialog1.Execute then
    begin
-
+     // сохраняем количество строк в расчётной таблице
      MemoSave.Lines[29] := Fcalculator3i.EGridRows.Text;
-     i:=0;
+     // сохраняем данные основной расчётной таблицы, строки 30+
+       i:=0; // счётчик количества дополняемых строк в MemoSave
        for cols := 0 to 12 do
           begin
              for rows := 1 to StrToInt(Fcalculator3i.EGridRows.Text) do
@@ -307,6 +369,43 @@ begin
              i:=i+1;
             end;
          end;
+
+       // имя пользователя, скажина и т.д персонализация пользователя, строки 0-7
+         for rows :=0 to 7 do
+         begin
+          MemoSave.Lines[rows]:=FUser_person.StringGrid1.Cells[1, 1+rows];
+         end;
+
+        //  коэффициенты, строки 8-11
+        for rows :=1 to 4 do
+         begin
+           MemoSave.Lines[7+rows]:=Fpcmenu.SGFactors.Cells[1, rows];
+         end;
+
+         // диаметр долота
+        MemoSave.Lines[12]:=Fpcmenu.Ebit.Text;
+
+        // длина колонны, м
+
+        MemoSave.Lines[13]:=Fcalculator3i.ELdrill.Text;
+
+        // масса бурильной колонны, тонны
+        MemoSave.Lines[14]:=Fcalculator3i.Etonne.Text;
+
+        // вес бурильной колонны, кН
+        MemoSave.Lines[15]:=Fcalculator3i.EkN.Text;
+
+        // имя файла с профилем
+        MemoSave.Lines[16]:= FrmProjectionEXL.ENameFile.Text;
+
+        // дата изменения записи
+        MemoSave.Lines[17]:=DateToStr(Fformdate.DateTimePicker1.Date);
+
+        // минимальный внутренний диаметр установленной обсадной колонны, мм
+        MemoSave.Lines[18]:= Eminpipe.Text;
+
+        // минимально допустимый зазор между диаметром скважины и диаметром севажинного инструмента
+        MemoSave.Lines[19]:= Erad.Text;
 
     Lines.SaveToFile(FileName);
     OpenDialog1.FileName := FileName;//Чтобы исправленный текст не затёр источник

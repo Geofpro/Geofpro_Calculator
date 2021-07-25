@@ -33,7 +33,7 @@ object Fformdate: TFformdate
     Top = 32
     Width = 191
     Height = 160
-    Date = 44275.462238842590000000
+    Date = 44275.481542650460000000
     TabOrder = 1
   end
   object Button1: TButton
@@ -45,5 +45,15 @@ object Fformdate: TFformdate
     Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
     TabOrder = 2
     OnClick = Button1Click
+  end
+  object DateTimePicker1: TDateTimePicker
+    Left = 152
+    Top = 8
+    Width = 186
+    Height = 21
+    Date = 44381.484901678240000000
+    Time = 44381.484901678240000000
+    TabOrder = 3
+    Visible = False
   end
 end

@@ -58,6 +58,7 @@ begin
   StringGrid1.Cells[0,5]:='Месторождение';
   StringGrid1.Cells[0,6]:='Скважина';
   StringGrid1.Cells[0,7]:='Дата';
+  StringGrid1.Cells[0,8]:='Примечание';
 end;
 
 procedure TFUser_person.StringGrid1DblClick(Sender: TObject);

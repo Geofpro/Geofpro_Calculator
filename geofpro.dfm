@@ -5513,10 +5513,8 @@ object Geofpro3i: TGeofpro3i
       4D2B36D5F735139DBF2FE74008CDB8FF00B2B51B367E6EC3A52B9C9DBD875A8D
       CEE3F4A0423B639A898E3FFD54E66DDF35479C9A047FFFD9}
     OnMouseDown = Image1MouseDown
-    ExplicitLeft = 112
-    ExplicitTop = 104
-    ExplicitWidth = 1680
-    ExplicitHeight = 1182
+    ExplicitLeft = -54
+    ExplicitTop = 123
   end
   object Label1: TLabel
     Left = 102

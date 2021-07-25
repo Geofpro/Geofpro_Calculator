@@ -124,6 +124,9 @@ procedure TFcalculator3i.ClearRow;
  var ncol: Integer;   // номер столбца
  nrow : Integer;   // номер текущей строки
 begin
+  //очищаем расчЄтные значени€
+   SG2clear;
+
  nrow:=StrToInt(SG1Row.Text);
   for ncol := 1 to 15 do
   begin
@@ -163,6 +166,9 @@ procedure TFcalculator3i.DelCurrentRow;
  nrow, nrows : Integer;   // номер текущей строки, количество строк в таблице
  ncol: Integer;   // номер столбца
 begin
+   //очищаем расчЄтные значени€
+   SG2clear;
+
   nrows:=StrToInt(EGridRows.Text);
   if nrows>1 then
  begin
@@ -262,12 +268,14 @@ procedure TFcalculator3i.Image3Click(Sender: TObject);
 begin
   ClearColor;
   SG1addRow;
+  SG2clear;
 end;
 
 procedure TFcalculator3i.Image4Click(Sender: TObject);
 begin
   ClearColor;
   SG1delRow;
+  SG2clear;
 end;
 
 procedure TFcalculator3i.Image6Click(Sender: TObject);
@@ -297,6 +305,9 @@ procedure TFcalculator3i.InsertRow;
  nrow, nrows : Integer;   // номер текущей строки, количество строк в таблице
  ncol: Integer;   // номер столбца
 begin
+ //очищаем расчЄтные значени€
+ SG2clear;
+
  EGridRows.Text:=IntToStr(StrToInt(EGridRows.Text)+1);
  StringGrid1.RowCount:=StrToInt(EGridRows.Text);
  StringGrid1.Cells[0,StrToInt(EGridRows.Text)-1]:=IntToStr(StrToInt(EGridRows.Text)-1);
@@ -453,7 +464,7 @@ begin
     // масса, кг
     Ekg.Text:=FloatToStr(StrToFloat(StringGrid1.Cells[13, i])+StrToFloat(Ekg.Text));
     // масса, тонны
-    Etonne.Text:=FloatToStr(StrToFloat(StringGrid1.Cells[14, i])+StrToFloat(Etonne.Text));
+    Etonne.Text:=FloatToStrF(StrToFloat(StringGrid1.Cells[14, i])+StrToFloat(Etonne.Text), ffFixed,10,2);
     // вес, кЌ
     EkN.Text:=FloatToStr(StrToFloat(StringGrid1.Cells[15, i])+StrToFloat(EkN.Text));
   end;

@@ -9,6 +9,7 @@ object DataModule1: TDataModule1
         'Database=C:\Geofpro\Geofpro_Calculator\DrillingPipeDB\geofpro3i.' +
         'mdb'
       'ConnectionDef=Access_Demo')
+    Connected = True
     LoginPrompt = False
     Left = 104
     Top = 72
@@ -136,6 +137,8 @@ object DataModule1: TDataModule1
         'Database=C:\Geofpro\Geofpro_Calculator\Win32\Debug\DrillingPipeD' +
         'B\GFPcalculatorReport.mdb'
       'ConnectionDef=Access_Demo')
+    Connected = True
+    LoginPrompt = False
     Left = 64
     Top = 376
   end
@@ -143,5 +146,29 @@ object DataModule1: TDataModule1
     Connection = FDConnectionReport
     Left = 192
     Top = 376
+  end
+  object FDQueryPersonDate: TFDQuery
+    Connection = FDConnectionReport
+    SQL.Strings = (
+      'SELECT * FROM Title')
+    Left = 352
+    Top = 384
+  end
+  object FDQueryPipeCalculator: TFDQuery
+    Connection = FDConnectionReport
+    SQL.Strings = (
+      'SELECT * FROM WeightCalc')
+    Left = 488
+    Top = 384
+  end
+  object DataSourcePersonDate: TDataSource
+    DataSet = FDQueryPersonDate
+    Left = 352
+    Top = 448
+  end
+  object DataSourcePipeCalculator: TDataSource
+    DataSet = FDQueryPipeCalculator
+    Left = 488
+    Top = 448
   end
 end
