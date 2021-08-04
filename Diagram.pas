@@ -11,7 +11,6 @@ type
   TFrmDiagram = class(TForm)
     Chart1: TChart;
     Series1: TPieSeries;
-    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,11 +29,6 @@ uses pipe_calculator;
 
 { TFrmDiagram }
 
-procedure TFrmDiagram.FormActivate(Sender: TObject);
-begin
-  MassDiagramm;
-end;
-
 procedure TFrmDiagram.MassDiagramm;
 // строим диаграмму с переменным количесвом секторов
   var
@@ -44,6 +38,8 @@ procedure TFrmDiagram.MassDiagramm;
 
 begin
    RSGData:= Fcalculator3i.StringGrid1.RowCount;
+    // удаляем предыдущие значений M, S
+  Series1.Clear;
    // назначаям длину массива
   SetLength(M, RSGData) ;
   SetLength(S, RSGData) ;

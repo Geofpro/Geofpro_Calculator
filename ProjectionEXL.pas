@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, ComObj,
   Vcl.Menus, VclTee.TeeGDIPlus, VCLTee.TeEngine, VCLTee.Series, Vcl.ExtCtrls,
-  VCLTee.TeeProcs, VCLTee.Chart;
+  VCLTee.TeeProcs, VCLTee.Chart, Vcl.Imaging.pngimage;
 
 type
   TFrmProjectionEXL = class(TForm)
@@ -18,13 +18,22 @@ type
     N2: TMenuItem;
     N3: TMenuItem;
     N4: TMenuItem;
-    Chart1: TChart;
-    Series1: TLineSeries;
     Panel1: TPanel;
     ENameFile: TEdit;
     Label1: TLabel;
+    Splitter1: TSplitter;
+    Chart1: TChart;
+    Series1: TLineSeries;
+    Panel2: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Excel1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -72,6 +81,16 @@ begin
 
 end;
 
+procedure TFrmProjectionEXL.Image1Click(Sender: TObject);
+begin
+  SGexcel.RowCount:= SGexcel.RowCount+1;
+end;
+
+procedure TFrmProjectionEXL.Image2Click(Sender: TObject);
+begin
+  if SGexcel.RowCount>=3 then SGexcel.RowCount:= SGexcel.RowCount-1;
+end;
+
 procedure TFrmProjectionEXL.ImportEXL;
 // импорт данных из Excel файла
      const
@@ -108,6 +127,11 @@ begin
   Sheet := Unassigned;
 
   //ShowMessage('Данные добавлены');
+end;
+
+procedure TFrmProjectionEXL.N2Click(Sender: TObject);
+begin
+ FrmProjectionEXL.Close;
 end;
 
 procedure TFrmProjectionEXL.OpenEXL;

@@ -16,7 +16,9 @@ uses
   TableOfElements in 'TableOfElements.pas' {FTableOfElements},
   GFPÑonversionElements in 'GFPÑonversionElements.pas',
   Reports in 'Reports.pas' {FrReports},
-  ReportsAllDate in 'ReportsAllDate.pas' {FrReportsAllDate: TFrame};
+  ReportsAllDate in 'ReportsAllDate.pas' {FrReportsAllDate: TFrame},
+  DiagramFactors in 'DiagramFactors.pas' {FrDiagramFactors},
+  DiagramMain in 'DiagramMain.pas' {FrDiagramMain};
 
 {$R *.res}
 
@@ -35,5 +37,7 @@ begin
   Application.CreateForm(TFrmWait, FrmWait);
   Application.CreateForm(TFTableOfElements, FTableOfElements);
   Application.CreateForm(TFrReports, FrReports);
+  Application.CreateForm(TFrDiagramFactors, FrDiagramFactors);
+  Application.CreateForm(TFrDiagramMain, FrDiagramMain);
   Application.Run;
 end.

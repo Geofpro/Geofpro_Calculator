@@ -55,7 +55,6 @@ type
     procedure N1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure Image7Click(Sender: TObject);
-    procedure Image8Click(Sender: TObject);
     procedure Image10Click(Sender: TObject);
     procedure StringGrid1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
@@ -65,6 +64,7 @@ type
     procedure Image9Click(Sender: TObject);
     procedure StringGrid1RowMoved(Sender: TObject; FromIndex, ToIndex: Integer);
     procedure Image6Click(Sender: TObject);
+    procedure Image8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -97,11 +97,13 @@ implementation
  // EGridRows - содержит количество строк в таблице StringGrid1
  // SG1Row - текущая строка таблица StringGrid1
 
-uses pcmenu, referenсe, Diagram, ProjectionEXL, TableOfElements, Reports;
+uses pcmenu, referenсe, Diagram, ProjectionEXL, TableOfElements, Reports,
+  DiagramMain, DiagramFactors;
 
 procedure TFcalculator3i.Button1Click(Sender: TObject);
 begin
     Сheckingvalue;
+ 
 end;
 
 procedure TFcalculator3i.ClassPipeWeightT;
@@ -290,7 +292,7 @@ end;
 
 procedure TFcalculator3i.Image8Click(Sender: TObject);
 begin
-  FrmDiagram.Show;
+ FrDiagramMain.ShowModal;
 end;
 
 procedure TFcalculator3i.Image9Click(Sender: TObject);

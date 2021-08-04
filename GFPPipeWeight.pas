@@ -9,6 +9,7 @@ type
 private
     FNamePipe: String;  // название элемента бурильной колонны
     FPipeWeight : Real; // вес элемента, кЌ
+    FFrictionWeight: Real;// состовл€юща€ силы трени€ (проекци€ на горизонтальную ось)
     FPipeMass : Real; // масса трубы (элемента бурильной колонны), кг
     FMassi : Real; // масса одного метра трубы, кг
     FMassConnector : Real; // масса муфты, кг
@@ -25,6 +26,7 @@ private
     FFrictionFactor: Real; // коэффициент трени€
     FInertiaFactor: Real; // коэффициент инерции
     FPipeBendFactor: Real; // коэффициент изгиба колонны труб
+    FMudFactorTrue: String; // 1-учитываем коэффициент плавучасти, 0-не учитываем
 
  public
  property NamePipe: string read FNamePipe write FNamePipe;
@@ -49,9 +51,11 @@ private
  property FrictionFactor: Real read FFrictionFactor write FFrictionFactor;
  property InertiaFactor: Real read FInertiaFactor write FInertiaFactor;
  property PipeBendFactor: Real read FPipeBendFactor write FPipeBendFactor;
+ property MudFactorTrue: String read FMudFactorTrue write FMudFactorTrue;
+ property FrictionWeight: Real read FFrictionWeight write FFrictionWeight;
 
  procedure InputData ( Mi, Mc, M2t, Lp, Lc, Zen, Dne, Dve, CMudE, Cfr,
- Ci, Cb : Real; Np : String);
+ Ci, Cb : Real; Np, Mf : String);
  procedure PipeCalc;  // расчЄт массы и веса
  procedure GFPShowMessage;
  procedure DensityCalc; // расчЄт плотности
@@ -97,7 +101,7 @@ begin
 end;
 
 procedure TPipeWeight.InputData(Mi, Mc, M2t, Lp, Lc, Zen, Dne, Dve, CMudE, Cfr,
- Ci, Cb : Real; Np: String);
+ Ci, Cb : Real; Np, Mf: String);
   // импорт данных дл€ расчЄта
 begin
   NamePipe:=Np;
@@ -113,6 +117,7 @@ begin
   FrictionFactor:=Cfr;
   InertiaFactor:= Ci;
   PipeBendFactor:=Cb;
+  MudFactorTrue:=Mf;
 end;
 
 procedure TPipeWeight.RadianT(Ze1 : Real);
@@ -124,16 +129,24 @@ end;
 procedure TPipeWeight.SwimFactorCalc;
 // определ€ет коэффициент плавучести
 begin
-  SwimFactor:= 1-(DensityMud/Density);
+ if MudFactorTrue='1' then SwimFactor:= 1-(DensityMud/Density)
+ else  SwimFactor:=1;
 end;
 
 procedure TPipeWeight.PipeCalc;
 begin
+ // расчЄт плотности бурового инструмента
   DensityCalc;
+ // расчЄт коэффициента плавучести
   SwimFactorCalc;
+ // расчЄт массы бурового инструмента
   PipeMass := Massi*(LenghtP-(LenghtC/1000))+MassC+Mass2t;
+ // расчЄт веса инструмента
   PipeWeigh:= 9.81*SwimFactor*InertiaFactor*PipeBendFactor*
   (PipeMass*(FrictionFactor*sin(ZenitA) + cos(ZenitA))/1000) ;
+ // расчЄт состовл€ющей силы трени€ (проекци€ на горизонтальный участок)
+  FrictionWeight:= 9.81*PipeMass*FrictionFactor*sin(ZenitA)/1000 ;
+
 
 end;
 

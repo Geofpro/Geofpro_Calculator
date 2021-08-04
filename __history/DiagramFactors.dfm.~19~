@@ -1,0 +1,61 @@
+object FrDiagramFactors: TFrDiagramFactors
+  Left = 0
+  Top = 0
+  Caption = 'GEOFPRO Calculator '#1057#1086#1089#1090#1072#1074#1083#1103#1102#1097#1080#1077' '#1088#1072#1089#1095#1105#1090#1085#1086#1081' '#1092#1086#1088#1084#1091#1083#1099' '#1074#1077#1089#1072' '#1082#1086#1083#1086#1085#1085#1099
+  ClientHeight = 481
+  ClientWidth = 968
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Splitter1: TSplitter
+    Left = 697
+    Top = 0
+    Height = 481
+    ExplicitLeft = 472
+    ExplicitTop = 112
+    ExplicitHeight = 100
+  end
+  object Chart1: TChart
+    Left = 0
+    Top = 0
+    Width = 697
+    Height = 481
+    Legend.Alignment = laBottom
+    Title.Text.Strings = (
+      'TChart')
+    View3D = False
+    Align = alLeft
+    Color = clWhite
+    TabOrder = 0
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
+    object Series1: THorizBarSeries
+      BarBrush.Gradient.Direction = gdLeftRight
+      Gradient.Direction = gdLeftRight
+      XValues.Name = 'Bar'
+      XValues.Order = loNone
+      YValues.Name = 'Y'
+      YValues.Order = loAscending
+    end
+  end
+  object SGDiagramData: TStringGrid
+    Left = 700
+    Top = 0
+    Width = 268
+    Height = 481
+    Align = alClient
+    ColCount = 4
+    RowCount = 10
+    TabOrder = 1
+    ExplicitLeft = 248
+    ExplicitWidth = 550
+  end
+end

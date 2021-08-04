@@ -14,7 +14,6 @@ object FrmDiagram: TFrmDiagram
   Font.Style = []
   OldCreateOrder = False
   WindowState = wsMaximized
-  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object Chart1: TChart

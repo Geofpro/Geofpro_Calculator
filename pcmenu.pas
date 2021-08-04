@@ -267,6 +267,11 @@ procedure TFpcmenu.PopenClick(Sender: TObject);
 // открываем файл
  var cols, rows, i : Integer;
 begin
+ // очищаем расчётную таблицу
+ Fcalculator3i.ClearTable;
+ // очищаем результаты предыдущего расчёта
+ Fcalculator3i.SG2clear;
+
  with OpenDialog1, MemoSave do
   if OpenDialog1.Execute then
   begin

@@ -1,0 +1,63 @@
+unit DiagramMain;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls;
+
+type
+  TFrDiagramMain = class(TForm)
+    Image1: TImage;
+    Image2: TImage;
+    Label1: TLabel;
+    procedure Image2MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure Image2MouseLeave(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrDiagramMain: TFrDiagramMain;
+
+implementation
+
+{$R *.dfm}
+
+uses pipe_calculator, Diagram;
+
+procedure TFrDiagramMain.FormCreate(Sender: TObject);
+begin
+ Label1.Caption:='';
+end;
+
+procedure TFrDiagramMain.Image2Click(Sender: TObject);
+begin
+  // проверям, заполнены ли столбцы таблицы StringGrid1 для построения диаграммы
+ if Fcalculator3i.EkN.Text<>'0' then
+  begin
+   FrmDiagram.Show;
+   FrmDiagram.MassDiagramm;
+  end
+  else ShowMessage('Не достаточно данных для построения диаграммы');
+ FrDiagramMain.Close;
+end;
+
+procedure TFrDiagramMain.Image2MouseLeave(Sender: TObject);
+begin
+ Label1.Caption:='';
+end;
+
+procedure TFrDiagramMain.Image2MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+ Label1.Caption:='Диаграмма распределения веса бурильной колонны, кН';
+end;
+
+end.

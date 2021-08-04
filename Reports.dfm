@@ -651,6 +651,7 @@ object FrReports: TFrReports
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1NamePipe: TfrxMemoView
+          Left = 37.795300000000000000
           Width = 166.299320000000000000
           Height = 18.897650000000000000
           DataField = 'NamePipe'
@@ -667,7 +668,7 @@ object FrReports: TFrReports
           ParentFont = False
         end
         object frxDBDataset1Dn: TfrxMemoView
-          Left = 166.299320000000000000
+          Left = 204.094620000000000000
           Width = 79.370081180000000000
           Height = 18.897650000000000000
           DataField = 'Dn'
@@ -684,7 +685,7 @@ object FrReports: TFrReports
           ParentFont = False
         end
         object frxDBDataset1Dvn: TfrxMemoView
-          Left = 245.669450000000000000
+          Left = 283.464750000000000000
           Width = 75.590551180000000000
           Height = 18.897650000000000000
           DataField = 'Dvn'
@@ -701,7 +702,7 @@ object FrReports: TFrReports
           ParentFont = False
         end
         object frxDBDataset1Dmax: TfrxMemoView
-          Left = 321.260050000000000000
+          Left = 359.055350000000000000
           Width = 75.590551180000000000
           Height = 18.897650000000000000
           DataField = 'Dmax'
@@ -718,7 +719,7 @@ object FrReports: TFrReports
           ParentFont = False
         end
         object frxDBDataset1Dcn: TfrxMemoView
-          Left = 396.850650000000000000
+          Left = 434.645950000000000000
           Width = 75.590551180000000000
           Height = 18.897650000000000000
           DataField = 'Dcn'
@@ -735,7 +736,7 @@ object FrReports: TFrReports
           ParentFont = False
         end
         object frxDBDataset1Dcvn: TfrxMemoView
-          Left = 472.441250000000000000
+          Left = 510.236550000000000000
           Width = 75.590551180000000000
           Height = 18.897650000000000000
           DataField = 'Dcvn'
@@ -752,7 +753,7 @@ object FrReports: TFrReports
           ParentFont = False
         end
         object frxDBDataset1LeghtConnector: TfrxMemoView
-          Left = 548.031850000000000000
+          Left = 585.827150000000000000
           Width = 75.590551180000000000
           Height = 18.897650000000000000
           DataField = 'LeghtConnector'
@@ -769,7 +770,7 @@ object FrReports: TFrReports
           ParentFont = False
         end
         object frxDBDataset1LeghtElement: TfrxMemoView
-          Left = 699.213050000000000000
+          Left = 737.008350000000000000
           Width = 75.590551180000000000
           Height = 18.897650000000000000
           DataField = 'LeghtElement'
@@ -786,7 +787,7 @@ object FrReports: TFrReports
           ParentFont = False
         end
         object frxDBDataset1MassTone: TfrxMemoView
-          Left = 774.803650000000000000
+          Left = 812.598950000000000000
           Width = 75.590551180000000000
           Height = 18.897650000000000000
           DataField = 'MassTone'
@@ -803,7 +804,7 @@ object FrReports: TFrReports
           ParentFont = False
         end
         object frxDBDataset1Weight: TfrxMemoView
-          Left = 850.394250000000000000
+          Left = 888.189550000000000000
           Width = 75.590551180000000000
           Height = 18.897650000000000000
           DataField = 'Weight'
@@ -820,7 +821,7 @@ object FrReports: TFrReports
           ParentFont = False
         end
         object frxDBDataset1LeghtSection: TfrxMemoView
-          Left = 623.622450000000000000
+          Left = 661.417750000000000000
           Width = 75.590551180000000000
           Height = 18.897650000000000000
           DataField = 'LeghtSection'
@@ -836,6 +837,23 @@ object FrReports: TFrReports
             '[frxDBDataset1."LeghtSection"]')
           ParentFont = False
         end
+        object frxDBDataset1id: TfrxMemoView
+          Width = 37.795300000000000000
+          Height = 18.897650000000000000
+          DataField = 'id'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxDBDataset1."id"]')
+          ParentFont = False
+        end
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
@@ -843,6 +861,7 @@ object FrReports: TFrReports
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo3: TfrxMemoView
+          Left = 37.795300000000000000
           Width = 166.299320000000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -851,12 +870,14 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077)
           ParentFont = False
+          VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
-          Left = 166.299320000000000000
+          Left = 204.094620000000000000
           Width = 79.370078740000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -865,12 +886,14 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             'D'#1085', '#1084#1084)
           ParentFont = False
+          VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
-          Left = 245.669450000000000000
+          Left = 283.464750000000000000
           Width = 75.590551180000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -879,12 +902,14 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             'D'#1074#1085', '#1084#1084)
           ParentFont = False
+          VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
-          Left = 321.260050000000000000
+          Left = 359.055350000000000000
           Width = 75.590551180000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -893,12 +918,14 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             'Dmax, '#1084#1084)
           ParentFont = False
+          VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
-          Left = 396.850650000000000000
+          Left = 434.645950000000000000
           Width = 75.590551180000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -907,12 +934,14 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             'D'#1084#1085', '#1084#1084)
           ParentFont = False
+          VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
-          Left = 472.441250000000000000
+          Left = 510.236550000000000000
           Width = 75.590551180000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -921,12 +950,14 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             'D'#1084#1074#1085', '#1084#1084)
           ParentFont = False
+          VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
-          Left = 548.031850000000000000
+          Left = 585.827150000000000000
           Width = 75.590551180000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -935,12 +966,14 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             'L'#1084', '#1084#1084)
           ParentFont = False
+          VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
-          Left = 623.622450000000000000
+          Left = 661.417750000000000000
           Width = 75.590551180000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -949,12 +982,14 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             'L'#1089', '#1084#1084)
           ParentFont = False
+          VAlign = vaCenter
         end
         object Memo11: TfrxMemoView
-          Left = 699.213050000000000000
+          Left = 737.008350000000000000
           Width = 75.590551180000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -963,12 +998,14 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             'Le, '#1084#1084)
           ParentFont = False
+          VAlign = vaCenter
         end
         object Memo12: TfrxMemoView
-          Left = 774.803650000000000000
+          Left = 812.598950000000000000
           Width = 75.590551180000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -977,12 +1014,14 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             #1052', '#1090#1086#1085#1085#1072)
           ParentFont = False
+          VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
-          Left = 850.394250000000000000
+          Left = 888.189550000000000000
           Width = 75.590551180000000000
           Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -991,9 +1030,26 @@ object FrReports: TFrReports
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             'W, '#1082#1053)
           ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo44: TfrxMemoView
+          Width = 37.795300000000000000
+          Height = 41.574830000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #8470' '#1087'/'#1087)
+          ParentFont = False
+          VAlign = vaCenter
         end
       end
     end
@@ -1028,7 +1084,7 @@ object FrReports: TFrReports
         Font.Style = []
         Frame.Color = clTeal
         Memo.UTF8W = (
-          #1055#1088#1086#1077#1082#1094#1080#1103' '#1087#1088#1086#1092#1080#1083#1103' '#1089#1082#1074#1072#1078#1080#1085#1099' '#1085#1072' '#1074#1077#1088#1090#1080#1082#1072#1083#1100#1085#1091#1102' '#1087#1083#1086#1089#1082#1086#1089#1090#1100', ['#1084']')
+          #1055#1088#1086#1077#1082#1094#1080#1103' '#1087#1088#1086#1092#1080#1083#1103' '#1089#1082#1074#1072#1078#1080#1085#1099' '#1085#1072' '#1074#1077#1088#1090#1080#1082#1072#1083#1100#1085#1091#1102' '#1087#1083#1086#1089#1082#1086#1089#1090#1100', '#1084)
         ParentFont = False
       end
     end
@@ -1063,7 +1119,7 @@ object FrReports: TFrReports
         Font.Style = []
         Frame.Color = clTeal
         Memo.UTF8W = (
-          #1044#1080#1072#1075#1088#1072#1084#1084#1072' '#1074#1077#1089#1072' '#1089#1077#1082#1094#1080#1081' '#1073#1091#1088#1080#1083#1100#1085#1086#1081' '#1082#1086#1083#1086#1085#1085#1099', ['#1082#1053']')
+          #1044#1080#1072#1075#1088#1072#1084#1084#1072' '#1074#1077#1089#1072' '#1089#1077#1082#1094#1080#1081' '#1073#1091#1088#1080#1083#1100#1085#1086#1081' '#1082#1086#1083#1086#1085#1085#1099', '#1082#1053)
         ParentFont = False
       end
     end

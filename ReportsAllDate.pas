@@ -17,6 +17,8 @@ type
     Series1: TLineSeries;
     Chart2: TChart;
     Series2: TPieSeries;
+    Label2: TLabel;
+    Label3: TLabel;
   private
     { Private declarations }
   public

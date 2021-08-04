@@ -1,0 +1,212 @@
+unit DiagramFactors;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids,
+  VclTee.TeeGDIPlus, VCLTee.TeEngine, VCLTee.Series, Vcl.ExtCtrls,
+  VCLTee.TeeProcs, VCLTee.Chart;
+
+type
+  TFrDiagramFactors = class(TForm)
+    Chart1: TChart;
+    Splitter1: TSplitter;
+    SGDiagramData: TStringGrid;
+    Series1: THorizBarSeries;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+    // коэффициенты
+    FFactorSwimAverage : Real; // среднее значение коэффициента плавучести
+    FFactorInertia : Real; // кожффициент инерции и тд
+    FFactorBend : Real; // коэффициент зависимости веса от напр€жени€ изгиба колонны при проходе через искривлЄнный участок
+
+    FWeight : Real; // вес колонны бурильных труб с учЄтов всех факторов, кЌ
+    FweightZ : Real; // вес инструмента без учЄта дополнительных факторов, кЌ
+
+    // состовл€ющие формулы расчЄта веса
+    FFrictionWeight : Real; // состовл€юща€ веса колонны, включает коэффициент трени€ и проекцию на горизонтальную плоскость, кЌ
+    FFactorSwimWeight : Real; //состовл€юща€ веса от фактора плавучести, кЌ
+    FFactorInertiaWeight : Real; // состовл€юща€ веса от факота инерции и тд, кЌ
+    FFactorBendWeight : Real; // состовл€юща€ веса от напр€жени€ изгиба колонны, кЌ
+
+  public
+    { Public declarations }
+  property FactorSwimAverage: Real read FFactorSwimAverage write FFactorSwimAverage;
+  property FactorInertia: Real read FFactorInertia write FFactorInertia;
+  property FactorBend: Real read FFactorBend write FFactorBend;
+
+  property Weight: Real read FWeight write FWeight;
+  property WeightZ: Real read FWeightZ write FWeightZ;
+
+  property FrictionWeight: Real read  FFrictionWeight write  FFrictionWeight;
+  property FactorSwimWeight: Real read  FFactorSwimWeight write  FFactorSwimWeight;
+  property FactorInertiaWeight: Real read  FFactorInertiaWeight write  FFactorInertiaWeight;
+  property FactorBendWeight: Real read  FFactorBendWeight write  FFactorBendWeight;
+
+  procedure FrictionWeightSum;  // рассчЄт силы трени€
+  procedure SwimFactorAverageValue;  // рассчЄт средней величины коэффициента плавучести
+  procedure SwimFactorWeight;  // расчЄт состовл€ющей от коэффициента плавучести
+  procedure ImportCalcData;   // импорт данных
+  procedure BendFactorWeight;  // расчЄт состовл€ющей от напр€жени€ изгиба колонны
+  procedure InertiaFactorWeight;  // расчЄт состовл€ющей от коэффициента инерции и тд
+  procedure FillTable; // заполн€ем таблицу значений
+  procedure CalcWeightZ; // вычитаем из веса доп факторы
+  procedure StartCalculation;
+  procedure StartDiagram;
+  end;
+
+var
+  FrDiagramFactors: TFrDiagramFactors;
+
+implementation
+
+{$R *.dfm}
+
+// класс оценивает величину составл€ющих в формуле веса колонны бурильных труб
+
+uses TableOfElements, pipe_calculator, pcmenu;
+
+{ TFrDiagramFactors }
+
+procedure TFrDiagramFactors.BendFactorWeight;
+  // сила зависима€ от напр€жени€ изгиба колонны при проходе через искривлЄнный участок
+begin
+    FactorBendWeight:= Weight-Weight/FactorBend;
+end;
+
+procedure TFrDiagramFactors.CalcWeightZ;
+// вычитаем из веса доп факторы
+begin
+  WeightZ:= Weight-FrictionWeight- FactorSwimWeight - FactorInertiaWeight - FactorBendWeight;
+end;
+
+procedure TFrDiagramFactors.FillTable;
+// заполн€ем таблицу с расчЄтными данными
+begin
+ SGDiagramData.Cells[3,1]:=FloatToStrF(FactorSwimAverage,ffFixed,10,3);
+ SGDiagramData.Cells[3,2]:=FloatToStr(FactorInertia);
+ SGDiagramData.Cells[3,3]:=FloatToStr(FactorBend);
+ SGDiagramData.Cells[3,4]:=FloatToStr(Weight);
+ SGDiagramData.Cells[3,5]:= FloatToStrF( FrictionWeight,ffFixed,10,3);//—остовл€юща€ от коэффициента kfr, кЌ
+ SGDiagramData.Cells[3,6]:= FloatToStrF(FactorSwimWeight,ffFixed,10,3);//—остовл€юща€ от силы плавучести, кЌ
+ SGDiagramData.Cells[3,7]:= FloatToStrF(FactorInertiaWeight,ffFixed,10,3);//—остовл€юща€ от коэффициента ki, кЌ
+ SGDiagramData.Cells[3,8]:= FloatToStrF(FactorBendWeight,ffFixed,10,3); //—остовл€юща€ от коэффициента kb, кЌ
+ SGDiagramData.Cells[3,9]:= FloatToStrF(WeightZ,ffFixed,10,3); //вес без учЄта факторов, кЌ
+end;
+
+procedure TFrDiagramFactors.FormCreate(Sender: TObject);
+begin
+ SGDiagramData.ColWidths[0]:=45;
+ SGDiagramData.ColWidths[1]:=300;
+ SGDiagramData.ColWidths[2]:=100;
+ SGDiagramData.ColWidths[3]:=100;
+
+ SGDiagramData.Cells[0,0]:='є п/п';
+ SGDiagramData.Cells[1,0]:='Ќаименование параметра';
+ SGDiagramData.Cells[2,0]:='%';
+ SGDiagramData.Cells[3,0]:='«начение';
+
+ SGDiagramData.Cells[0,1]:='1';
+ SGDiagramData.Cells[0,2]:='2';
+ SGDiagramData.Cells[0,3]:='3';
+ SGDiagramData.Cells[0,4]:='4';
+ SGDiagramData.Cells[0,5]:='5';
+ SGDiagramData.Cells[0,6]:='6';
+ SGDiagramData.Cells[0,7]:='7';
+ SGDiagramData.Cells[0,8]:='8';
+ SGDiagramData.Cells[0,9]:='9';
+
+ SGDiagramData.Cells[1,1]:=' оэффициент плавучести';
+ SGDiagramData.Cells[1,2]:='ki';
+ SGDiagramData.Cells[1,3]:='kb';
+ SGDiagramData.Cells[1,4]:='¬ес инструмента, кЌ';
+ SGDiagramData.Cells[1,5]:='—оставл€юща€ от коэффициента kfr, кЌ';
+ SGDiagramData.Cells[1,6]:='—оставл€юща€ от силы плавучести, кЌ';
+ SGDiagramData.Cells[1,7]:='—оставл€юща€ от коэффициента ki, кЌ';
+ SGDiagramData.Cells[1,8]:='—оставл€юща€ от коэффициента kb, кЌ';
+ SGDiagramData.Cells[1,9]:='¬ес инструмента без учЄта дополнительных факторов, кЌ'
+end;
+
+procedure TFrDiagramFactors.FrictionWeightSum;
+// суммируем значение силы трени€ дл€ каждого элемента бурильной колонны, кЌ
+var i : Integer;
+begin
+  FrictionWeight:=0;
+  for i := 1 to FTableOfElements.SGElements.RowCount-1 do
+    begin
+      FrictionWeight:=FrictionWeight + StrToFloat(FTableOfElements.SGElements.Cells[18,i]);
+    end;
+end;
+
+procedure TFrDiagramFactors.ImportCalcData;
+ //импортируем данные дл€ анализа из других форм
+begin
+ // вес колонны, кЌ
+  Weight:=StrToFloat(Fcalculator3i.EkN.Text);
+  // коэффициент инерции и тд
+  FactorInertia:= StrToFloat(Fpcmenu.SGFactors.Cells[1,3]);
+  // коэффициент напр€жени€ изгиба колонны
+  FactorBend:= StrToFloat(Fpcmenu.SGFactors.Cells[1,4]);
+end;
+
+procedure TFrDiagramFactors.InertiaFactorWeight;
+ // состовл€юща€ действи€ сил инерции, сил трени€ на вертикальном участке,
+ // сил сопротивлени€ движению бурового раствора и т.д.
+begin
+  FactorInertiaWeight:= Weight-Weight/FactorInertia;
+end;
+
+procedure TFrDiagramFactors.StartCalculation;
+ // очерЄдность расчЄта
+begin
+ ImportCalcData; // импорт данных
+ FrictionWeightSum; // рассчЄт силы трени€
+ SwimFactorAverageValue; // рассчЄт средней величины коэффициента плавучести
+ SwimFactorWeight; // расчЄт состовл€ющей от коэффициента плавучести
+ BendFactorWeight; // расчЄт состовл€ющей от напр€жени€ изгиба колонны
+ InertiaFactorWeight; // расчЄт состовл€ющей от коэффициента инерции и тд
+ CalcWeightZ; // вычитаем из веса доп факторы
+ FillTable;
+ StartDiagram;
+end;
+
+procedure TFrDiagramFactors.StartDiagram;
+begin
+  Series1.Clear;
+    // строим график
+  with Series1   do
+
+   begin
+    Add (Weight, '¬ес');
+    Add (FrictionWeight, 'Kfr');
+    Add (FactorSwimWeight, 'Ksw');
+    Add (FactorInertiaWeight, 'Ki');
+    Add (FactorBendWeight, 'Kb');
+    Add (WeightZ, '¬ес*');
+   end;
+
+end;
+
+procedure TFrDiagramFactors.SwimFactorAverageValue;
+ // определ€ем среднее значение коэффициента плавучести
+ var i : Integer;
+begin
+  FactorSwimAverage:=0;
+  for i := 1 to FTableOfElements.SGElements.RowCount-1 do
+    begin
+      FactorSwimAverage:=FactorSwimAverage + StrToFloat(FTableOfElements.SGElements.Cells[12,i]);
+    end;
+  FactorSwimAverage:=FactorSwimAverage/(FTableOfElements.SGElements.RowCount-1);
+end;
+
+
+
+procedure TFrDiagramFactors.SwimFactorWeight;
+ // определ€ем состовл€ющую потери веса в следствии действи€ силы плавучести
+begin
+ FactorSwimWeight:= Weight-Weight/FactorSwimAverage ;
+end;
+
+end.
