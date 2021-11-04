@@ -48,9 +48,10 @@ begin
   begin
    FrDiagramFactors.Show;
    FrDiagramFactors.StartCalculation;
+   FrDiagramMain.Close;
   end
   else ShowMessage('Не достаточно данных для построения диаграммы');
- FrDiagramMain.Close;
+
 end;
 
 procedure TFrDiagramMain.Image1MouseLeave(Sender: TObject);
@@ -71,9 +72,10 @@ begin
   begin
    FrmDiagram.Show;
    FrmDiagram.MassDiagramm;
+   FrDiagramMain.Close;
   end
   else ShowMessage('Не достаточно данных для построения диаграммы');
- FrDiagramMain.Close;
+
 end;
 
 procedure TFrDiagramMain.Image2MouseLeave(Sender: TObject);

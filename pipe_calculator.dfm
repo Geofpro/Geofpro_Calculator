@@ -222,6 +222,7 @@ object Fcalculator3i: TFcalculator3i
         61F41B06874A7F0B7BF47318FF02804BD74535EE00E40000000049454E44AE42
         6082}
       ShowHint = True
+      OnClick = Image5Click
     end
     object Image6: TImage
       Left = 590
@@ -757,7 +758,7 @@ object Fcalculator3i: TFcalculator3i
       Width = 129
       Height = 21
       Cursor = crHandPoint
-      Caption = #1056#1072#1089#1089#1095#1105#1090
+      Caption = #1056#1072#1089#1095#1105#1090
       TabOrder = 6
       OnClick = Button1Click
     end
@@ -766,9 +767,11 @@ object Fcalculator3i: TFcalculator3i
       Top = 6
       Width = 133
       Height = 21
+      Cursor = crHandPoint
       ReadOnly = True
       TabOrder = 7
       Text = '0'
+      OnClick = ELdrillClick
     end
     object SG1Row: TEdit
       Left = 39

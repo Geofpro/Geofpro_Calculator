@@ -144,7 +144,10 @@ begin
  SGDiagramData.Cells[1,6]:='—оставл€юща€ от силы плавучести ksw, кЌ';
  SGDiagramData.Cells[1,7]:='—оставл€юща€ от коэффициента ki, кЌ';
  SGDiagramData.Cells[1,8]:='—оставл€юща€ от коэффициента kb, кЌ';
- SGDiagramData.Cells[1,9]:='¬ес инструмента без учЄта дополнительных факторов, кЌ'
+ SGDiagramData.Cells[1,9]:='¬ес инструмента без учЄта дополнительных факторов, кЌ';
+
+  // вычисл€ем ширину таблицы
+  Chart1.Width:=Round(FrDiagramFactors.Width/1.6);
 end;
 
 procedure TFrDiagramFactors.FrictionWeightSum;

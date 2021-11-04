@@ -11,22 +11,32 @@ type
   TFrReports = class(TForm)
     frxReport1: TfrxReport;
     Panel1: TPanel;
-    Button1: TButton;
     ScrollBox1: TScrollBox;
-    Button2: TButton;
     frxDBDataset1: TfrxDBDataset;
-    Button3: TButton;
-    Button4: TButton;
-    Button5: TButton;
     frxDBDataset2: TfrxDBDataset;
-    Button6: TButton;
     frxPDFExport1: TfrxPDFExport;
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
-    procedure Button5Click(Sender: TObject);
-    procedure Button6Click(Sender: TObject);
+    BPicture: TButton;
+    BImportData: TButton;
+    BDropTab: TButton;
+    BDB: TButton;
+    BAllData: TButton;
+    BFR: TButton;
+    Image1: TImage;
+    Image2: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    frxReportShort: TfrxReport;
+    BShortRaport: TButton;
+    procedure BFRClick(Sender: TObject);
+    procedure BAllDataClick(Sender: TObject);
+    procedure BDBClick(Sender: TObject);
+    procedure BDropTabClick(Sender: TObject);
+    procedure BImportDataClick(Sender: TObject);
+    procedure BPictureClick(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure BShortRaportClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,19 +57,20 @@ implementation
 
 {$R *.dfm}
 
- uses DataModule, ProjectionEXL, formdate, Diagram;
+ uses DataModule, ProjectionEXL, formdate, Diagram, DiagramFactors;
 
-procedure TFrReports.Button1Click(Sender: TObject);
+procedure TFrReports.BFRClick(Sender: TObject);
 begin
  DataModule1.FDQueryPipeCalculator.Refresh;
  DataModule1.FDQueryPersonDate.Refresh;
  DataModule1.FDQueryPersonDate.Last;
  frxReport1.Variables.Variables['projection_pic']:=#39+GetCurrentDir +'\ReportPicture\ProjectionWell.png'+#39;
  frxReport1.Variables.Variables['diagram_pic']:=#39+GetCurrentDir +'\ReportPicture\DiagramWeight.png'+#39;
+ frxReport1.Variables.Variables['diagram_f_pic']:=#39+GetCurrentDir +'\ReportPicture\DiagramFactorsWeight.png'+#39;
  frxReport1.ShowReport;
 end;
 
-procedure TFrReports.Button2Click(Sender: TObject);
+procedure TFrReports.BAllDataClick(Sender: TObject);
 begin
   ReportFrame.Free;
   ReportFrame:=TFrReportsAllDate.Create(self);
@@ -68,9 +79,10 @@ begin
   TFrReportsAllDate(ReportFrame).ImportDate;
   TFrReportsAllDate(ReportFrame).GhartVert;
   TFrReportsAllDate(ReportFrame).DiagramWeight;
+  TFrReportsAllDate(ReportFrame).DiagramFactorsWeight;
 end;
 
-procedure TFrReports.Button3Click(Sender: TObject);
+procedure TFrReports.BDBClick(Sender: TObject);
 begin
   CreateTablePipeSection;
   // делаем активным DateSet
@@ -78,7 +90,7 @@ begin
   DataModule1.FDQueryPersonDate.Active:=True;
 end;
 
-procedure TFrReports.Button4Click(Sender: TObject);
+procedure TFrReports.BDropTabClick(Sender: TObject);
 begin
 
   DataModule1.FDQueryPersonDate.Active:=False;
@@ -91,16 +103,23 @@ begin
 
 end;
 
-procedure TFrReports.Button5Click(Sender: TObject);
+procedure TFrReports.BImportDataClick(Sender: TObject);
 begin
    ImportDatePipeSection;
    ImportDateTitle;
 end;
 
-procedure TFrReports.Button6Click(Sender: TObject);
+procedure TFrReports.BPictureClick(Sender: TObject);
 begin
- FrmDiagram.MassDiagramm;
  ReportPicture;
+end;
+
+procedure TFrReports.BShortRaportClick(Sender: TObject);
+begin
+ DataModule1.FDQueryPipeCalculator.Refresh;
+ DataModule1.FDQueryPersonDate.Refresh;
+ DataModule1.FDQueryPersonDate.Last;
+ frxReportShort.ShowReport;
 end;
 
 procedure TFrReports.CreateTablePipeSection;
@@ -122,6 +141,41 @@ begin
    DataModule1.FDQueryReport.SQL.Clear; // удаление предыдущего текста запроса
    DataModule1.FDQueryReport.SQL.Text :='DROP TABLE WeightCalc ';
    DataModule1.FDQueryReport.ExecSQL;
+end;
+
+procedure TFrReports.FormActivate(Sender: TObject);
+begin
+     // создаЄм фрейм отчЄта
+   BAllData.Click;
+end;
+
+procedure TFrReports.Image1Click(Sender: TObject);
+   // этапы построени€ полного отчЄта
+begin
+    // удал€ем временную таблицу
+   BDropTab.Click;
+ // создаЄм новую таблицу, включаем DataSet
+   BDB.Click;
+  // импортируем данные в таблицы базы данных
+   BImportData.Click;
+  // создаЄм рисунки графиков
+   BPicture.Click;
+
+  BFR.Click;
+end;
+
+procedure TFrReports.Image2Click(Sender: TObject);
+begin
+     // удал€ем временную таблицу
+   BDropTab.Click;
+ // создаЄм новую таблицу, включаем DataSet
+   BDB.Click;
+  // импортируем данные в таблицы базы данных
+   BImportData.Click;
+  // создаЄм рисунки графиков
+   BPicture.Click;
+
+   BShortRaport.Click;
 end;
 
 procedure TFrReports.ImportDatePipeSection;
@@ -220,7 +274,7 @@ begin
   end;
   bmp.Free;
 
-  // диаграмма веса секций
+  // диаграмма вес секций
   bmp := TBitmap.Create;
   bmp.Width := FrmDiagram.Chart1.Width;
   bmp.Height :=FrmDiagram.Chart1.Height;
@@ -234,6 +288,25 @@ begin
   try
   png.Assign(bmp);
   png.SaveToFile(GetCurrentDir+'\ReportPicture\DiagramWeight.png');
+  finally
+  png.Free;
+  end;
+  bmp.Free;
+
+  // диаграмма состовл€ющих формулы расчЄта веса бурильной колонны
+  bmp := TBitmap.Create;
+  bmp.Width := FrDiagramFactors.Chart1.Width;
+  bmp.Height :=FrDiagramFactors.Chart1.Height;
+  // получаем снимок
+  bmp.Canvas.Lock;
+  FrDiagramFactors.Chart1.PaintTo(bmp.Canvas.Handle, 0, 0);
+  bmp.Canvas.Unlock;
+
+  // конвертируем Bitmap в PNG и сохран€ем
+  png:= TPngImage.Create;
+  try
+  png.Assign(bmp);
+  png.SaveToFile(GetCurrentDir+'\ReportPicture\DiagramFactorsWeight.png');
   finally
   png.Free;
   end;

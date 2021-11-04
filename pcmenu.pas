@@ -41,6 +41,8 @@ type
     CheckMud: TCheckBox;
     SGFactors: TStringGrid;
     CheckBoxHint: TCheckBox;
+    PExcel: TPanel;
+    Pmarketing: TPanel;
     procedure LcloseClick(Sender: TObject);
     procedure PpersonClick(Sender: TObject);
     procedure PpersonMouseLeave(Sender: TObject);
@@ -79,6 +81,14 @@ type
     procedure PelementsMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure CheckBoxHintClick(Sender: TObject);
+    procedure PExcelMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure PExcelMouseLeave(Sender: TObject);
+    procedure PExcelClick(Sender: TObject);
+    procedure PmarketingMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure PmarketingMouseLeave(Sender: TObject);
+    procedure PmarketingClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -89,14 +99,18 @@ type
 var
   Fpcmenu: TFpcmenu;
 
+
 implementation
 
 {$R *.dfm}
 
+// Класс TFpcmenu содержин меню для управления программой
+
 uses geofpro, user_person, pipe_calculator, referenсe, TableOfElements,
-  ProjectionEXL, formdate;
+  ProjectionEXL, formdate, Marketing, rExcelExport;
 
 procedure TFpcmenu.CheckBoxHintClick(Sender: TObject);
+// видимость подсказок для кнопок главной формы
 begin
   case CheckBoxHint.State of
    cbUnchecked:
@@ -177,6 +191,22 @@ begin
   Pexit.Color:=$00736220;
 end;
 
+procedure TFpcmenu.PmarketingClick(Sender: TObject);
+begin
+ FrMarketing.Show;
+end;
+
+procedure TFpcmenu.PmarketingMouseLeave(Sender: TObject);
+begin
+ Pmarketing.Color:=$00A28A2D;
+end;
+
+procedure TFpcmenu.PmarketingMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  Pmarketing.Color:=$00736220;
+end;
+
 procedure TFpcmenu.PmenuClick(Sender: TObject);
 begin
   TabMud.Visible:=False;
@@ -209,6 +239,22 @@ procedure TFpcmenu.PelementsMouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 begin
  Pelements.Color:=$00736220;
+end;
+
+procedure TFpcmenu.PExcelClick(Sender: TObject);
+begin
+ FrExcelExport.ShowModal;
+end;
+
+procedure TFpcmenu.PExcelMouseLeave(Sender: TObject);
+begin
+  PExcel.Color:=$00A28A2D;
+end;
+
+procedure TFpcmenu.PExcelMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+    PExcel.Color:=$00736220;
 end;
 
 procedure TFpcmenu.PbitClick(Sender: TObject);
@@ -267,26 +313,26 @@ procedure TFpcmenu.PopenClick(Sender: TObject);
 // открываем файл
  var cols, rows, i : Integer;
 begin
- // очищаем расчётную таблицу
- Fcalculator3i.ClearTable;
- // очищаем результаты предыдущего расчёта
- Fcalculator3i.SG2clear;
-
  with OpenDialog1, MemoSave do
   if OpenDialog1.Execute then
   begin
+    // очищаем расчётную таблицу
+    Fcalculator3i.ClearTable;
+    // очищаем результаты предыдущего расчёта
+    Fcalculator3i.SG2clear;
+
     Lines.LoadFromFile(FileName);
     // добавляем название файла в заголовок формы
     Fcalculator3i.Caption:= 'GEOFPRO - Расчёт веса бурильных труб - '+ FileName;
     //кол-во строк StringGrid1 (таблица главного окна)
-    Fcalculator3i.EGridRows.Text := MemoSave.Lines[29];
+    Fcalculator3i.EGridRows.Text := MemoSave.Lines[49];
     Fcalculator3i.StringGrid1.RowCount:=StrToInt(Fcalculator3i.EGridRows.Text);
      i:=0;
          for cols := 0 to 12 do
           begin
              for rows := 1 to StrToInt(Fcalculator3i.EGridRows.Text) do
              begin
-              Fcalculator3i.StringGrid1.Cells[cols,rows]:= MemoSave.Lines[30+i];
+              Fcalculator3i.StringGrid1.Cells[cols,rows]:= MemoSave.Lines[50+i];
               i:=i+1;
             end;
          end;
@@ -353,8 +399,14 @@ procedure TFpcmenu.PsaveClick(Sender: TObject);
  // сохраняем расчёт в текстовый файл
   var cols, rows, i : Integer;
 begin
+   // очищаем MemoSave
+   for i := 0 to MemoSave.Lines.Count do
+   begin
+     MemoSave.Lines.Delete(i);
+   end;
+
    // устанавливаем количество строк в Memo
-   for i := 0 to (StrToInt(Fcalculator3i.EGridRows.Text)*12)+30 do
+   for i := 0 to (StrToInt(Fcalculator3i.EGridRows.Text)*12)+50 do
        begin
          MemoSave.Lines.Add('') ;
        end;
@@ -363,14 +415,14 @@ begin
   if SaveDialog1.Execute then
    begin
      // сохраняем количество строк в расчётной таблице
-     MemoSave.Lines[29] := Fcalculator3i.EGridRows.Text;
-     // сохраняем данные основной расчётной таблицы, строки 30+
+     MemoSave.Lines[49] := Fcalculator3i.EGridRows.Text;
+     // сохраняем данные основной расчётной таблицы, строки 50+
        i:=0; // счётчик количества дополняемых строк в MemoSave
        for cols := 0 to 12 do
           begin
              for rows := 1 to StrToInt(Fcalculator3i.EGridRows.Text) do
              begin
-             MemoSave.Lines[30+i]:=Fcalculator3i.StringGrid1.Cells[cols,rows];
+             MemoSave.Lines[50+i]:=Fcalculator3i.StringGrid1.Cells[cols,rows];
              i:=i+1;
             end;
          end;

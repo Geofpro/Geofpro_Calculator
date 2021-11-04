@@ -65,6 +65,8 @@ type
     procedure StringGrid1RowMoved(Sender: TObject; FromIndex, ToIndex: Integer);
     procedure Image6Click(Sender: TObject);
     procedure Image8Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure ELdrillClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -98,12 +100,11 @@ implementation
  // SG1Row - текущая строка таблица StringGrid1
 
 uses pcmenu, referenсe, Diagram, ProjectionEXL, TableOfElements, Reports,
-  DiagramMain, DiagramFactors;
+  DiagramMain, DiagramFactors, rClearTable, geofpro, Manual;
 
 procedure TFcalculator3i.Button1Click(Sender: TObject);
 begin
-    Сheckingvalue;
- 
+ Сheckingvalue;
 end;
 
 procedure TFcalculator3i.ClassPipeWeightT;
@@ -190,6 +191,35 @@ begin
   //StringGrid1.Cells[0,StrToInt(EGridRows.Text)-1]:=IntToStr(StrToInt(EGridRows.Text)-1);
   end;
  end;
+
+procedure TFcalculator3i.ELdrillClick(Sender: TObject);
+   var i, row : Integer;
+   n : String;
+begin
+   // расчёт длины бурильной колонны, м
+ for row := 1 to StrToInt(EGridRows.Text)-1 do
+ begin
+  n:=StringGrid1.Cells[11, row];
+  // проверяем наличие пустых ячеек
+    if n='' then
+    begin
+     ShowMessage('В столбце Длина секции не допускается наличие пустых ячеек.');
+     Exit
+    end;
+  // проверяем отсутствие текста в расчётных ячейках
+    for i := 1 to length(StringGrid1.Cells[11, row]) do
+     begin
+
+      if not (n[i] in ['0'..'9',',','.']) then
+      begin
+        ShowMessage('В столбце Длина секции должны быть только цифры.');
+        Exit;
+      end;
+     end;
+ end;
+
+  SumLeght;
+end;
 
 procedure TFcalculator3i.FormActivate(Sender: TObject);
 begin
@@ -280,9 +310,16 @@ begin
   SG2clear;
 end;
 
+procedure TFcalculator3i.Image5Click(Sender: TObject);
+// вызов раздела справки
+begin
+ FrManual.ShowModal;
+end;
+
 procedure TFcalculator3i.Image6Click(Sender: TObject);
 begin
-  FrReports.Show;
+  if EkN.Text<>'0' then FrReports.Show
+  else ShowMessage('Не достаточно данных для отчёта');
 end;
 
 procedure TFcalculator3i.Image7Click(Sender: TObject);
@@ -297,8 +334,8 @@ end;
 
 procedure TFcalculator3i.Image9Click(Sender: TObject);
 begin
- ClearColor;
- ClearTable;
+ // диалоговое окно с запросом об очистке таблицы
+ FrClearTable.ShowModal;
 end;
 
 procedure TFcalculator3i.InsertRow;
@@ -450,11 +487,11 @@ end;
 procedure TFcalculator3i.SumLeght;
  var i: Integer;
 begin
+  ELdrill.Text:='0';
   for i := 1 to StringGrid1.RowCount-1 do
   begin
     ELdrill.Text:=FloatToStr(StrToFloat(ELdrill.Text)+StrToFloat(StringGrid1.Cells[11,i]));
   end;
-
 end;
 
 procedure TFcalculator3i.SumWeight;
@@ -485,7 +522,7 @@ procedure TFcalculator3i.Сheckingvalue;
          // проверяем наличие пустых ячеек
          if n='' then
          begin
-          ShowMessage('В столбцах таблицы D н, мм ... Длина свечи, м не допускается наличие пустых ячеек.');
+          ShowMessage('В столбцах таблицы D н, мм ... Длина элемента, м не допускается наличие пустых ячеек.');
           SG2clear;
           Edit1.Text:=IntToStr(col);
           Edit2.Text:=IntToStr(row);
@@ -560,7 +597,7 @@ procedure TFcalculator3i.Сheckingvalue;
      // условие вписываемости долота в обсадную колонну
     if (StrToFloat(Fpcmenu.Ebit.Text)+StrToFloat(Fpcmenu.Erad.Text))>StrToFloat(Fpcmenu.Eminpipe.Text) then
     begin
-     ShowMessage('Долото не вписывается в обсадную колонну');
+     ShowMessage('Долото не проходит в обсадную колонну!!!');
      SG2clear;
      Exit
     end;
@@ -573,7 +610,7 @@ procedure TFcalculator3i.Сheckingvalue;
        n:=StringGrid1.Cells[col, row];
        if StrToFloat(Fpcmenu.Ebit.Text)<(StrToFloat(n)+StrToFloat(Fpcmenu.Erad.Text)) then
        begin
-        ShowMessage('Инструмент не вписывается в скважину');
+        ShowMessage('Инструмент не проходит в скважину!!!');
         SG2clear;
         Edit1.Text:=IntToStr(col);
         Edit2.Text:=IntToStr(row);
@@ -588,7 +625,7 @@ procedure TFcalculator3i.Сheckingvalue;
    Edit1.Text:='0';  // индекс строки с ошибкой
    Edit2.Text:='0';  // индекс столбца с ошибкой
    StringGrid1.Refresh;
-   // оочищаем расчётные значения
+   // очищаем расчётные значения
    SG2clear;
    // Вызываем расчёт массы и веса
    FTableOfElements.CalculateWeight;

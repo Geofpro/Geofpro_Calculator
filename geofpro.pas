@@ -20,6 +20,7 @@ type
     Timer1: TTimer;
     Label6: TLabel;
     Label7: TLabel;
+    ELicense: TEdit;
     procedure Label1Click(Sender: TObject);
     procedure Label4Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
@@ -30,13 +31,15 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure EuserlogDblClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Label2Click(Sender: TObject);
+    procedure Label3Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     procedure TimerPick;   // смена картинок главной формы
     procedure DateCurrent; //задаём текущую дату
-    procedure WriteIni(UserName: String) ;  // сохраняем параметры в ini файл
+    procedure WriteIni(UserName, License: String) ;  // сохраняем параметры в ini файл
     procedure ReadIni; // считываем информацию из ини файла
   end;
 
@@ -47,7 +50,7 @@ implementation
 
 {$R *.dfm}
 
-uses pipe_calculator, user_person, formdate;
+uses pipe_calculator, user_person, formdate, License, AboutProgram;
 
  var T1: Integer;
 
@@ -65,7 +68,7 @@ end;
 
 procedure TGeofpro3i.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  WriteIni(Euserlog.Text);
+  WriteIni(Euserlog.Text, ELicense.Text);
 end;
 
 procedure TGeofpro3i.FormCreate(Sender: TObject);
@@ -87,9 +90,20 @@ begin
  ShellExecute(handle,'open',PChar('http://geofpro.com/programmi-burenie.html'),nil,nil,SW_SHOW);
 end;
 
+procedure TGeofpro3i.Label2Click(Sender: TObject);
+begin
+ FrLicense.ShowModal;
+end;
+
+procedure TGeofpro3i.Label3Click(Sender: TObject);
+begin
+  FrAbout.ShowModal;
+end;
+
 procedure TGeofpro3i.Label4Click(Sender: TObject);
 begin
- Fcalculator3i.Show;
+ if ELicense.Text='True' then Fcalculator3i.Show
+ else ShowMessage('Для входа в программу подтвердите, что Вы принимаете Лицензионное соглашение');
 end;
 
 procedure TGeofpro3i.Label5Click(Sender: TObject);
@@ -108,6 +122,7 @@ begin
   IniFile := TIniFile.Create(GetCurrentDir + '\gfpcalculator.ini');
     try
     Euserlog.Text:=IniFile.ReadString('Parametr','UserName','geofpro_user');
+    ELicense.Text:=IniFile.ReadString('Parametr','License','False');
     finally
      IniFile.Destroy;
    end;
@@ -124,20 +139,21 @@ end;
 procedure TGeofpro3i.TimerPick;
    // смена картинок главной формы
 begin
- if T1=1 then  Image1.Picture.LoadFromFile('C:\Geofpro\Geofpro_Calculator\pick\font1.jpg');
- if T1=2 then  Image1.Picture.LoadFromFile('C:\Geofpro\Geofpro_Calculator\pick\font2.jpg');
- if T1=3 then  Image1.Picture.LoadFromFile('C:\Geofpro\Geofpro_Calculator\pick\font3.jpg');
+ if T1=1 then  Image1.Picture.LoadFromFile(GetCurrentDir+'\Pick\font1.jpg');
+ if T1=2 then  Image1.Picture.LoadFromFile(GetCurrentDir+'\Pick\font2.jpg');
+ if T1=3 then  Image1.Picture.LoadFromFile(GetCurrentDir+'\Pick\font3.jpg');
 
  end;
 
 
 
-procedure TGeofpro3i.WriteIni(UserName: String);
+procedure TGeofpro3i.WriteIni(UserName, License: String);
   var IniFile: TIniFile;
 begin
    IniFile := TIniFile.Create(GetCurrentDir + '\gfpcalculator.ini');
     try
     Inifile.WriteString ('Parametr','UserName',UserName);
+    Inifile.WriteString ('Parametr','License',License);
     finally
     IniFile.Destroy;
     end;

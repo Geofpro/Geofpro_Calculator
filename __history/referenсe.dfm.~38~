@@ -1,0 +1,1465 @@
+object Freference: TFreference
+  Left = 0
+  Top = 0
+  Caption = 'GEOFPRO '#1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080' '#1089#1082#1074#1072#1078#1080#1085#1085#1086#1075#1086' '#1080#1085#1089#1090#1088#1091#1084#1077#1085#1090#1072
+  ClientHeight = 518
+  ClientWidth = 1046
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1046
+    Height = 49
+    Align = alTop
+    Caption = 'Panel1'
+    Color = 10652205
+    ParentBackground = False
+    ShowCaption = False
+    TabOrder = 0
+    object ComboBox1: TComboBox
+      Left = 16
+      Top = 15
+      Width = 681
+      Height = 21
+      TabOrder = 0
+      OnChange = ComboBox1Change
+      Items.Strings = (
+        #1041#1091#1088#1080#1083#1100#1085#1099#1077' '#1090#1088#1091#1073#1099
+        #1047#1072#1084#1082#1080' '#1073#1091#1088#1080#1083#1100#1085#1099#1093' '#1090#1088#1091#1073
+        #1059#1041#1058
+        #1041#1091#1088#1086#1074#1086#1081' '#1080#1085#1089#1090#1088#1091#1084#1077#1085#1090', '#1075#1077#1086#1092#1080#1079#1080#1095#1077#1089#1082#1080#1077' '#1087#1088#1080#1073#1086#1088#1099
+        #1042#1047#1044' '
+        #1058#1088#1091#1073#1099' '#1082#1086#1083#1090#1102#1073#1080#1085#1075
+        #1053#1050#1058
+        #1054#1073#1089#1072#1076#1085#1099#1077' '#1090#1088#1091#1073#1099
+        #1058#1041#1058
+        #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1103)
+    end
+    object Button1: TButton
+      Left = 744
+      Top = 13
+      Width = 121
+      Height = 25
+      Cursor = crHandPoint
+      Caption = #1042#1099#1073#1088#1072#1090#1100
+      TabOrder = 1
+      OnClick = Button1Click
+    end
+  end
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 49
+    Width = 1046
+    Height = 415
+    ActivePage = TabSheet11
+    Align = alClient
+    TabOrder = 1
+    object TabSheet1: TTabSheet
+      Caption = #1041#1091#1088#1080#1083#1100#1085#1099#1077' '#1090#1088#1091#1073#1099
+      object DBGrid1: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 387
+        Align = alClient
+        DataSource = DataModule1.DataSource1
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'-'#1085
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'-'#1074
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1057#1090#1077#1085#1082#1072
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1043#1088#1091#1087#1087#1072' '#1087#1088#1086#1095#1085#1086#1089#1090#1080
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1047#1072#1084#1086#1082
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1091#1092#1090#1072'-'#1085#1076
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1091#1092#1090#1072'-'#1074#1076
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1091#1092#1090#1072'-'#1076#1083
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072'-'#1074
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072'-'#1084
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1046#1077#1089#1090#1082#1086#1089#1090#1100'-'#1080
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1046#1077#1089#1090#1082#1086#1089#1090#1100'-'#1089
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1077#1079#1100#1073#1072
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1043#1054#1057#1058
+            Width = 90
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = #1047#1072#1084#1082#1080
+      ImageIndex = 1
+      object DBGrid2: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 387
+        Align = alClient
+        DataSource = DataModule1.DataSource2
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1064#1080#1092#1088
+            Width = 250
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1077#1079#1100#1073#1072
+            Width = 250
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1085
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1074
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072'_'#1082#1075
+            Width = 100
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = #1059#1041#1058
+      ImageIndex = 2
+      object DBGrid3: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 387
+        Align = alClient
+        DataSource = DataModule1.DataSource3
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1064#1080#1092#1088
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088' '#1085', '#1084#1084
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088' '#1074', '#1084#1084
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072', '#1084
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072', '#1082#1075
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1077#1079#1100#1073#1072
+            Width = 120
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = #1057#1082#1074#1072#1078#1080#1085#1085#1099#1081' '#1080#1085#1089#1090#1088#1091#1084#1077#1085#1090
+      ImageIndex = 3
+      object DBGrid4: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 387
+        Align = alClient
+        DataSource = DataModule1.DataSource4
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1064#1080#1092#1088
+            Width = 200
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1085
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1074
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1077#1079#1100#1073#1072
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_max'
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1055#1088#1086#1080#1079#1074#1086#1076#1080#1090#1077#1083#1100
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072#1056#1072#1089#1095
+            Width = 100
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet5: TTabSheet
+      Caption = #1042#1047#1044
+      ImageIndex = 4
+      object DBGrid5: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 387
+        Align = alClient
+        DataSource = DataModule1.DataSource5
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1064#1080#1092#1088
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1082#1086#1088#1087#1091#1089#1072'_'#1084#1080#1085
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1082#1086#1088#1087#1091#1089#1072'_'#1084#1072#1082#1089
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072'_'#1076#1074#1080#1075#1072#1090#1077#1083#1103
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072'_'#1076#1074#1080#1075#1072#1090#1077#1083#1103
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1076#1086#1083#1086#1090#1072'_'#1084#1080#1085
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1076#1086#1083#1086#1090#1072'_'#1084#1072#1082#1089
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1077#1079#1100#1073#1072'_'#1076#1086#1083'_'#1072#1087#1080
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1077#1079#1100#1073#1072'_'#1076#1086#1083'_'#1075#1086#1089#1090
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1077#1079#1100#1073#1072'_'#1090#1088#1091#1073#1072'_'#1072#1087#1080
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1077#1079#1100#1073#1072'_'#1090#1088#1091#1073#1072'_'#1075#1086#1089#1090
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072'_'#1096#1087#1080#1085#1076'_'#1076#1086'_'#1080#1089#1082#1088
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1087#1086#1079#1086#1085'_'#1080#1089#1082#1088'_'#1075#1088#1072#1076
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1086#1087#1091#1089#1090#1080#1084#1072#1103'_'#1086#1089#1077#1074#1072#1103'_'#1082#1053
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'z'#1088'_z'#1089#1090
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1063#1080#1089#1083#1086'_'#1096#1072#1075#1086#1074'_'#1089#1090#1072#1090#1086#1088#1072
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072'_'#1072#1082#1090#1080#1074'_'#1089#1090#1072#1090#1086#1088#1072
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1072#1073#1086#1095#1080#1081'_'#1086#1073#1098#1077#1084'_'#1083'_'#1086#1073
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1072#1089#1093#1086#1076'_'#1083'_'#1089'_'#1084#1080#1085
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1072#1089#1093#1086#1076'_'#1083'_'#1089'_'#1084#1072#1082#1089
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1063#1072#1089#1090#1086#1090#1072'_'#1093#1086#1083#1086#1089#1090'_'#1086#1073'_'#1084#1080#1085
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1063#1072#1089#1090#1086#1090#1072'_'#1093#1086#1083#1086#1089#1090'_'#1086#1073'_'#1084#1072#1082#1089
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1092'_'#1087#1077#1088#1077#1087#1072#1076'_'#1076#1072#1074#1083'_'#1084#1080#1085'_'#1052#1055#1072
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1092'_'#1087#1077#1088#1077#1087#1072#1076'_'#1076#1072#1074#1083'_'#1084#1072#1082#1089'_'#1052#1055#1072
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1086#1084#1077#1085#1090'_'#1089#1080#1083#1099'_'#1084#1080#1085'_'#1082#1053'_'#1084
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1086#1084#1077#1085#1090'_'#1089#1080#1083#1099'_'#1084#1072#1082#1089'_'#1082#1053'_'#1084
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1086#1097#1085#1086#1089#1090#1100'_'#1084#1080#1085'_'#1082#1042#1090
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1086#1097#1085#1086#1089#1090#1100'_'#1084#1072#1082#1089'_'#1082#1042#1090
+            Width = 60
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1055#1088#1086#1080#1079#1074#1086#1076#1080#1090#1077#1083#1100
+            Width = 60
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet6: TTabSheet
+      Caption = #1043#1053#1050#1058
+      ImageIndex = 6
+      object DBGrid6: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 387
+        Align = alClient
+        DataSource = DataModule1.DataSource6
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1064#1080#1092#1088
+            Width = 130
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1053#1072#1088#1091#1078#1085#1099#1081'_'#1076#1080#1072#1084#1077#1090#1088'_'#1084#1084
+            Width = 130
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1058#1086#1083#1097#1080#1085#1072'_'#1089#1090#1077#1085#1082#1080'_'#1084#1084
+            Width = 130
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1042#1085#1091#1090#1088#1077#1085#1085#1080#1081' _'#1076#1080#1072#1084#1077#1090#1088'_ '#1084#1084
+            Width = 130
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072'_'#1082#1075
+            Width = 130
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1055#1083#1086#1097#1072#1076#1100'_'#1087#1086#1087#1077#1088#1077#1095#1085#1086#1075#1086'_'#1084#1084'2'
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1055#1083#1086#1097#1072#1076#1100'_'#1087#1088#1086#1093#1086#1076#1085#1086#1075#1086'_'#1084#1084'2'
+            Width = 130
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1042#1085#1091#1090#1088#1077#1085#1085#1103#1103' '#1105#1084#1082#1086#1089#1090#1100'_'#1083#1080#1090#1088'_100_'#1084
+            Width = 130
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet7: TTabSheet
+      Caption = #1053#1050#1058
+      ImageIndex = 7
+      object DBGrid7: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 387
+        Align = alClient
+        DataSource = DataModule1.DataSource7
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088' '#1085', '#1084#1084
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1058#1086#1083#1097#1080#1085#1072' '#1089#1090#1077#1085#1082#1080', '#1084#1084
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088' '#1074#1085','#1084#1084
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088' '#1074#1099#1089#1072#1076#1082#1080', '#1084#1084
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072' '#1074#1099#1089#1072#1076#1082#1080
+            Width = 110
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072', '#1082#1075
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1059#1074#1077#1083#1080#1095#1077#1085#1080#1077' '#1084#1072#1089#1089#1099', '#1082#1075
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088' '#1084#1091#1092#1090#1099', '#1082#1075
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072' '#1084#1091#1092#1090#1099', '#1082#1075
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072' '#1084#1091#1092#1090#1099', '#1082#1075
+            Width = 120
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet8: TTabSheet
+      Caption = #1054#1073#1089#1072#1076#1085#1099#1077' '#1090#1088#1091#1073#1099
+      ImageIndex = 8
+      object DBGrid8: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 387
+        Align = alClient
+        DataSource = DataModule1.DataSource8
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088' '#1085', '#1084#1084
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088' '#1074#1085', '#1084#1084
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1058#1086#1083#1097#1080#1085#1072' '#1089#1090#1077#1085#1082#1080', '#1084#1084
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088' '#1084#1091#1092#1090#1099', '#1084#1084
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1042#1077#1089', '#1082#1053
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088' '#1084#1091#1092#1090#1099' '#1091#1084#1077#1085', '#1084#1084
+            Width = 140
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet9: TTabSheet
+      Caption = #1058#1041#1058
+      ImageIndex = 8
+      object DBGrid9: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 387
+        Align = alClient
+        DataSource = DataModule1.DataSource9
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1064#1080#1092#1088
+            Width = 150
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1085
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1074#1085
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088'_'#1084
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1056#1077#1079#1100#1073#1072
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072
+            Width = 90
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072'_'#1084
+            Width = 90
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet10: TTabSheet
+      Caption = 'user_ref'
+      ImageIndex = 9
+      object DBGrid10: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1038
+        Height = 387
+        Align = alClient
+        DataSource = DataModule1.DSUserRef
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = #1050#1086#1076
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1064#1080#1092#1088
+            Width = 250
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088#1053
+            Title.Caption = 'D'#1085', '#1084#1084
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088#1042#1085
+            Title.Caption = 'D'#1074#1085', '#1084#1084
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088#1052#1072#1082#1089
+            Title.Caption = 'Dmax, '#1084#1084
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088#1052#1053
+            Title.Caption = 'D'#1084#1085', '#1084#1084
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1080#1072#1084#1077#1090#1088#1052#1042#1085
+            Title.Caption = 'D'#1084#1074#1085', '#1084#1084
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072#1052
+            Title.Caption = #1044#1083#1080#1085#1072' '#1084#1091#1092#1090#1099', '#1084#1084
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072#1052#1077#1090#1088#1072
+            Title.Caption = #1052#1072#1089#1089#1072' i, '#1082#1075
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072#1052
+            Title.Caption = #1052#1072#1089#1089#1072' '#1084', '#1082#1075
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1052#1072#1089#1089#1072'2'#1042
+            Title.Caption = #1052#1072#1089#1089#1072' 2'#1074', '#1082#1075
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072#1057
+            Title.Caption = #1044#1083#1080#1085#1072' '#1089#1077#1082#1094#1080#1080', '#1084#1084
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1044#1083#1080#1085#1072#1069
+            Title.Caption = #1044#1083#1080#1085#1072' '#1101#1083#1077#1084#1077#1085#1090#1072', '#1084#1084
+            Width = 110
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1077
+            Width = 250
+            Visible = True
+          end>
+      end
+    end
+    object TabSheet11: TTabSheet
+      Caption = 'TabSheet11'
+      ImageIndex = 10
+      object DBEdit2: TDBEdit
+        Left = 300
+        Top = 66
+        Width = 121
+        Height = 21
+        DataField = #1044#1080#1072#1084#1077#1090#1088#1053
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 0
+      end
+      object DBEdit3: TDBEdit
+        Left = 300
+        Top = 93
+        Width = 121
+        Height = 21
+        DataField = #1044#1080#1072#1084#1077#1090#1088#1042#1085
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 1
+      end
+      object DBEdit4: TDBEdit
+        Left = 300
+        Top = 120
+        Width = 121
+        Height = 21
+        DataField = #1044#1080#1072#1084#1077#1090#1088#1052#1072#1082#1089
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 2
+      end
+      object DBEdit5: TDBEdit
+        Left = 300
+        Top = 147
+        Width = 121
+        Height = 21
+        DataField = #1044#1080#1072#1084#1077#1090#1088#1052#1053
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 3
+      end
+      object DBEdit6: TDBEdit
+        Left = 300
+        Top = 174
+        Width = 121
+        Height = 21
+        DataField = #1044#1080#1072#1084#1077#1090#1088#1052#1042#1085
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 4
+      end
+      object DBEdit7: TDBEdit
+        Left = 300
+        Top = 201
+        Width = 121
+        Height = 21
+        DataField = #1044#1083#1080#1085#1072#1052
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 5
+      end
+      object DBEdit8: TDBEdit
+        Left = 300
+        Top = 228
+        Width = 121
+        Height = 21
+        DataField = #1052#1072#1089#1089#1072#1052#1077#1090#1088#1072
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 6
+      end
+      object DBEdit9: TDBEdit
+        Left = 300
+        Top = 255
+        Width = 121
+        Height = 21
+        DataField = #1052#1072#1089#1089#1072#1052
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 7
+      end
+      object DBEdit10: TDBEdit
+        Left = 300
+        Top = 282
+        Width = 121
+        Height = 21
+        DataField = #1052#1072#1089#1089#1072'2'#1042
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 8
+      end
+      object DBEdit12: TDBEdit
+        Left = 300
+        Top = 336
+        Width = 121
+        Height = 21
+        DataField = #1044#1083#1080#1085#1072#1069
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 9
+      end
+      object DBEdit11: TDBEdit
+        Left = 300
+        Top = 309
+        Width = 121
+        Height = 21
+        DataField = #1044#1083#1080#1085#1072#1057
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 10
+      end
+      object DBEdit1: TDBEdit
+        Left = 300
+        Top = 39
+        Width = 121
+        Height = 21
+        DataField = #1064#1080#1092#1088
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 11
+      end
+      object DBIDpipe: TDBEdit
+        Left = 124
+        Top = 120
+        Width = 121
+        Height = 21
+        DataField = #1050#1086#1076
+        DataSource = DataModule1.DSUserRef
+        TabOrder = 12
+      end
+    end
+  end
+  object ESG1col: TEdit
+    Left = 128
+    Top = 104
+    Width = 121
+    Height = 21
+    TabOrder = 2
+    Text = 'ESG1col'
+    Visible = False
+  end
+  object ESG1row: TEdit
+    Left = 128
+    Top = 131
+    Width = 121
+    Height = 21
+    TabOrder = 3
+    Text = 'ESG1row'
+    Visible = False
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 464
+    Width = 1046
+    Height = 54
+    Align = alBottom
+    Caption = 'Panel2'
+    ShowCaption = False
+    TabOrder = 4
+    object ImageAdd: TImage
+      Left = 25
+      Top = 6
+      Width = 42
+      Height = 42
+      Cursor = crHandPoint
+      Hint = #1044#1086#1073#1072#1074#1080#1090#1100
+      AutoSize = True
+      ParentShowHint = False
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000002A0000
+        002A0806000000C5C3C95B000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC400000EC401952B0E1B00000B
+        814944415478DAB5590B7054D519FEEEBDFBCA6E76371148784F450208885446
+        AC22115F4490822D5A75D0A9D3C70C6DA75AABADD6CEB4D3CED819B53AD599DA
+        D6D652AA56472415948258DE458B15055F104051A2E60124649FF77DFA9D7337
+        21D2B06CCA7876B2C9DEBDF79CEFFC8FEFFFFE13CD711C615916745D47A543D3
+        35848D100C4383EDB83896C9A1ABAB0B998205D77120F88A8423485427302C5D
+        8D543ACDCF067C4FC0F15CF8BE08E6A9602DDFF7118D46A1150A055155555531
+        48394C6E6CF7BBEF61EFFB87D079A40BAEE741183A0CE8D0F91B8250E58F07D8
+        C2462C1446FDB02138FBCC319836752AA291F0A0D62B168BD0F82614626DE0FD
+        895E2BF2A72797C5864D5BB1FF50077C7A201A3268555A5613F0686543E89F79
+        4210A9C1DF0E2FF9B4A4E93AD05C81862F8CC4DC4B2F46B23AD96F9593ACCF0D
+        4B8F9F1268EF58BB7E235E7BB705714E1E0985FAC03B5CDCE1E2C2B5E01B80AE
+        E97D2ED3A58B43316E4843281CEE83623A168AF91CCE3BE76C2CB8FCB2B2EB9E
+        12A8BC415EEBEAEEC6B215CD70451871BA109A4F0B69B0CCA28AC72913CFC2B8
+        B1A330AA6E28AAE20918A558F73D1F45B380D6F623D8DF7A087BF7BC8F48A40A
+        91780421B5190D05BB8828FFFAFA0D8B71463AD5B7E6A02DDAD6DE8E87FEF438
+        468F1AC3E80B83B900BB9847753C8639175D80C9131B06156BEFB4ECC5D6575E
+        67D23988C7E59A06E774D0FE712BEE58FA4D0C1B56F77F58942F8DAF6DAFBC8A
+        6D3B77A12A56CD8CB531B77116A64F9ED4779F1F44A37AE9CAB90384101743BF
+        F9DF78AF05FFDCBC1D61328369E5D178FE1731EB829927DE3638D7CBB171EB76
+        EC39F00196DEB2A4CFB5A73B3CD7C5EF973FC5D069C09C8B2F0A627A80B9FF07
+        A820289DF669E93131311D83C7189319DD1FB0B41E8908E18A18B00C48CE61F4
+        9BC3135C4BC6ADE4335EDED7636302311094F2543FA0317EEFAB440935B7E38A
+        FA10D6CDAAEF73A3042BC7A998E1F487C0DCADEDD8DC2D602F1AC28F61155096
+        65064023919032FB5DBB7A70FF07AE7A60FE501F6B1AEB0852FBFC010A5FD9A4
+        695B1BD61F8DF3B38B7B1A0CDC3BB5969E6535736C09B420A2911829C745F4B9
+        7630A549867C386B61DFFC241A12748136B84A32F8E1A22553C4A4B52690A0FB
+        0D62C865E02E1EC122A2B15048D79B45118B8670DBAEC378E423460EB9525836
+        7E32DEC3AFA6D5C32599874A04FFB91853C2F41CA51DEE7EF313DCF7118D1266
+        491716EE1CE9E081F386918F3D68B659106102D59EEF02640DA66561DA108B47
+        A9896402E915248FCCDA2D5BB7AA0AA46CC4FA3F67F6EC41868D0FEDEF9F1287
+        F4A22E491BE29AE1708A2CBDC231C50B1D052CFC77018855492FE087E36D3C38
+        A55E3EA61EAF8490CCA289CB9AE62199AC81CFDA5F28E4B175FD3A18D40395DB
+        56E0B6DDED78E46002883204F216D6CC4A305F22042A1CB164473BFED61E852E
+        A5584F16D9C5239188483B56BA0837CF7059F4B51B904AD5923C34E40A19BCD0
+        FC0C2D3A18DEF571CC7650BBB203A8A9E6A41E6E1EEDE2AF74BF26DCA218BEBE
+        071D9C9C5A0D35B0D0BDA03EA034E3D4407B758F027A1D81B2666B9E815C3157
+        02AA95D14627CC4511A3E90E52AB8F222B7505318D363CB436714ECB364574D5
+        61665B8452C8C00D23049E3E7F28A4F0D107115E52452DFCEAF548D3A232B0B3
+        66166B9A9F1D84358F57DA6B77746265A711C45CD185734D1ADAA14C4E8C5DDB
+        4D5A4A28533F3A19F8CE84A1E42F6AC90A2CDA3BE4FD0BAFBD9E1A93F388100A
+        544EAB9F7B7A5040A5E861D3805FB774E047EF51EB32B9BD6216ED4D0CA75D87
+        F362FAA6A3B46842A17FE1C208168C4C974AE8C0409B9B57E2D1C7FE8C648A71
+        248218940523148EF1B75602EE93DA6C1AD70BF89C099665FCDF7EEBF7B0E0EA
+        F9650137B77661F1AB345492EA2A5FC4EE2B08F4B5CEAC98B9A107489364F326
+        B634C6D158972E6BD1E655ABF0D8E3CB983835FC24EF71D475438BF405A3ACD1
+        F0F88131E6AB12AEA13BDB85DBBEBB14575F755559A02F77F660EE66137A3202
+        9F99BFF39204B49D1D593163739EAE67F0B239DB343B8939F5D565277A7ED56A
+        FC61D9722626E351EB972A274A340936601DF5E5B1EC51DC4AA0F39B9ACACEBF
+        FED31E346D3761306F3C6AD737E754417BB73B27A6ACCF402750DFF2F1E40C1D
+        4BC6964FA6679E5D81877FFB2852C95A2564A455A5FC4BA55201581108994C4F
+        0F5D4F36F64BDD42A61B77DF713BBEB268D1C01397F6BCFC60276ED9E53246A9
+        E268D13D4D4CA6A3EC4287ACCA404BB27432AEEE192F70EF6426531916B56C5B
+        B522BA94810421E3D3E6B59BBFB11489649C0D9C8E2205F193CBFFC8CD6A25F5
+        457DC61888C5626C492203CEDB6B9C3BDF3A82070FFA41A5CC1590593024E051
+        E3C523F0990870357C29EDE1D54BEA4EDA18F6EF4AFB0F2984BFBCF846265832
+        207C76AC2FAE7AB6E2E7D5772CC31A373D636327DE28E82AFCC396077B212D2A
+        7C4B4CDF7214BBB3DCA5D41EF96E886BC705997A12353FD06236C5ED35D72F41
+        2A91967A974033584D1E3574ADDF13283538030F8F163774DEB1E263B210F384
+        6DED8CA48DD767D710A8678BFBF774E1AE7D9C204657E6045E9E6DE08AE13518
+        CC0880DE441E4DA92DE4C97FAB573C13C479C5C244605DDB51CCFB174552B54F
+        01E5E0E109066E9D448BFAA629F6B3ED9DF852166067481FE2BC2A0D3B2F1F36
+        28A0A66961EEFC454827532C701EAC6C011BD6AD51272795965039A66DFC106F
+        1792743B9FA26ADADF548371213D50F8B15894403FC13EB72AD87DA18896B971
+        4C6039F4FBBACBF243C6E85F9E7A023166AA04E6515CDC74F34DAA0CEAA798A1
+        778DB78E6571EE4652253D2BE36752B8803D73C7D00866A0F0A5705ED36E62C1
+        2B0E4231032E63654ACCC33B572649FC517518F6790E7958A1D30B93D6B6A1C5
+        A9821E8AC2277F6EB95043E3A83481DABD3D539814E361DC9A2338C81E931D14
+        5C72EA23E700DF6F188ADECE5D3BCDEEF3C411CC0935FF432D9DB8E31D9A3FA6
+        A9DC1B1B2EE2A3A6512AC11CDBEDED42434A37FEE7481E33B76478732C20F28C
+        8BB7E6C5714E3A4D8EF39818958B948A2CC9D24B858037BAB398F1D231209950
+        A091B7F1E6E5714C1F92529D83E4E812D052974D20DFDAD985C70F714B513D10
+        1CC50C0E5C598BB3E4D950A9249E6E571AF07FE0A1FDDD194CA01E46321E7C61
+        014BC709FC6E7A6DA9AF378EB7CBC74F4A82FC1CF98F0FD1E657977A105AB198
+        C78EC66ACC1C563368F937D0E89D63DBE11E346EA025A50A936BBB06C684B338
+        346F0C7A65821C2739D2F1D54FCDF39FA2C76095D19993920CF30E7B6D0DF79E
+        CB9D22FC99080BA2EC6496EB9D531A512F7D76F0E35D5D78E080509448326781
+        31502B32E85A385A9D2588925E90E57960A04ABD7A6C445D8C587718C7046B77
+        48BA808B59027586856533D9708D28150475CCAD0FD8012AC5AED493ECD50DB5
+        B9556DDDF8F68E3C0E0B7265CC0976628730C4C8E2E3ABEAC84C86AA48A2DFCE
+        07042A4506152442A5851BD6B7E2408ED5461E649219C07E08E4C89AA8CD6E35
+        8C1F8CAB4152EA8432A3C7CDE1E1BD79FCE64313DD161326EC979CC237D6F289
+        D539ECBD72ACDAB4CDCB11B5F1E3C749273FCD13A5B720C3F0F3B73BF0CB1639
+        393BD5106D2B372145B1FC235F509432738881F1710FF5919022F0C3A6837D14
+        16AF77721EC70F4E60422899583E2F13D5C2CF2647F08BA967289042F31511D2
+        85FDBC52E1D17810662E5A19A337BED685EDB2E992A5D610C745B30C1749675E
+        24384792AE96560991C879DDD7C2E853D0B2DBCDF9B874B8852766D662545C76
+        9B213814233AA9C8E84D600C6051A911CB8E7E27AC2DD4873FDD9DC3CA0E57B5
+        D760FCAA38F103778578AF670895107D69CBCA0347B62536AEAB13B86F5A1A67
+        4A0BE338D3941BAA84CA7FDF9CF27F4C04A911802B93545AAB2A0C937DFC868E
+        025E6EF3B1E958011F9809E4D8CCA9752568C3473CA2E3ACA88B8B53B261D470
+        597D1CB168158414DEF294107A3FB0271F92F435BE09C96B9591B828EDBFB484
+        A11D5F881BB0E8564FB20041C8248F0637F5B95DEE514589564E3E9FE84CA138
+        F7BFE705C6786B9B5D010000000049454E44AE426082}
+      ShowHint = True
+      OnClick = ImageAddClick
+    end
+    object ImageDel: TImage
+      Left = 90
+      Top = 6
+      Width = 42
+      Height = 42
+      Cursor = crHandPoint
+      Hint = #1059#1076#1072#1083#1080#1090#1100
+      AutoSize = True
+      ParentShowHint = False
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000002A0000
+        002A0806000000C5C3C95B000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC400000EC401952B0E1B00000D
+        134944415478DAB559097055D519FEEEF6B66CEC842C802110100B5AF78ADAB1
+        8C052A6A41041444AD4B9D4E3B76ECB49DCEB8D4D199CEB4D36A9DCEA8B8229B
+        0A562B9BB88C0B6A2D75611112921092904012969097B7DDEDF43BE7BE40C097
+        04AD9E9784CB7BF79EF39DEFDFBEFF3C2D9148084DD370DA4313889A3AA00B64
+        6C1FDB8EA4F09F8E6E7CD10974DA1E84C3CFA043333D0C896898921FC679C511
+        4C1D1246346C002E607B3E3CA141F015ACCC6BC1EB3E70A8CF92C9A48846A3A7
+        8150A809011FABF6B4E3D1EA243E69273A3F1F304CFEF2738340345FDD0302E1
+        0A80C36B97D766061714E7E1D755612CA81CC97B0C759FC8C2D5E4E6FA583995
+        4A0D0CD4171E744DA8891FF8A8110FD6C4C95A188818B024035CCF919B904CF2
+        5EF42CA7005BFCF161EA1A2C4F47CA239D19CE67D8F8FD99313C7CD11805D6F3
+        03989AAE296B7C23A0726CDA7718D7BCDD0E5B9830433ECD6AC2A1F990E2C234
+        F1F8020B938B22185F64A13066AA67BA922E6AE229D41C056A8E65085C82D610
+        3135B8BE80CB8D85BD145E9D5E8C196387F2899E4D9E2650E107A6D0A5F9741D
+        37BE598795750EB44283EFE9DC3DD9EB4CE2823322F8C39411985E1C435E28DC
+        CB35BE3ABA9D34DE6E4DE1E19D6DD8CAB9302884109FB13582EBB27143858115
+        D32710AB075F33E8AB27FB6B4EA0922843E764303161F50ED476E721C48F250B
+        7EC6C7B41281CDD347231A8A28B3F9F4C5C03590F5BB9CD190DD838614415FF9
+        5633B6B40898119D6B69C8A480CABC2ED4CE9FCA5B08D6B3E81E039ADE53E494
+        ACD885034E045688EE676B080B07EFCD1C810B470D0D82C00FFCD0E5BD96DE63
+        2EBD0F9CEA66C69790C982973AB61E388CCB371D0221C00A0BAE01145B0E0EDC
+        50A548C2408CCA51B9EA73D4670A10096948A73C4C1DE4E38BB9152A383C0236
+        34B397A945DF4CF619A036AD602952A6AEA9C3F663F4DDA889B42350114EA07E
+        C1D4BE7D54F81E376A60E1E65AAC6E3661456C38191D3F2901D6CD18C7D9354E
+        4B5FE502BA8AE89E913B00FA1BD2CF75CDE55C41E0CDDEB807EB5A35BA98013B
+        AD6361998795575692148FA418A732EA62FDBE4E5CB5B903E17C0B19EE6E4ACC
+        C3B67913250570751FBA477F34BE1EA87E99955BCCFAEFD92F57635B9C411611
+        B01369BC7EE5485C3566A82221954A4AA0892C503AF7D21D10D1984AD696EB22
+        7D0BCD2D8CC05F64B4EB5FCFC4A783D4D77BC066107BAE018E1186CFE2612493
+        B06F3B13D2AD9201A312680CBFFDA8017FAEB699270DB8CC815BAF198AF3460E
+        A34BD044BAF5ED023C650821DDC0C07FDB8EE0FC5769D1820832CC30BF9B04FC
+        E9A28A80D1344D6FD291434F554367CA71B9CDCB47EA78F7C7E349A24B9E0DFA
+        C989085489C867D2EF897446B490E552FE9C52AB45D6BC86AC585A600D5FC5A0
+        AF72F209A03277CB000B331354E3FD361361EA894CA61BCEAD13E1A5193FC249
+        89657547B0644B17C27921643ABA90F979954AC8B98224D8BD8E754D87F16ED3
+        31DC7761390AAD30F3ACC752699CBC21E57E810F7E7CB013954322181E0A314F
+        1AB9BD88806DE6D9F0E335080F2F4026E1E0F94B07E3A68A4104EAA6C4B9EB1A
+        F1D9B120E55C30CCC327B3C8A6ACBF7AEE4AB3F35017BEB7BC1E282C64054DA1
+        7E7E3946F33A604653AF20670AC5DE94B5B5D87190DC9A0E5A964C404944C684
+        9603A7A75CE0C20DD55464412E3DA748E0B3D9A5D012A984C85B518B88958734
+        05C36B3346E0EAF2A27E81BED776183F7CF9302243681E29D71209742E3A0345
+        B102A61497CE62F6D089B1AB76A351160C839924616303E79FA9A2390750B54D
+        81758D9D98BDA92DB070BA1BDD8BC643FBB8B95D5CBCF128F43C56F76402F125
+        93904FD1E149EFD48C1C9371D784326F630DD61CD011096B142B2CAFDD09ECBF
+        B102A5058559C30B94ADD88D16A6B4A81EA672D251A277A36531D39DB072CA02
+        CE4213EBE8A6950A9EAD8515CD8393C8E0A3D943A13DF269ABB87B3B8BADE962
+        1CCB65DDF514074AC9E83977ED67FFC8589AB3A116FF6CF5116630DA08986DBD
+        612C46E5C750F9E25ED4A75D326952D91918AAA5D1BEB882B35AC1BC5AFFF9B8
+        F2A51A56475D898F47A61640BBF5DD3AF14C539027AF2A35F13A05C709A03926
+        234892C4080D98BD667D3DFE75D0610934906140451C13670D12D8DAE52364B2
+        D2D0EC438C0C0EDFC4EA4690BE908227C4E7FBEF2AE6BED988575AA518B7715B
+        3915D5DC37EAC55AE9E89458F74C8CE12F179763A021B2FEA4FB9ADACBBCCD7B
+        B1A639CDAA12529F49511FE2FBB6EB6194E5A1656105E3826A8B351ED9B23950
+        D9BDE7DF4DF86B3509A3DE983B94A4CCDDD0205E69A746777DDC7F7E211E9832
+        6A40A03D68836EC35732EFB6F70FE2E9862483320060D342957914CD3F2D0F98
+        945A82E60E72EDC042E6FE6DAD78F0B30C73BB8F6B19B404BA57AC3DE42A1AEE
+        FD7E211E3CBB989306FA52D7F5FE70AAA165FDA1EAA5DDA8B52308671FF17883
+        67DB689A5B8AD2C202A573A5180FDA8D8181DEFB452B1EFA3CC1C6C0C29C215C
+        E7BACD7BC59A0372661BBF9C10C5DF2F19DD6F4778DCF48A4989CAC5D8176BD1
+        98110449D52E9D8228C36C391CFAA39F14A89B57867183990DC8AAB4828AA501
+        80FEEAC37D78AC56B63A16AE1B416BFCE2FD06F18F0629387CCC18A663E38C33
+        FAB778B6E404FB10285EBE1B6DBE1144B7E3A232DFC415230C3C5963231C3394
+        0B88848BFD0B8B515A54A4249EA682B17FA03FDABC07EF1C6486D03DDC35C682
+        B6747B8BB87D6B1A88FA28D35D34CFAF4250F8821A73EA50F9355BAF472CAB41
+        070D1A80D4511649A37981DC68044BDE6AC0B2061B11266DDB27B3045B7D7D19
+        AA24B3AA62E528CFBDD62C5BBD0BAD5E0C82E264E90511689FB71D12E7AC6D47
+        6850047677121D37556058381468C59CE609A446D9AA5D68C944183C06D2AE83
+        61DC79C7E24AC83642761E52B4CC7FBB1E2FD53B08E55974033E99EA42EAE62A
+        84AD58CE363048F802876DCEF71CAB657E21D28938B65F5B02CDC9748BD0F27D
+        B0D81CD9CC814FFC20823B268EEAD74F37357760E66B471019A423CD8A53CA5C
+        B77F5185DA9AEF521719921B539978C9E67A2C6B7221159ACBDCBA7EC630CC3A
+        6370CE79FDACDF2FAD6EC71D1F50EEC5F2917153B0179673035E5ACC7C6B3F36
+        1D0C808D3213CC7B5354B0687D548FB6640AC5CB284A58712615FBD835473219
+        4270F201F59CFA376BE23B19184F7E19C7D8020DBB59F9C26C6734BD6F5152FA
+        E2976C2CC3B48C8619C5C0C6E912A89D121BDBE298B59E22A3C042BA338D9D0B
+        4A31794811FA54387CB567D2A83966E3D29179CADC1EA418C986B44CE6EA6C29
+        883E092AE36698090C55D63C82E9DDD1F43E11D875B4139357B5D25A61A4BB29
+        62660DC5CC1145275A91C12FECC2318D4D1E8364AC9144C38229E48795C4B74E
+        5251C1E2BDD8CE06569057B5E3875EC733844C4581D3F67AEFE44095795B68B2
+        BB0D61EC9A1D684CC4B8A68F22CDC6914593D809B3154910688CADC873BB0FE2
+        96F78E205494C7E6CAC593D3C2B87D62A952F9416BFBDD0D59FFE51ACFEC6CC6
+        CF3E4CC2CC6733C936FDB94B0661C9A45224932775A1026356EE42931752875A
+        6E9783A6C563504E2524258A11A4816F7DC80A6690DC96788299A4097ACC5207
+        73A34D1F8D0B272A4BA553E9DE401DECED4A61DCCA663657AC30F425D3EF827D
+        F3140913DF054E45807205CAC1A7B7C331D931C8D3415AB47E41392A8A424ABB
+        A6D2BD195511AAE1D16D2DB8FBC3384285B2AA00C34D1B071656A906CF97AD06
+        83C4F83FDB66C99850C29C290B6994AC62E170F26031C29CB88BBF5D1CC5DD53
+        CBC9B6ADFCB6CF239D85EFD463F55EEE526A4C79B8E4A4B0FBBA0A4C1C9497E5
+        C1FC46007B063D90A16462CFD12E4C7E651FDC5011AB9B8B0CDBF41B988E575C
+        51254F4DD5BDB2E8E404EAB31596513EFB8D7A769A6C23623E05B1497191C21F
+        CF2DC07DE795A9A56441F0642B2DBB52BD7FE052E2A9E37246B29675A087B636
+        E3DE4FE3D0F2654C4873FB9853AE63ED8CF18124D483F4A6AB93929CE7A3FCD5
+        1DD532DCF5411D1EDFC6BD0F0E4E4C1DD6DD28FB9EE7A795625EE570F4D7B29C
+        02357B8F86B5F5ED58BCE500524CE856CC542EE076FAB8F32CE0F1CBA833A80B
+        846E9D34636EA03D2D6F36512FDFC389DFA70E647D8E511BA6B95B3F2577D38D
+        BB260DC72D13F351C5945618D272B8848B6E3A7AF5B1249EDA13C7133B3A183D
+        F93022BACA93145BA4D2C10B970DC7A20923A8AC82CAA4E1340E72738D4E3B85
+        AB37ECC307B265894559616876BA88EB11583AADF08D62552B26D8582868FC92
+        69813682DC1F678F94817ACEB27CD52B6564AFC29433AD248C753347A3C88AA0
+        A764E4FACA4101955FDFC462B1BE1D5F55A140916FE988E3371F34E293434442
+        7635B61D113220DB35798B9FFDE2406A5BF97F53769CA694858219C49756658F
+        92C279C3343C36AD0C178D94ADB5C36724C346D627BF3A48E637F9FA06D81B8F
+        E3D9EA3856ED3F8AFAC3D1C0B165F196594B9ECBFBA49525F1F8D7372CB19543
+        4CDC383A8A9B260D46455E54411222DBD0685ABF5EAE18E51F71FC8101476020
+        8BBBB78C60FB693A5A1DC5C9CE2E4A3D46AEEB064B1A6C4546B3F13CB32882CA
+        C12144AD40A878B6A73C41E11B30087BF6A1E17FE489615274FCA25E00000000
+        49454E44AE426082}
+      ShowHint = True
+      OnClick = ImageDelClick
+    end
+    object ImageUpdate: TImage
+      Left = 155
+      Top = 6
+      Width = 45
+      Height = 41
+      Cursor = crHandPoint
+      Hint = #1054#1073#1085#1086#1074#1080#1090#1100
+      AutoSize = True
+      ParentShowHint = False
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000002D0000
+        00290806000000A18BA08C000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC200000EC20115284A80000009
+        6B4944415478DAD5596B7054E5197ECE757793DDEC25B74D3609325848B140B9
+        1589B4825CC671945E90DA41874E19E8744604EA8CA2B6B43396AA85FEA9553A
+        2D75BCE1585BA93840DBB122725130B608E15642122024D95C49F69E3DD7BEE7
+        9C5D0C61936C960CB6EFCC813DD9FDBEEF39EFF7BC97E73B4C3299D4BBBBBBC1
+        711C7235C6B818EB339BE17B8D2E5DA72BE7152C535515454545605A5A5AF440
+        207083D3DD3C6B6D6D05130C0675BFDF9FE510C357CCD53B49D3A16B12F65F4E
+        E24F2D51D406659C0DCB404225B7907F791636971DD39C1CBE3E4EC08AF2027C
+        B994818DB5814D6FCDA03947B2F6F6F65C40EB88C83A4E7549D85C77057FFB4F
+        8CD00B809D400AB4B8C65A1C312E5DA17B91FEA7079159637F0127F0F834277E
+        5CED83D7C5C1C6B1D7802637D01D93615D2637D03279F658470CEB6B3BF14923
+        01100910AF5B00191D2E8A8B3C5A406434E238632ED5AFF18811E8B8E1793D15
+        3709638C848767B8F193AFFAE0770A0380EA882B1A3AE937C67A364E47653E4F
+        F3B1A305AD2394D4F0EBBA5E3C5B1B361D46B39940CB4516FE021E530A39CC2D
+        B6636A218F323B0B5E142049122EC4741CEF8AE3A34E158D3D0A2EC664848DF1
+        C693F6CBA8F088D872BB1BCB261440E42CE0BB2F45F0E8C7613445654CA6F90E
+        DD5B068FC88D0EF4855002EB8EF460CF79DA66733083409E8E9A32116B26E663
+        71551EFD6DE4ECA3280AB6D747B0A32181D35D32424433680C78DA998D335D78
+        728617F93C87371AA358BFBF1B3D5105BE421BCE3F10804FCCDAD33A1AFA1258
+        7DA01B079A93C4593B041A3BA79CC5A6194E2CA1C0BACA47CDE23B587644F046
+        12FCFDE9107E7B328AD37DB23507F17FED54179EAF29C5DE4B71AC39D88DF688
+        820AAF0D75F797C39B2DE88E9884951F06F15EA3447410E0E679ACAA16B169B6
+        972611CCE4AB1177D954ACE874CFB0D9678273B4836B0FF5E0FD560A58DD0854
+        09CFD57851EDB663C3C75770B14F42A5CF8613D9828E2B2A1E3FDA83173F8B92
+        87391A043C31DD857553DCB0D31642D3CC8A7235D6E91F958073D96336AD352E
+        61FDE11EEC6C4A98542971B2585C69C3072D4904C30A0204FAE4B2AC40EB78BB
+        B10FCBFFD143D941849D903C36D5819F52B48BBCF03915CC5CCB581989B52A5F
+        36E4B80E78AC1F3F200EFFB359B172BBA042A10750250D010AD4AC405FA608BF
+        6B6F331A3A1833F0968E17F1DAFC12B88D20D4AC9D3431A73C3CCAFA90D18271
+        190FECEBC6A136C94AA386C904DA3D1268DD4AEEAF9C0961D57BDD543078547B
+        39BCBAC88BAF1539AFFE461BA6CFC8C6BAFA15BCD514C5C5A84A4B5893F96C2C
+        DEBD10C7C1208136E282D229A46C4013A20E2AC10B76B5E0EC15BAE58175B7E5
+        E337F38AAD8E27557AD38D4FAECE3D1B4AE2A17D1D38D6AE82A59C6E04306FCC
+        46F3CB26C9186B72AA0D151E0127BF534E797A18D0A7BA6398F26A3B955B1693
+        DD02762C29C2749F83E24EA76C76831C4859DD15094BFF1EC4A5160A3E1B79C6
+        A87626C552EE48F725E469C12BA0EDC14A14D98700AD5046D8FAEF3E3C75B817
+        7000F7DE9287DD77D3773A63393A573E0CB276DACDD7EAC3680E4B70586192A2
+        9C6E050CA39BCFA02A3A0A89A21BA9D43B8421404764150BF7B4E1D3560D3687
+        8A27A7B9F1F35985A96C018B6B6360061D9234A7960EE6549B34E0174847B891
+        50EDBC0598C904BA873C10D8D18CA4C221E064F0873BBDB8A7CA499313F74C9E
+        8D91AB7379D0A140772414F8FF584F3C73E02B4E1E7B9696601C75601A0D61B3
+        E82D6E865D07BA352AA1E2E93AE2B31B95250CEA5655C0E3B07FD13887074D32
+        04416A17058A5EA31F2EA47EE38BB05D174278E448082D7186FA90048EDC3701
+        1EFB285BD39B6DDBCF06F1D8E12842610D557E11C7EFAF82D7F63F0E7AD3673D
+        D87A2C8C6494C1922F39B07371099C428E72EB66D9F7A85ABE551F3595CDC63B
+        3CF8C5AC52EAE38700AD12A7CFF4F4C3462593D1329C53A42A95441AAE348F47
+        9143B8D13EE93A53490C2CFA6B101F76923888A8D8B7A2147755B830A4B035B3
+        C7AFCE81CA50E61959DDEA4168B20DF3FDD87CBB218FC616F63B172378848441
+        2B694BA341BFB8B20AE35C69799F01742735E4A52F34810ABD59BA4DD3ADC1E6
+        6516291A1C49E2896F14E167A4601CFCD8169C95EFB7E3F5F371B32DFDD62427
+        5E9EEF83C70CC22102B133AEA0F4C506EA13ED161508A78DFA8029D43805EC0C
+        628A819B4334D18FD5A4E7564CF29040183BD0075A2358BDBF0B0D519A33AE61
+        EFB262DC33CE10CDCC709E4E8376581D17F13A9F7EBF79B6071BA67A9066B906
+        2AEBC619063376D48828321EDCD789DD4DB2B9CC5C12CF3B1797A12CFFDA5A31
+        3CE8342DA8ABB9A580C3F63B7D586406444A6AE9CC00E9929BA5FB09A3EDFD25
+        A5B9678F4790900C67C8D45D1652975980C1526368D01E3B8A6D0C2638451C0D
+        C64DAF4F2E16F0CA8212CC36F87E8D0CB8316F53AF87974F87F0546D1F3A2402
+        28E9F8D1F43C6C99530897707DBF3304E846C025E28E221ECFCCF562E507DDB8
+        14B68EBEAAE96FDB6ADC5810702277B1F5B9C9AA6A9E7F3C4385249860CCB3BE
+        795522DE5C588A8AFCCC2DC4B0A06B0A057CB4DC8F37CEC5B0814441B771A642
+        797C3C7DB7765A1E1EBEAD003696CF19700765AA4DFFEAC3DB0D49F4924281AC
+        63BA9FC34B942DA617E70F392E33E86D066801B3BD226ABF5B467C63F1FA3952
+        339FF6A22D42DE20A0F9A28EB901163F9C5480E5E30B301AD5185765FCEE5414
+        7F6908E1932E238D12056405B3CA386C9B5784D9A5F9C38EBF0E745B5446E0B9
+        7AD3D3B71689A8FB7E80F2304FB1A8615F730C8F1EEDC5A9A06CAA74A364FA49
+        DFDDEAE3B13060C37D5536CC2C36F83E98872AA54A0507DB12D8D52CE104A9ED
+        93610571D938C3E68CAFF1ED6A3BB6CEF160825B4CC9AD5180961415EF3485A9
+        CA89F010AE9A4A3B29AC140872CA65AA985BEA7AF1C2F110094AC1024FAAC626
+        3228A786C663337681253DA790C8E1A0A80AA2B288FEFE04BA6496784B34508C
+        E732024E81BB40C7E6993E3C34D14D63ADC3145D6786CDA419D5F8C06D36949B
+        9AFA9C2EA4097AB033BD496C3911C29F4F12789D80DB05EB3C8C19D0AD189FA9
+        4781F12E474F1D41110D20916B1D2C9E9EE9C6EAC94E94E409F40CE9E2A1A630
+        7043526DC42E2FD38B9DF454310214959278B7318697EA63A8ED4C12616931D6
+        D872C53A3D6564EB20DD783BE053F14DBF0B6B26E6614E453E3CB43BBC79C2AA
+        A5666407AD9823E891CD5A2449454826DE47E22ACE535C74110D64DA7E9B8347
+        25E5FB495E3B189EA3968081C0A5409A1575A00ECF2EDF9BA0FF2FDF6E8DC57B
+        C4C136F80463AC2CFD1EF1BF4BB3BF943D7B9F4B0000000049454E44AE426082}
+      ShowHint = True
+      OnClick = ImageUpdateClick
+    end
+  end
+end

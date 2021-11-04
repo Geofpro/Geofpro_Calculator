@@ -39,6 +39,11 @@ type
     FDQueryPipeCalculator: TFDQuery;
     DataSourcePersonDate: TDataSource;
     DataSourcePipeCalculator: TDataSource;
+    FDQUserRef: TFDQuery;
+    DSUserRef: TDataSource;
+    FDQinsert: TFDQuery;
+    FDQupdate: TFDQuery;
+    FDQdelete: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

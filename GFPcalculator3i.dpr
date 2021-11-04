@@ -18,7 +18,17 @@ uses
   Reports in 'Reports.pas' {FrReports},
   ReportsAllDate in 'ReportsAllDate.pas' {FrReportsAllDate: TFrame},
   DiagramFactors in 'DiagramFactors.pas' {FrDiagramFactors},
-  DiagramMain in 'DiagramMain.pas' {FrDiagramMain};
+  DiagramMain in 'DiagramMain.pas' {FrDiagramMain},
+  rClearTable in 'rClearTable.pas' {FrClearTable},
+  ExportExcelFile in 'ExportExcelFile.pas',
+  UserReference in 'UserReference.pas' {FrUserReference},
+  rDeleteRecordUserRef in 'rDeleteRecordUserRef.pas' {FrDeleteRecordUserRef},
+  License in 'License.pas' {FrLicense},
+  Marketing in 'Marketing.pas' {FrMarketing},
+  MarketingList in 'MarketingList.pas' {FrMarketingList: TFrame},
+  AboutProgram in 'AboutProgram.pas' {FrAbout},
+  Manual in 'Manual.pas' {FrManual},
+  rExcelExport in 'rExcelExport.pas' {FrExcelExport};
 
 {$R *.res}
 
@@ -39,5 +49,13 @@ begin
   Application.CreateForm(TFrReports, FrReports);
   Application.CreateForm(TFrDiagramFactors, FrDiagramFactors);
   Application.CreateForm(TFrDiagramMain, FrDiagramMain);
+  Application.CreateForm(TFrClearTable, FrClearTable);
+  Application.CreateForm(TFrUserReference, FrUserReference);
+  Application.CreateForm(TFrDeleteRecordUserRef, FrDeleteRecordUserRef);
+  Application.CreateForm(TFrLicense, FrLicense);
+  Application.CreateForm(TFrMarketing, FrMarketing);
+  Application.CreateForm(TFrAbout, FrAbout);
+  Application.CreateForm(TFrManual, FrManual);
+  Application.CreateForm(TFrExcelExport, FrExcelExport);
   Application.Run;
 end.

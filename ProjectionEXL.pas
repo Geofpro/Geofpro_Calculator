@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, ComObj,
   Vcl.Menus, VclTee.TeeGDIPlus, VCLTee.TeEngine, VCLTee.Series, Vcl.ExtCtrls,
-  VCLTee.TeeProcs, VCLTee.Chart, Vcl.Imaging.pngimage;
+  VCLTee.TeeProcs, VCLTee.Chart, Vcl.Imaging.pngimage, ActiveX;
 
 type
   TFrmProjectionEXL = class(TForm)
@@ -17,34 +17,43 @@ type
     Excel1: TMenuItem;
     N2: TMenuItem;
     N3: TMenuItem;
-    N4: TMenuItem;
     Panel1: TPanel;
     ENameFile: TEdit;
     Label1: TLabel;
     Splitter1: TSplitter;
     Chart1: TChart;
-    Series1: TLineSeries;
     Panel2: TPanel;
     Image1: TImage;
     Image2: TImage;
     Image3: TImage;
     Image4: TImage;
+    Image5: TImage;
+    N4: TMenuItem;
+    Series1: THorizLineSeries;
     procedure FormCreate(Sender: TObject);
     procedure Excel1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    procedure OpenEXL;
-    procedure ImportEXL;
-    procedure WellChart;
+    procedure OpenEXL;   // открыть файл
+    procedure ImportEXL;  // импорт данных из Excel файла
+    procedure WellChart;  // построить график
+    procedure ClearTable; // очистить таблицу
+    function CheckExcelInstall:boolean; // проверяем, установлен ли Excel
   end;
 
 var
   FrmProjectionEXL: TFrmProjectionEXL;
+
+   const ExcelApp = 'Excel.Application';
 
 implementation
 
@@ -52,18 +61,56 @@ implementation
 
 { TFrmProjectionEXL }
 
-uses Wait;
+// Класс TFrmProjectionEXL получает данные из Excel файла, либо данные вводятся в ручную.
+// График таблицы - проекция скважины на вертикальную плоскость.
+// данные класса нужны для расчёта вертикальной проекции элементов бурильной колонны (TableOfElements).
+
+uses Wait, Manual;
+
+function TFrmProjectionEXL.CheckExcelInstall: boolean;
+    var
+  ClassID: TCLSID;
+  Rez : HRESULT;
+begin
+  // Ищем CLSID OLE-объекта
+  Rez := CLSIDFromProgID(PWideChar(WideString(ExcelApp)), ClassID);
+  if Rez = S_OK then  // Объект найден
+    Result := true
+  else
+    Result := false;
+end;
+
+procedure TFrmProjectionEXL.ClearTable;
+ // очистить таблицу
+ var i,j : Integer;
+begin
+   for i := 0 to SGexcel.ColCount-1 do
+   begin
+     for j := 2 to SGExcel.RowCount-1 do
+     begin
+       SGExcel.Cells[i,j]:='';
+     end;
+   end;
+   Series1.Clear;
+   Chart1.Refresh;
+end;
 
 procedure TFrmProjectionEXL.Excel1Click(Sender: TObject);
 begin
+  // проверяем, установлен ли Excel
+   CheckExcelInstall;
+   if CheckExcelInstall = True then
+  begin
     if OpenDialog1.Execute then
-   begin
+    begin
      ENameFile.Text:= OpenDialog1.FileName;
      FrmWait.Show;
      ImportEXL;
      WellChart;
      FrmWait.Close;
-   end;
+    end;
+  end
+  else ShowMessage('Excel не установлен на Вашем компьютере. Ошибка импорта данных.');
 end;
 
 procedure TFrmProjectionEXL.FormCreate(Sender: TObject);
@@ -79,6 +126,13 @@ begin
   SGexcel.Cells[2,0]:='Проекция на вертикаль, м';
   SGexcel.Cells[3,0]:='Отклонение от устья, м';
 
+  SGexcel.Cells[0,1]:='0';
+  SGexcel.Cells[1,1]:='0';
+  SGexcel.Cells[2,1]:='0';
+  SGexcel.Cells[3,1]:='0';
+
+  // вычисляем ширину таблицы
+  SGexcel.Width:=Round(FrmProjectionEXL.Width/1.85);
 end;
 
 procedure TFrmProjectionEXL.Image1Click(Sender: TObject);
@@ -89,6 +143,24 @@ end;
 procedure TFrmProjectionEXL.Image2Click(Sender: TObject);
 begin
   if SGexcel.RowCount>=3 then SGexcel.RowCount:= SGexcel.RowCount-1;
+end;
+
+procedure TFrmProjectionEXL.Image3Click(Sender: TObject);
+ //очистить таблицу
+begin
+  ClearTable;
+end;
+
+procedure TFrmProjectionEXL.Image4Click(Sender: TObject);
+ // вернуть таблицу в исходное состояние
+begin
+  ClearTable;
+  SGExcel.RowCount:=2;
+end;
+
+procedure TFrmProjectionEXL.Image5Click(Sender: TObject);
+begin
+ WellChart;
 end;
 
 procedure TFrmProjectionEXL.ImportEXL;
@@ -134,8 +206,13 @@ begin
  FrmProjectionEXL.Close;
 end;
 
-procedure TFrmProjectionEXL.OpenEXL;
+procedure TFrmProjectionEXL.N4Click(Sender: TObject);
+begin
+  FrManual.ShowModal;
+end;
 
+procedure TFrmProjectionEXL.OpenEXL;
+  // открыть файл
 begin
   if OpenDialog1.Execute then
   begin
@@ -155,6 +232,7 @@ begin
   chart1.BottomAxis.Minimum := StrToFloat((SGexcel.Cells[3,1]))-200;
   chart1.BottomAxis.Maximum := StrToFloat((SGexcel.Cells[3,SGexcel.RowCount-1]))+200;
 
+  Series1.Clear;
 
   with Series1   do
   begin

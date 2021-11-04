@@ -2,14 +2,10 @@ object DataModule1: TDataModule1
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   Height = 517
-  Width = 775
+  Width = 974
   object FDConnection1: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Geofpro\Geofpro_Calculator\DrillingPipeDB\geofpro3i.' +
-        'mdb'
-      'ConnectionDef=Access_Demo')
-    Connected = True
+      'DriverID=MSAcc')
     LoginPrompt = False
     Left = 104
     Top = 72
@@ -133,11 +129,7 @@ object DataModule1: TDataModule1
   end
   object FDConnectionReport: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Geofpro\Geofpro_Calculator\Win32\Debug\DrillingPipeD' +
-        'B\GFPcalculatorReport.mdb'
-      'ConnectionDef=Access_Demo')
-    Connected = True
+      'DriverID=MSAcc')
     LoginPrompt = False
     Left = 64
     Top = 376
@@ -170,5 +162,221 @@ object DataModule1: TDataModule1
     DataSet = FDQueryPipeCalculator
     Left = 488
     Top = 448
+  end
+  object FDQUserRef: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM userref')
+    Left = 512
+    Top = 64
+  end
+  object DSUserRef: TDataSource
+    DataSet = FDQUserRef
+    Left = 600
+    Top = 64
+  end
+  object FDQinsert: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      
+        'INSERT INTO userref ('#1064#1080#1092#1088', '#1044#1080#1072#1084#1077#1090#1088#1053', '#1044#1080#1072#1084#1077#1090#1088#1042#1085', '#1044#1080#1072#1084#1077#1090#1088#1052#1072#1082#1089', '#1044#1080#1072 +
+        #1084#1077#1090#1088#1052#1053', '#1044#1080#1072#1084#1077#1090#1088#1052#1042#1085', '#1044#1083#1080#1085#1072#1052','
+      
+        #1052#1072#1089#1089#1072#1052#1077#1090#1088#1072', '#1052#1072#1089#1089#1072#1052', '#1052#1072#1089#1089#1072'2'#1042', '#1044#1083#1080#1085#1072#1057', '#1044#1083#1080#1085#1072#1069', '#1055#1088#1080#1084#1077#1095#1072#1085#1080#1077') VALUES ' +
+        '(:Name, :Dn, :Dv, :Dmax, :Dmn, :Dmv,'
+      ':Lm, :Mi, :Mm, :M2v, :Ls, :Le, :Comments)')
+    Left = 680
+    Top = 64
+    ParamData = <
+      item
+        Name = 'NAME'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DN'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DV'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DMAX'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DMN'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DMV'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'LM'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'MI'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'MM'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'M2V'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'LS'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'LE'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'COMMENTS'
+        ParamType = ptInput
+      end>
+  end
+  object FDQupdate: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      
+        'UPDATE userref SET '#1064#1080#1092#1088' = :Name, '#1044#1080#1072#1084#1077#1090#1088#1053' = :Dn, '#1044#1080#1072#1084#1077#1090#1088#1042#1085' = :Dv' +
+        ', '#1044#1080#1072#1084#1077#1090#1088#1052#1072#1082#1089' = :Dmax,'
+      
+        ' '#1044#1080#1072#1084#1077#1090#1088#1052#1053' = :Dmn, '#1044#1080#1072#1084#1077#1090#1088#1052#1042#1085' = :Dmv, '#1044#1083#1080#1085#1072#1052' = :Lm, '#1052#1072#1089#1089#1072#1052#1077#1090#1088#1072' =' +
+        ' :Mi, '#1052#1072#1089#1089#1072#1052' = :Mm,'
+      
+        ' '#1052#1072#1089#1089#1072'2'#1042' = :M2v, '#1044#1083#1080#1085#1072#1057' = :Ls, '#1044#1083#1080#1085#1072#1069' = :Le, '#1055#1088#1080#1084#1077#1095#1072#1085#1080#1077' = :Comme' +
+        'nts WHERE '#1050#1086#1076' = :ID')
+    Left = 752
+    Top = 64
+    ParamData = <
+      item
+        Name = 'NAME'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DN'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DV'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DMAX'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DMN'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DMV'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'LM'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'MI'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'MM'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'M2V'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'LS'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'LE'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'COMMENTS'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+  object FDQdelete: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'DELETE FROM userref WHERE '#1050#1086#1076' = :ID')
+    Left = 816
+    Top = 64
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
   end
 end

@@ -1,0 +1,103 @@
+unit ExportExcelFile;
+
+interface
+
+uses
+
+  ComObj, ActiveX, Variants, Windows, Messages, SysUtils, Classes, Vcl.Dialogs;
+
+  type
+  TExportExcelFileGo = class
+
+
+  private
+    { Private declarations }
+  function CheckExcelInstall:boolean;
+  function RunExcel(DisableAlerts:boolean=true; Visible: boolean=false): boolean;
+  procedure ExcelReport;
+
+
+  public
+    { Public declarations }
+   Constructor Create;
+  end;
+
+ var GFPCalExcel: OleVariant;
+ const ExcelApp = 'Excel.Application';
+
+
+implementation
+
+// класс TExportExcelFileGo проверяет установлен ли Excel на машине пользователя
+// если установлен, экспортирует главную расчётную таблицу в Excel файл
+
+ uses pipe_calculator;
+{ TExportExcelFileGo }
+
+function TExportExcelFileGo.CheckExcelInstall: boolean;
+   var
+  ClassID: TCLSID;
+  Rez : HRESULT;
+begin
+  // Ищем CLSID OLE-объекта
+  Rez := CLSIDFromProgID(PWideChar(WideString(ExcelApp)), ClassID);
+  if Rez = S_OK then  // Объект найден
+    Result := true
+  else
+    Result := false;
+end;
+
+constructor TExportExcelFileGo.Create;
+begin
+  CheckExcelInstall;
+  RunExcel;
+end;
+
+procedure TExportExcelFileGo.ExcelReport;
+begin
+
+end;
+
+
+function TExportExcelFileGo.RunExcel(DisableAlerts, Visible: boolean): boolean;
+ var i,j,index: Integer;
+ sheet: Variant;
+ begin
+ try
+{проверяем установлен ли Excel}
+  if CheckExcelInstall then
+   begin
+    GFPCalExcel:=CreateOleObject(ExcelApp);
+    //показывать/не показывать системные сообщения Excel (лучше не показывать)
+    GFPCalExcel.Application.EnableEvents:=DisableAlerts;
+    GFPCalExcel.Visible:=Visible;
+    GFPCalExcel.WorkBooks.Add;
+    GFPCalExcel.WorkBooks[1].WorkSheets[1].name := 'ReportWeight';
+    sheet:=ExcelApp.WorkBooks[1].WorkSheets['ReportWeight'];
+    // заполняем созданную страницу
+      index:=2;
+    sheet.cells[index,2]:='Рапорт расчёт веса бурильной колонны';
+      index:=4;
+   for i:=0 to Fcalculator3i.StringGrid1.ColCount-1 do
+    begin
+     for j:=0 to Fcalculator3i.StringGrid1.RowCount-1 do
+      sheet.cells[index,j+1]:= Fcalculator3i.StringGrid1.Cells[i,j];
+      inc(index);
+      GFPCalExcel.ActiveWorkbook.ActiveSheet.Range['A'+IntToStr(index-2)+
+      ':G'+IntToStr(index-1)].Borders.Color := #000000;
+   end;
+
+
+        Result:=true;
+      end
+    else
+      begin
+        MessageBox(0,'Приложение MS Excel не установлено на этом компьютере','Ошибка',MB_OK+MB_ICONERROR);
+        Result:=false;
+      end;
+  except
+    Result:=false;
+  end;
+end;
+
+end.

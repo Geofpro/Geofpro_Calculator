@@ -59,6 +59,10 @@ procedure TFTableOfElements.СonversionElements;
  i: Integer; // счётчик
  CR : Integer; // количество секций бурильной колонны
 begin
+   // очищаем список элементов
+     Memo1.Text:='';
+     Memo1.Lines.Add('Расчёт выполнен.');
+     Memo1.Lines.Add('Количество элементов в секции:');
    // создаём экземпляр класса TConversionElements
      ElementsNum:= TConversionElements.Create;
      CR:= Fcalculator3i.StringGrid1.RowCount-1;
@@ -141,7 +145,7 @@ begin
  begin
      if SGElements.Cells[8,i]='' then
     begin
-     ShowMessage('Заполните значения зенитного угла');
+     ShowMessage('Заполните данные профиля скважины');
      Exit;
     end;
   end;
@@ -160,8 +164,9 @@ begin
    FrmDiagram.MassDiagramm;
    // строим диаграмму составляющих формулы веса
    FrDiagramFactors.StartCalculation;
-
-   ShowMessage('Расчёт выполнен');
+   Memo1.Lines.Add('');
+   Memo1.Lines.Add('Расчётная длина колонны: ' +SGElements.Cells[7,SGElements.RowCount-1]+ ' м');
+   ShowMessage(Memo1.Text);
 end;
 
 procedure TFTableOfElements.ClassPipeWeightT;

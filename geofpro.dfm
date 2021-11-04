@@ -5513,8 +5513,8 @@ object Geofpro3i: TGeofpro3i
       4D2B36D5F735139DBF2FE74008CDB8FF00B2B51B367E6EC3A52B9C9DBD875A8D
       CEE3F4A0423B639A898E3FFD54E66DDF35479C9A047FFFD9}
     OnMouseDown = Image1MouseDown
-    ExplicitLeft = -54
-    ExplicitTop = 123
+    ExplicitLeft = 32
+    ExplicitTop = 33
   end
   object Label1: TLabel
     Left = 102
@@ -5547,6 +5547,7 @@ object Geofpro3i: TGeofpro3i
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+    OnClick = Label2Click
   end
   object Label3: TLabel
     Left = 131
@@ -5561,13 +5562,14 @@ object Geofpro3i: TGeofpro3i
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+    OnClick = Label3Click
   end
   object Label7: TLabel
     Left = 422
     Top = 40
-    Width = 179
+    Width = 197
     Height = 13
-    Caption = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088' '#1074#1077#1089#1072' '#1073#1091#1088#1080#1083#1100#1085#1099#1093' '#1090#1088#1091#1073
+    Caption = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088' '#1074#1077#1089#1072' '#1073#1091#1088#1080#1083#1100#1085#1086#1081' '#1082#1086#1083#1086#1085#1085#1099
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -11
@@ -5582,6 +5584,7 @@ object Geofpro3i: TGeofpro3i
     Height = 46
     Align = alBottom
     Caption = 'Panel1'
+    Color = clWhite
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
@@ -5621,6 +5624,15 @@ object Geofpro3i: TGeofpro3i
       Text = 'Geofpro_user'
       OnDblClick = EuserlogDblClick
     end
+  end
+  object ELicense: TEdit
+    Left = 88
+    Top = 288
+    Width = 121
+    Height = 21
+    TabOrder = 1
+    Text = 'ELicense'
+    Visible = False
   end
   object Timer1: TTimer
     Interval = 5000

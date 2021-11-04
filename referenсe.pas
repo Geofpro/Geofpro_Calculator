@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.DBCtrls;
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.DBCtrls, Vcl.Imaging.pngimage, Vcl.Mask;
 
 type
   TFreference = class(TForm)
@@ -32,17 +32,40 @@ type
     ESG1col: TEdit;
     ESG1row: TEdit;
     Panel2: TPanel;
-    DBNavigator1: TDBNavigator;
     TabSheet9: TTabSheet;
     DBGrid9: TDBGrid;
+    TabSheet10: TTabSheet;
+    ImageAdd: TImage;
+    ImageDel: TImage;
+    ImageUpdate: TImage;
+    DBGrid10: TDBGrid;
+    TabSheet11: TTabSheet;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    DBEdit9: TDBEdit;
+    DBEdit10: TDBEdit;
+    DBEdit12: TDBEdit;
+    DBEdit11: TDBEdit;
+    DBEdit1: TDBEdit;
+    DBIDpipe: TDBEdit;
+    DBEdit13: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure ImageAddClick(Sender: TObject);
+    procedure ImageUpdateClick(Sender: TObject);
+    procedure ImageDelClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure DeleteUserRecord;
   end;
 
 var
@@ -52,7 +75,7 @@ implementation
 
 {$R *.dfm}
 
- uses DataModule, pipe_calculator;
+ uses DataModule, pipe_calculator, UserReference, rDeleteRecordUserRef;
 
 
 
@@ -106,7 +129,7 @@ begin
      Fcalculator3i.StringGrid1.Cells[1,Sr]:= DbGrid4.DataSource.DataSet.Fields[1].AsString;
      Fcalculator3i.StringGrid1.Cells[2,Sr]:= DbGrid4.DataSource.DataSet.Fields[2].AsString;
      Fcalculator3i.StringGrid1.Cells[3,Sr]:= DbGrid4.DataSource.DataSet.Fields[3].AsString;
-     Fcalculator3i.StringGrid1.Cells[4,Sr]:= DbGrid4.DataSource.DataSet.Fields[2].AsString;
+     Fcalculator3i.StringGrid1.Cells[4,Sr]:= DbGrid4.DataSource.DataSet.Fields[7].AsString;
      Fcalculator3i.StringGrid1.Cells[10,Sr]:= DbGrid4.DataSource.DataSet.Fields[4].AsString;
      Fcalculator3i.StringGrid1.Cells[8,Sr]:= DbGrid4.DataSource.DataSet.Fields[5].AsString;
      Fcalculator3i.StringGrid1.Cells[11,Sr]:= DbGrid4.DataSource.DataSet.Fields[4].AsString;
@@ -198,7 +221,22 @@ begin
      Fcalculator3i.StringGrid1.Cells[10,Sr]:= DbGrid9.DataSource.DataSet.Fields[7].AsString;
   end;
 
-
+  if ComboBox1.ItemIndex=9  then
+  begin
+    // Справочник пользователя
+     Fcalculator3i.StringGrid1.Cells[1,Sr]:= DBEdit1.Text;
+     Fcalculator3i.StringGrid1.Cells[2,Sr]:= DBEdit2.Text;
+     Fcalculator3i.StringGrid1.Cells[3,Sr]:= DBEdit3.Text;
+     Fcalculator3i.StringGrid1.Cells[4,Sr]:= DBEdit4.Text;
+     Fcalculator3i.StringGrid1.Cells[5,Sr]:= DBEdit5.Text;
+     Fcalculator3i.StringGrid1.Cells[6,Sr]:= DBEdit6.Text;
+     Fcalculator3i.StringGrid1.Cells[7,Sr]:= DBEdit7.Text;
+     Fcalculator3i.StringGrid1.Cells[8,Sr]:= DBEdit8.Text;
+     Fcalculator3i.StringGrid1.Cells[9,Sr]:= DBEdit9.Text;
+     Fcalculator3i.StringGrid1.Cells[10,Sr]:= DBEdit10.Text;
+     Fcalculator3i.StringGrid1.Cells[11,Sr]:= DBEdit11.Text;
+     Fcalculator3i.StringGrid1.Cells[12,Sr]:= DBEdit12.Text;
+  end;
 
 end;
 
@@ -216,7 +254,10 @@ begin
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
   TabSheet9.Visible:=False;
-  DbNavigator1.DataSource:=DataModule1.DataSource1;
+  TabSheet10.Visible:=False;
+  ImageAdd.Visible:=False;
+  ImageDel.Visible:=False;
+  ImageUpdate.Visible:=False;
   end;
 
    if ComboBox1.ItemIndex=1 then
@@ -231,7 +272,10 @@ begin
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
   TabSheet9.Visible:=False;
-  DbNavigator1.DataSource:=DataModule1.DataSource2;
+  TabSheet10.Visible:=False;
+  ImageAdd.Visible:=False;
+  ImageDel.Visible:=False;
+  ImageUpdate.Visible:=False;
   end;
 
      if ComboBox1.ItemIndex=2 then
@@ -246,7 +290,10 @@ begin
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
   TabSheet9.Visible:=False;
-   DbNavigator1.DataSource:=DataModule1.DataSource3;
+  TabSheet10.Visible:=False;
+  ImageAdd.Visible:=False;
+  ImageDel.Visible:=False;
+  ImageUpdate.Visible:=False;
   end;
 
      if ComboBox1.ItemIndex=3 then
@@ -261,7 +308,10 @@ begin
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
   TabSheet9.Visible:=False;
-  DbNavigator1.DataSource:=DataModule1.DataSource4;
+  TabSheet10.Visible:=False;
+  ImageAdd.Visible:=False;
+  ImageDel.Visible:=False;
+  ImageUpdate.Visible:=False;
   end;
 
      if ComboBox1.ItemIndex=4 then
@@ -276,7 +326,10 @@ begin
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
   TabSheet9.Visible:=False;
-  DbNavigator1.DataSource:=DataModule1.DataSource5;
+  TabSheet10.Visible:=False;
+  ImageAdd.Visible:=False;
+  ImageDel.Visible:=False;
+  ImageUpdate.Visible:=False;
   end;
 
 
@@ -292,7 +345,10 @@ begin
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
   TabSheet9.Visible:=False;
-  DbNavigator1.DataSource:=DataModule1.DataSource6;
+  TabSheet10.Visible:=False;
+  ImageAdd.Visible:=False;
+  ImageDel.Visible:=False;
+  ImageUpdate.Visible:=False;
   end;
 
      if ComboBox1.ItemIndex=6 then
@@ -307,7 +363,10 @@ begin
   TabSheet7.Visible:=True;
   TabSheet8.Visible:=False;
   TabSheet9.Visible:=False;
-  DbNavigator1.DataSource:=DataModule1.DataSource7;
+  TabSheet10.Visible:=False;
+  ImageAdd.Visible:=False;
+  ImageDel.Visible:=False;
+  ImageUpdate.Visible:=False;
   end;
 
      if ComboBox1.ItemIndex=7 then
@@ -322,7 +381,10 @@ begin
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=True;
   TabSheet9.Visible:=False;
-  DbNavigator1.DataSource:=DataModule1.DataSource8;
+  TabSheet10.Visible:=False;
+  ImageAdd.Visible:=False;
+  ImageDel.Visible:=False;
+  ImageUpdate.Visible:=False;
   end;
 
    if ComboBox1.ItemIndex=8 then
@@ -337,9 +399,39 @@ begin
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
   TabSheet9.Visible:=True;
-  DbNavigator1.DataSource:=DataModule1.DataSource9;
+  TabSheet10.Visible:=False;
+  ImageAdd.Visible:=False;
+  ImageDel.Visible:=False;
+  ImageUpdate.Visible:=False;
   end;
 
+   if ComboBox1.ItemIndex=9 then
+     // справочник пользователя
+  begin
+  TabSheet1.Visible:=False;
+  TabSheet2.Visible:=False;
+  TabSheet3.Visible:=False;
+  TabSheet4.Visible:=False;
+  TabSheet5.Visible:=False;
+  TabSheet6.Visible:=False;
+  TabSheet7.Visible:=False;
+  TabSheet8.Visible:=False;
+  TabSheet9.Visible:=False;
+  TabSheet10.Visible:=True;
+  ImageAdd.Visible:=True;
+  ImageDel.Visible:=True;
+  ImageUpdate.Visible:=True;
+  end;
+
+
+end;
+
+procedure TFreference.DeleteUserRecord;
+//удаляем выбранную запись из справочника пользователя
+begin
+  DataModule1.FDQdelete.ParamByName('ID').AsString:=DBIDpipe.Text;
+  DataModule1.FDQdelete.ExecSQL;
+  DataModule1.FDQUserRef.Refresh;
 end;
 
 procedure TFreference.FormActivate(Sender: TObject);
@@ -358,6 +450,76 @@ begin
   TabSheet6.Visible:=False;
   TabSheet7.Visible:=False;
   TabSheet8.Visible:=False;
+  TabSheet9.Visible:=False;
+  TabSheet10.Visible:=False;
+  TabSheet11.Visible:=False;
+  ImageAdd.Visible:=False;
+  ImageDel.Visible:=False;
+  ImageUpdate.Visible:=False;
+
+  TabSheet1.TabVisible:=False;
+  TabSheet2.TabVisible:=False;
+  TabSheet3.TabVisible:=False;
+  TabSheet4.TabVisible:=False;
+  TabSheet5.TabVisible:=False;
+  TabSheet6.TabVisible:=False;
+  TabSheet7.TabVisible:=False;
+  TabSheet8.TabVisible:=False;
+  TabSheet9.TabVisible:=False;
+  TabSheet10.TabVisible:=False;
+  TabSheet11.TabVisible:=False;
+end;
+
+procedure TFreference.ImageAddClick(Sender: TObject);
+begin
+  FrUserReference.Label4.Visible:=False;
+  FrUserReference.DBIDuserRef.Visible:=False;
+  FrUserReference.LabelUpdate.Visible:=False;
+  FrUserReference.LabelAdd.Visible:=True;
+
+  FrUserReference.SGAddPipe.Cells[2,1]:='';
+  FrUserReference.SGAddPipe.Cells[2,2]:='';
+  FrUserReference.SGAddPipe.Cells[2,3]:='';
+  FrUserReference.SGAddPipe.Cells[2,4]:='';
+  FrUserReference.SGAddPipe.Cells[2,5]:='';
+  FrUserReference.SGAddPipe.Cells[2,6]:='';
+  FrUserReference.SGAddPipe.Cells[2,7]:='';
+  FrUserReference.SGAddPipe.Cells[2,8]:='';
+  FrUserReference.SGAddPipe.Cells[2,9]:='';
+  FrUserReference.SGAddPipe.Cells[2,10]:='';
+  FrUserReference.SGAddPipe.Cells[2,11]:='';
+  FrUserReference.SGAddPipe.Cells[2,12]:='';
+  FrUserReference.SGAddPipe.Cells[2,13]:='';
+  FrUserReference.ShowModal;
+end;
+
+procedure TFreference.ImageDelClick(Sender: TObject);
+begin
+ FrDeleteRecordUserRef.ShowModal;
+end;
+
+procedure TFreference.ImageUpdateClick(Sender: TObject);
+// добавляем значения полей записи в форму для редактирования
+begin
+  FrUserReference.Label4.Visible:=True;
+  FrUserReference.DBIDuserRef.Visible:=True;
+  FrUserReference.LabelUpdate.Visible:=True;
+  FrUserReference.LabelAdd.Visible:=False;
+
+  FrUserReference.SGAddPipe.Cells[2,1]:=DBEdit1.Text;
+  FrUserReference.SGAddPipe.Cells[2,2]:=DBEdit2.Text;
+  FrUserReference.SGAddPipe.Cells[2,3]:=DBEdit3.Text;
+  FrUserReference.SGAddPipe.Cells[2,4]:=DBEdit4.Text;
+  FrUserReference.SGAddPipe.Cells[2,5]:=DBEdit5.Text;
+  FrUserReference.SGAddPipe.Cells[2,6]:=DBEdit6.Text;
+  FrUserReference.SGAddPipe.Cells[2,7]:=DBEdit7.Text;
+  FrUserReference.SGAddPipe.Cells[2,8]:=DBEdit8.Text;
+  FrUserReference.SGAddPipe.Cells[2,9]:=DBEdit9.Text;
+  FrUserReference.SGAddPipe.Cells[2,10]:=DBEdit10.Text;
+  FrUserReference.SGAddPipe.Cells[2,11]:=DBEdit11.Text;
+  FrUserReference.SGAddPipe.Cells[2,12]:=DBEdit12.Text;
+  FrUserReference.SGAddPipe.Cells[2,13]:=DBEdit13.Text;
+  FrUserReference.ShowModal;
 end;
 
 end.

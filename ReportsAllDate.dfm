@@ -2,11 +2,11 @@ object FrReportsAllDate: TFrReportsAllDate
   Left = 0
   Top = 0
   Width = 980
-  Height = 2690
+  Height = 3237
   TabOrder = 0
   object Label1: TLabel
     Left = 400
-    Top = 2656
+    Top = 3208
     Width = 122
     Height = 13
     Caption = 'GEOFPRO Software 2021'
@@ -20,16 +20,16 @@ object FrReportsAllDate: TFrReportsAllDate
   end
   object Label3: TLabel
     Left = 24
-    Top = 512
+    Top = 560
     Width = 221
     Height = 13
     Caption = #1058#1072#1073#1083#1080#1094#1072' 2. '#1042#1077#1089' '#1089#1077#1082#1094#1080#1081' '#1073#1091#1088#1080#1083#1100#1085#1086#1081' '#1082#1086#1083#1086#1085#1085#1099'.'
   end
   object StringGridDate: TStringGrid
     Left = 24
-    Top = 40
+    Top = 35
     Width = 900
-    Height = 441
+    Height = 505
     ColCount = 2
     RowCount = 20
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
@@ -37,7 +37,7 @@ object FrReportsAllDate: TFrReportsAllDate
   end
   object StringGridPipeCalculator: TStringGrid
     Left = 24
-    Top = 531
+    Top = 579
     Width = 900
     Height = 449
     ColCount = 12
@@ -45,7 +45,7 @@ object FrReportsAllDate: TFrReportsAllDate
   end
   object Chart1: TChart
     Left = 24
-    Top = 1016
+    Top = 1056
     Width = 900
     Height = 750
     Legend.Visible = False
@@ -69,7 +69,7 @@ object FrReportsAllDate: TFrReportsAllDate
   end
   object Chart2: TChart
     Left = 24
-    Top = 1800
+    Top = 1824
     Width = 900
     Height = 700
     Legend.Alignment = laBottom
@@ -106,6 +106,30 @@ object FrReportsAllDate: TFrReportsAllDate
       Frame.OuterBrush.Gradient.Visible = True
       Frame.Width = 4
       OtherSlice.Legend.Visible = False
+    end
+  end
+  object ChartFactorsWeight: TChart
+    Left = 120
+    Top = 2560
+    Width = 673
+    Height = 585
+    Legend.Alignment = laBottom
+    Title.Text.Strings = (
+      
+        #1044#1080#1072#1075#1088#1072#1084#1084#1072' '#1089#1086#1089#1090#1086#1074#1083#1103#1102#1097#1080#1093' '#1092#1086#1088#1084#1091#1083#1099' '#1088#1072#1089#1095#1105#1090#1072' '#1074#1077#1089#1072' '#1073#1091#1088#1080#1083#1100#1085#1086#1081' '#1082#1086#1083#1086#1085#1085#1099', '#1082 +
+        #1053)
+    View3D = False
+    Color = clWhite
+    TabOrder = 4
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
+    object Series3: THorizBarSeries
+      BarBrush.Gradient.Direction = gdLeftRight
+      Gradient.Direction = gdLeftRight
+      XValues.Name = 'Bar'
+      XValues.Order = loNone
+      YValues.Name = 'Y'
+      YValues.Order = loAscending
     end
   end
 end

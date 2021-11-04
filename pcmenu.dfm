@@ -214,9 +214,54 @@ object Fpcmenu: TFpcmenu
       ParentBackground = False
       ParentFont = False
       TabOrder = 8
+      Visible = False
       OnClick = PelementsClick
       OnMouseLeave = PelementsMouseLeave
       OnMouseMove = PelementsMouseMove
+    end
+    object PExcel: TPanel
+      Left = 1
+      Top = 329
+      Width = 215
+      Height = 41
+      Cursor = crHandPoint
+      Align = alTop
+      BevelOuter = bvNone
+      Caption = #1069#1082#1089#1087#1086#1088#1090' '#1088#1072#1089#1095#1105#1090#1085#1086#1081' '#1090#1072#1073#1083#1080#1094#1099' '#1074' Excel'
+      Color = 10652205
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 9
+      OnClick = PExcelClick
+      OnMouseLeave = PExcelMouseLeave
+      OnMouseMove = PExcelMouseMove
+    end
+    object Pmarketing: TPanel
+      Left = 1
+      Top = 370
+      Width = 215
+      Height = 41
+      Cursor = crHandPoint
+      Align = alTop
+      BevelOuter = bvNone
+      Caption = #1055#1072#1088#1090#1085#1105#1088#1099' '#1087#1088#1086#1077#1082#1090#1072
+      Color = 10652205
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 10
+      OnClick = PmarketingClick
+      OnMouseLeave = PmarketingMouseLeave
+      OnMouseMove = PmarketingMouseMove
     end
   end
   object Panel2: TPanel
@@ -235,7 +280,7 @@ object Fpcmenu: TFpcmenu
       Top = 1
       Width = 481
       Height = 519
-      ActivePage = TabMenu
+      ActivePage = TabBit
       Align = alClient
       TabOrder = 0
       object TabBit: TTabSheet

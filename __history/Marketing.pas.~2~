@@ -1,0 +1,24 @@
+unit Marketing;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TFrMarketing = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrMarketing: TFrMarketing;
+
+implementation
+
+{$R *.dfm}
+
+end.

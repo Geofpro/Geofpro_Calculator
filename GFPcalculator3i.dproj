@@ -6,7 +6,7 @@
         <MainSource>GFPcalculator3i.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -102,6 +102,9 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+        <Icon_MainIcon>GFPcalculator3i_Icon1.ico</Icon_MainIcon>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
     </PropertyGroup>
@@ -185,6 +188,44 @@
         </DCCReference>
         <DCCReference Include="DiagramMain.pas">
             <Form>FrDiagramMain</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="rClearTable.pas">
+            <Form>FrClearTable</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ExportExcelFile.pas"/>
+        <DCCReference Include="UserReference.pas">
+            <Form>FrUserReference</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="rDeleteRecordUserRef.pas">
+            <Form>FrDeleteRecordUserRef</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="License.pas">
+            <Form>FrLicense</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Marketing.pas">
+            <Form>FrMarketing</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="MarketingList.pas">
+            <Form>FrMarketingList</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="AboutProgram.pas">
+            <Form>FrAbout</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Manual.pas">
+            <Form>FrManual</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="rExcelExport.pas">
+            <Form>FrExcelExport</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
